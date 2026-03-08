@@ -11,15 +11,15 @@
     .hero-overlay {
       position: absolute;
       top: 0; right: 0;
-      width: 53.4%; /* 769px of 1440 */
+      width: 60%; /* 769px of 1440 */
       height: 100%;
       background: #00435d;
-      opacity: 0.92;
+      opacity: 0.99;
     }
     .hero-text {
       position: absolute;
       top: 62px; right: 0;
-      width: 59.1%;
+      width: 50%;
       padding: 0 40px;
       text-align: center;
       color: var(--white);

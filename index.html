@@ -2,115 +2,210 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="aSuggestion supports individuals, families, caregivers, and agencies with a safe wellness community." />
-  <title>aSuggestion – Home</title>
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/index.css" />
+  <title>aSuggestion - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#01384a',
+              teal: '#00435d',
+              orange: '#ef8110',
+              blue: '#34b5ec'
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-<div class="page">
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-navy focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
 
-  <!-- NAVBAR -->
-  <header>
-  <nav class="navbar" aria-label="Primary navigation">
-    <div class="logo">
-      <img src="assets/images/a82a50da-00bb-491e-a426-5ceb06d215f2.png" alt="aSuggestion Logo" />
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html" aria-current="page">HOME</a></li>
-      <li><a href="about.html">ABOUT US</a></li>
-      <li><a href="community.html">COMMUNITY</a></li>
-      <li><a href="payment.html">PAYMENT</a></li>
-      <li><a href="contact.html">CONTACT US</a></li>
-    </ul>
-    <a class="login-btn" href="#">Login</a>
-  </nav>
-  </header>
+  <div class="mx-auto min-h-screen max-w-[1440px] bg-white shadow-sm">
+    <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
+      <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
+        <a href="index.html" class="shrink-0">
+          <img src="assets/images/a82a50da-00bb-491e-a426-5ceb06d215f2.png" alt="aSuggestion Logo" class="h-10 w-auto" />
+        </a>
 
-  <main id="main-content">
-  <!-- HERO BANNER -->
-  <section class="hero-banner" aria-labelledby="home-hero-title">
-    <img class="hero-bg" src="assets/images/1e664af3-990d-48df-9607-1be84510ee04.jpeg" alt="Hero background" />
-    <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="hero-text">
-      <h1 id="home-hero-title">
-        aSuggestion,<br/>
-        helping those with<br/>
-        <span class="accent">Autism</span><br/>
-        to better navigate the world around them
-      </h1>
-    </div>
-  </section>
+        <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
+          <li><a href="index.html" aria-current="page" class="underline underline-offset-4">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+        </ul>
 
-  <!-- WELCOME SECTION -->
-  <section class="welcome-section" aria-labelledby="welcome-title">
-    <div class="ellipse ellipse-1">
-      <img src="assets/images/e8fd7907-0fff-4e5c-99c6-743aa1cd9a17.svg" alt="" aria-hidden="true" />
-    </div>
-    <div class="ellipse ellipse-2">
-      <img src="assets/images/202169d6-2f4a-4130-8bb1-204cdebf4915.svg" alt="" aria-hidden="true" />
-    </div>
-    <div class="ellipse ellipse-3">
-      <img src="assets/images/69aac22d-30c0-4513-854d-2682be0d7bc7.svg" alt="" aria-hidden="true" />
-    </div>
-    <div class="ellipse ellipse-4">
-      <img src="assets/images/1b5d505f-96e6-4dc6-97a5-9c14fb8f578b.svg" alt="" aria-hidden="true" />
-    </div>
-    <div class="glass-card" aria-hidden="true"></div>
-    <h2 class="welcome-title" id="welcome-title">
-      <span class="w1">WELCOME TO</span>
-      <span class="w2"><span class="a">a</span><span class="sug">Suggestion</span></span>
-    </h2>
-    <div class="welcome-body">
-      <p>At Asuggestion, we believe in the transformative power of community and the strength that comes from shared voices and experiences. Mental and behavioral health is often surrounded by silence, stigma, and misunderstanding — but we are here to change that. By weaving together technology, empathy, and genuine human connection, our mission is to create a safe and inclusive space where conversations can thrive, stories can be shared, and support can be found. We strive to break down barriers, encourage open dialogue, and inspire individuals to take steps toward healing and growth.</p>
-      <p>Our vision is to elevate the discourse surrounding mental and behavioral health, moving it from the shadows into everyday conversations. Through collaboration, innovation, and compassion, we aim to build a brighter, more connected future — one where every individual feels heard, supported, and valued. Together, we are not just building a platform. We are nurturing a movement of hope, resilience, and positive change.</p>
-      <p>At the heart of Asuggestion is the belief that meaningful change happens when people come together. By fostering a culture of empathy, we hope to transform not just individual lives, but entire communities. Our goal is to inspire courage, build resilience, and create a lasting impact where mental well-being becomes a shared priority for all. Ultimately, Asuggestion is more than a platform — it is a movement to redefine how we view, talk about, and care for mental and behavioral health.</p>
-    </div>
-    <p class="welcome-tagline">aSuggestion. Life Improved.</p>
-  </section>
+        <a href="payment.html" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600">Login</a>
+      </nav>
+      <div class="border-t border-slate-100 px-4 py-2 md:hidden">
+        <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
+          <li><a href="index.html" aria-current="page" class="underline underline-offset-4">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+        </ul>
+      </div>
+    </header>
 
-  <!-- SLIDER / PHOTO STRIP -->
-  <section class="slider-section" aria-label="Community photos">
-    <img src="assets/images/811acfce-aad6-4b9f-866d-89e1287a1d86.jpeg" alt="Community photos" />
-  </section>
+    <main id="main-content">
+      <section class="relative overflow-hidden bg-brand-teal text-white">
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-navy/80 via-brand-navy/70 to-brand-teal/90"></div>
 
-  <!-- GALLERY GRID -->
-  <section class="gallery-grid" aria-label="Partner and community gallery">
-    <div class="card"><img src="assets/images/bf3bb32a-047d-4b6f-9972-0f2189225a9b.jpeg" alt="" loading="lazy" aria-hidden="true" /></div>
-    <div class="card"><img src="assets/images/08e70dcb-ae1a-4e71-b6fb-b0607dcb542b.jpeg" alt="" loading="lazy" aria-hidden="true" /></div>
-    <div class="card"><img src="assets/images/12da88d9-30c9-4a7b-8d5b-9ae992147c2e.jpeg" alt="" loading="lazy" aria-hidden="true" /></div>
-    <div class="card"><img src="assets/images/49e19b56-7909-431d-bdd9-ebecd9a38a5a.jpeg" alt="" loading="lazy" aria-hidden="true" /></div>
-    <div class="card"><img src="assets/images/a38e3f06-31a1-4eef-a738-c3298de9e06d.jpeg" alt="" loading="lazy" aria-hidden="true" /></div>
-    <div class="card"><img src="assets/images/2e873486-2c90-444c-a5be-6a0384020d88.jpeg" alt="" loading="lazy" aria-hidden="true" /></div>
-  </section>
+        <div class="relative px-6 py-24 lg:px-12 lg:py-32">
+          <p class="mb-4 text-sm uppercase tracking-[0.25em] text-orange-200">aSuggestion</p>
+          <h1 class="max-w-3xl text-4xl font-extrabold leading-tight md:text-6xl">
+            Helping people with
+            <span id="condition-word" class="inline-block min-w-[10ch] text-orange-300 transition-all duration-300 ease-out">Autism</span>
+            navigate the world with confidence
+          </h1>
+          <p class="mt-6 max-w-2xl text-base text-slate-100 md:text-lg">
+            A safe and supportive space for individuals, families, caregivers, and partner agencies to learn, connect, and grow.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="community.html" class="rounded-full bg-white px-6 py-3 text-sm font-bold text-brand-navy hover:bg-slate-100">Explore Community</a>
+            <a href="about.html" class="rounded-full border border-white/70 px-6 py-3 text-sm font-bold text-white hover:bg-white/10">Learn More</a>
+          </div>
+        </div>
+      </section>
 
-  <!-- PARTNER AGENCIES HEADING -->
-  <h2 class="partner-heading">Partner Agencies</h2>
+      <section class="px-6 py-16 lg:px-12">
+        <h2 class="text-3xl font-extrabold text-brand-navy md:text-4xl">Welcome to <span class="text-brand-orange">a</span><span class="text-brand-blue">Suggestion</span></h2>
+        <div class="mt-6 grid gap-6 text-base leading-8 text-slate-700 lg:grid-cols-2 lg:text-lg">
+          <p>
+            At aSuggestion, we believe in the transformative power of community and the strength that comes from shared voices and experiences.
+            We combine technology, empathy, and human connection to create a safe and inclusive space where people feel heard.
+          </p>
+          <p>
+            Our vision is to normalize conversations around mental and behavioral health, helping people move from isolation to connection.
+            Together, we are building a movement of hope, resilience, and positive change.
+          </p>
+        </div>
+        <p class="mt-6 text-xl font-semibold text-brand-orange">aSuggestion. Life Improved.</p>
+      </section>
 
-  <!-- NORTHVIEW PARTNER BANNER -->
-  <section class="partner-banner" aria-label="NorthView Health partner profile">
-    <img class="nv-logo" src="assets/images/c9c10037-783d-4057-b1ef-3f94968bf792.jpeg" alt="NorthView Health logo" />
-    <div class="nv-card">
-      <p>About NorthView Health Services<br/><br/>
-      We strive to improve the quality of life for individuals with intellectual disabilities through support, increased awareness, access and exposure to life's limitless opportunities.</p>
-    </div>
-  </section>
-  </main>
+      <section class="bg-slate-50 px-6 py-16 lg:px-12" aria-label="Community gallery">
+        <div class="mb-8 flex items-end justify-between gap-4">
+          <h2 class="text-3xl font-extrabold text-brand-navy md:text-4xl">Community Highlights</h2>
+          <a href="community.html" class="text-sm font-semibold text-brand-teal hover:text-brand-orange">View all</a>
+        </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>
-      <a href="#">Glossary</a> |
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms of Service</a> |
-      <a href="#">Tutorial</a>
-    </p>
-    <p>© 2024 aSuggestion LLC. | <a href="contact.html">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com">goodideas@aSuggestion.com</a></p>
-    <p class="credit">Design and Developed Ankita</p>
-  </footer>
+        <div id="community-gallery" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
+            <img src="assets/images/bf3bb32a-047d-4b6f-9972-0f2189225a9b.jpeg" alt="Participants sharing ideas" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Participants sharing ideas</figcaption>
+          </figure>
+          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
+            <img src="assets/images/49e19b56-7909-431d-bdd9-ebecd9a38a5a.jpeg" alt="Supportive group conversation" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Supportive group conversation</figcaption>
+          </figure>
+          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
+            <img src="assets/images/2e873486-2c90-444c-a5be-6a0384020d88.jpeg" alt="Community event and interaction" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Community event and interaction</figcaption>
+          </figure>
+          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
+            <img src="assets/images/a38e3f06-31a1-4eef-a738-c3298de9e06d.jpeg" alt="Family and caregiver support moment" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Family and caregiver support moment</figcaption>
+          </figure>
+          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
+            <img src="assets/images/e526b47f-47bd-4287-9210-ecd534a5ff6b.jpeg" alt="Parent and caregiver engagement" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Parent and caregiver engagement</figcaption>
+          </figure>
+          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
+            <img src="assets/images/d9a8bdcd-6288-4f83-84fa-a96bc03f45ae.jpeg" alt="Wellness and care collaboration" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Wellness and care collaboration</figcaption>
+          </figure>
+        </div>
+      </section>
 
-</div>
+      <section class="px-6 py-16 lg:px-12">
+        <div class="grid gap-8 rounded-3xl bg-gradient-to-r from-orange-500 to-rose-700 p-8 text-white lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <p class="text-sm uppercase tracking-[0.2em] text-orange-100">Partner Agencies</p>
+            <h2 class="mt-2 text-3xl font-extrabold">NorthView Health Services</h2>
+            <p class="mt-4 max-w-2xl leading-7 text-orange-50">
+              We strive to improve the quality of life for individuals with intellectual disabilities through support, increased awareness,
+              and access to life's limitless opportunities.
+            </p>
+          </div>
+          <a href="contact.html" class="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-rose-700 hover:bg-rose-50">Become a Partner</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
+      <p class="flex flex-wrap justify-center gap-3">
+        <a href="#" class="underline hover:text-brand-navy">Glossary</a>
+        <span>|</span>
+        <a href="#" class="underline hover:text-brand-navy">Privacy Policy</a>
+        <span>|</span>
+        <a href="#" class="underline hover:text-brand-navy">Terms of Service</a>
+        <span>|</span>
+        <a href="#" class="underline hover:text-brand-navy">Tutorial</a>
+      </p>
+      <p class="mt-3">&copy; 2024 aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      const galleryCards = document.querySelectorAll('#community-gallery figure');
+      galleryCards.forEach((card) => {
+        const img = card.querySelector('img');
+        const caption = card.querySelector('figcaption');
+        if (img && caption) caption.textContent = img.alt;
+      });
+
+      const wordEl = document.getElementById('condition-word');
+      if (!wordEl) return;
+
+      const conditions = [
+        'Autism',
+        'ADHD',
+        'Anxiety',
+        'Depression',
+        'Bipolar disorder',
+        'PTSD',
+        'OCD',
+        'Social anxiety'
+      ];
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let index = 0;
+      const intervalMs = 2600;
+
+      const showNext = () => {
+        index = (index + 1) % conditions.length;
+
+        if (reduceMotion) {
+          wordEl.textContent = conditions[index];
+          return;
+        }
+
+        wordEl.classList.add('opacity-0', 'translate-y-1');
+
+        window.setTimeout(() => {
+          wordEl.textContent = conditions[index];
+          wordEl.classList.remove('translate-y-1');
+          wordEl.classList.add('translate-y-0');
+          wordEl.classList.remove('opacity-0');
+        }, 180);
+      };
+
+      window.setInterval(showNext, intervalMs);
+    })();
+  </script>
 </body>
 </html>
