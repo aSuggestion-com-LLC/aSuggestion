@@ -1,0 +1,141 @@
+    /* ===== HERO ===== */
+    .community-hero {
+      position: relative;
+      width: 1440px;
+      height: 1008px;
+      overflow: hidden;
+    }
+    .community-hero img.hero-bg {
+      width: 100%; height: 111%;
+      object-fit: cover;
+      opacity: 0.4;
+      position: absolute;
+      top: 0; left: 0;
+    }
+    .community-hero h1 {
+      position: absolute;
+      top: 95px; left: 15px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 100px;
+      line-height: 1;
+    }
+    .community-hero h1 .c { color: #e57604; }
+    .community-hero h1 .ommunity { color: var(--blue); }
+
+    .intro-text {
+      position: absolute;
+      top: 305px; left: 39px;
+      width: 854px;
+      font-family: 'Karla', sans-serif;
+      font-size: 24px;
+      text-align: justify;
+      line-height: 1.5;
+      color: var(--text-dark);
+    }
+    .intro-text p { margin-bottom: 20px; }
+
+    /* ===== SECTIONS ===== */
+    .section-block {
+      position: relative;
+      width: 1440px;
+      padding: 60px 0 80px;
+      background: var(--white);
+    }
+    .section-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      color: var(--orange-alt);
+      margin-bottom: 20px;
+      padding-left: 30px;
+    }
+    .section-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      line-height: 29px;
+      letter-spacing: 0.22px;
+      color: var(--text-dark);
+      text-align: justify;
+    }
+    .section-text p { margin-bottom: 14px; }
+
+    /* IDD Section layout */
+    .idd-section {
+      display: flex;
+      gap: 40px;
+      padding: 60px 30px;
+      align-items: flex-start;
+      width: 1440px;
+      background: var(--white);
+    }
+    .idd-section .text-col { flex: 1; }
+    .idd-section .photo-col { flex: 0 0 433px; }
+    .idd-section .photo-col .round-photo {
+      width: 433px; height: 420px;
+      border-radius: 190px;
+      overflow: hidden;
+    }
+    .idd-section .photo-col .round-photo img {
+      width: 142%; height: 100%;
+      object-fit: cover;
+      position: relative;
+      left: -21%;
+    }
+
+    /* Families section */
+    .families-section {
+      display: flex;
+      gap: 40px;
+      padding: 60px 60px 60px 500px;
+      align-items: flex-start;
+      width: 1440px;
+      background: var(--white);
+    }
+    .families-section .photo-col { flex: 0 0 441px; }
+    .families-section .photo-col .round-photo {
+      width: 441px; height: 433px;
+      border-radius: 190px;
+      overflow: hidden;
+    }
+    .families-section .photo-col .round-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .families-section .text-col { flex: 1; }
+    .families-label {
+      text-align: right;
+      padding-right: 156px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      color: var(--orange-alt);
+      margin-bottom: 20px;
+    }
+    .families-label-left {
+      text-align: left;
+      padding-right: 0;
+      margin-bottom: 12px;
+    }
+
+    /* Caregiver section */
+    .caregiver-section {
+      display: flex;
+      gap: 40px;
+      padding: 60px 30px;
+      align-items: flex-start;
+      width: 1440px;
+      background: var(--white);
+    }
+    .caregiver-section .text-col { flex: 1; }
+    .caregiver-section .photo-col { flex: 0 0 487px; }
+    .caregiver-section .photo-col .round-photo {
+      width: 487px; height: 475px;
+      border-radius: 237px;
+      overflow: hidden;
+    }
+    .caregiver-section .photo-col .round-photo img {
+      width: 164%; height: 112%;
+      object-fit: cover;
+      position: relative;
+      left: -32%;
+      top: -6%;
+    }

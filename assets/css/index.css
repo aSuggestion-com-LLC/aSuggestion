@@ -1,0 +1,184 @@
+    /* ===== HERO BANNER ===== */
+    .hero-banner {
+      position: relative;
+      width: 1440px;
+      height: 626px;
+      overflow: hidden;
+    }
+    .hero-banner img.hero-bg {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; right: 0;
+      width: 53.4%; /* 769px of 1440 */
+      height: 100%;
+      background: #00435d;
+      opacity: 0.92;
+    }
+    .hero-text {
+      position: absolute;
+      top: 62px; right: 0;
+      width: 59.1%;
+      padding: 0 40px;
+      text-align: center;
+      color: var(--white);
+    }
+    .hero-text h1 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 1.1;
+    }
+    .hero-text h1 .accent { color: var(--orange-vivid); font-weight: 800; font-size: 70px; }
+
+    /* ===== WELCOME SECTION ===== */
+    .welcome-section {
+      position: relative;
+      width: 1440px;
+      height: 1235px;
+      background: var(--white);
+      overflow: hidden;
+    }
+    .welcome-section .ellipse {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .ellipse-1 {
+      width: 542px; height: 497px;
+      top: 251px; left: 887px;
+      transform: rotate(14.27deg);
+      overflow: hidden;
+    }
+    .ellipse-1 img, .ellipse-2 img, .ellipse-3 img, .ellipse-4 img {
+      width: 115%; height: 115%;
+      object-fit: cover;
+      position: absolute;
+      top: -7%; left: -7%;
+    }
+    .ellipse-2 { width: 574px; height: 560px; top: 675px; left: 889px; overflow: hidden; }
+    .ellipse-3 { width: 689px; height: 579px; top: 16px; left: -148px; overflow: hidden; }
+    .ellipse-4 {
+      width: 697px; height: 696px;
+      top: 675px; left: 359px;
+      transform: rotate(67.84deg);
+      overflow: hidden;
+    }
+    .glass-card {
+      position: absolute;
+      top: 165px; left: 228px;
+      width: 983px; height: 962px;
+      border-radius: 113px;
+      border: 1px solid white;
+      background: rgba(217,217,217,0.1);
+      backdrop-filter: blur(20px);
+    }
+    .welcome-title {
+      position: absolute;
+      top: 31px; left: 171px;
+      font-family: 'Krona One', sans-serif;
+      font-size: 60px;
+      line-height: 100px;
+      white-space: nowrap;
+    }
+    .welcome-title .w1 { color: var(--orange-alt); }
+    .welcome-title .w2 { position: absolute; left: 570px; top: 0; }
+    .welcome-title .w2 .a { color: var(--orange-alt); }
+    .welcome-title .w2 .sug { color: var(--blue); }
+    .welcome-body {
+      position: absolute;
+      top: 240px;
+      left: 328px;
+      width: 784px;
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 22px;
+      color: var(--teal-mid);
+      text-align: justify;
+      line-height: 1.6;
+    }
+    .welcome-body p { margin-bottom: 16px; }
+    .welcome-tagline {
+      position: absolute;
+      top: 1064px; left: 493px;
+      font-family: 'Karla', sans-serif;
+      font-size: 30px;
+      color: var(--orange-alt);
+      white-space: nowrap;
+    }
+
+    /* ===== SLIDER SECTION ===== */
+    .slider-section {
+      position: relative;
+      width: 1440px;
+      height: 627px;
+      overflow: hidden;
+    }
+    .slider-section img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* ===== PARTNER AGENCIES ===== */
+    .partner-heading {
+      text-align: center;
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 50px;
+      color: var(--teal-mid);
+      padding: 40px 0 20px;
+    }
+
+    /* ===== GALLERY GRID ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 401px);
+      gap: 72px 72px;
+      margin: 40px auto;
+      width: 1347px;
+      padding-left: 46px;
+    }
+    .gallery-grid .card {
+      width: 401px; height: 433px;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+    }
+    .gallery-grid .card img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* ===== NORTHVIEW PARTNER BANNER ===== */
+    .partner-banner {
+      position: relative;
+      width: 1440px;
+      height: 627px;
+      background: var(--white);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .partner-banner .nv-logo {
+      position: absolute;
+      left: 99px; top: 161px;
+      width: 536px; height: 357px;
+      object-fit: cover;
+    }
+    .partner-banner .nv-card {
+      position: absolute;
+      left: 771px; top: 202px;
+      width: 603px; height: 268px;
+      border-radius: 55px;
+      border: 1px solid #000;
+      background: linear-gradient(to bottom, #ff8100, #570837);
+      box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .partner-banner .nv-card p {
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 20px;
+      color: #fffbfb;
+      text-align: center;
+      line-height: 28px;
+    }
