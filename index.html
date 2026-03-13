@@ -130,17 +130,58 @@
         </div>
       </section>
 
-      <section class="px-6 py-16 lg:px-12">
-        <div class="grid gap-8 rounded-3xl bg-gradient-to-r from-orange-500 to-rose-700 p-8 text-white lg:grid-cols-[1fr_auto] lg:items-center">
-          <div>
-            <p class="text-sm uppercase tracking-[0.2em] text-orange-100">Partner Agencies</p>
-            <h2 class="mt-2 text-3xl font-extrabold">NorthView Health Services</h2>
-            <p class="mt-4 max-w-2xl leading-7 text-orange-50">
-              We strive to improve the quality of life for individuals with intellectual disabilities through support, increased awareness,
-              and access to life's limitless opportunities.
-            </p>
+      <section class="px-6 py-16 lg:px-12" aria-labelledby="partner-agencies-title">
+        <div class="overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-orange via-rose-700 to-brand-navy p-1 shadow-xl shadow-rose-900/10">
+          <div class="rounded-[1.85rem] bg-slate-950/15 p-6 text-white backdrop-blur sm:p-8">
+            <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p class="text-sm uppercase tracking-[0.25em] text-orange-100">Partner Agencies</p>
+                <h2 id="partner-agencies-title" class="mt-2 text-3xl font-extrabold md:text-4xl">Organizations building better support systems</h2>
+                <p class="mt-4 max-w-3xl text-sm leading-7 text-orange-50/90 sm:text-base">
+                  Explore the agencies and organizations partnering with aSuggestion. Each slide highlights the mission behind the work and the logo is matched automatically from the files available in <code>assets/images/partners</code>.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  id="partner-prev"
+                  class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 text-xl text-white transition hover:bg-white/20"
+                  aria-label="Previous partner"
+                >
+                  &larr;
+                </button>
+                <button
+                  type="button"
+                  id="partner-next"
+                  class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 text-xl text-white transition hover:bg-white/20"
+                  aria-label="Next partner"
+                >
+                  &rarr;
+                </button>
+                <a href="contact.html" class="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-rose-700 transition hover:bg-rose-50">Become a Partner</a>
+              </div>
+            </div>
+
+            <div class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,280px)_1fr] lg:items-stretch">
+              <div class="flex min-h-[220px] items-center justify-center rounded-[1.75rem] bg-white p-6 shadow-lg shadow-slate-950/10">
+                <img
+                  id="partner-logo"
+                  src=""
+                  alt=""
+                  class="max-h-44 w-auto max-w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+
+              <article class="rounded-[1.75rem] border border-white/15 bg-white/10 p-6 shadow-lg shadow-slate-950/10 backdrop-blur">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-orange-100">Current Partner</p>
+                <h3 id="partner-name" class="mt-3 text-2xl font-extrabold sm:text-3xl"></h3>
+                <p id="partner-text" class="mt-4 max-w-3xl text-sm leading-7 text-orange-50 sm:text-base"></p>
+              </article>
+            </div>
+
+            <div id="partner-dots" class="mt-6 flex flex-wrap gap-2" aria-label="Partner carousel pagination"></div>
           </div>
-          <a href="contact.html" class="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-rose-700 hover:bg-rose-50">Become a Partner</a>
         </div>
       </section>
     </main>
@@ -205,6 +246,158 @@
       };
 
       window.setInterval(showNext, intervalMs);
+
+      const partners = [
+        {
+          name: 'The Roland Center',
+          text: 'The Roland Center is a 501(c)(3) nonprofit organization dedicated to building a California where individuals with intellectual and developmental disabilities (IDD), including those with autism spectrum disorder, behavioral health needs, aging-related conditions, and dementia, can fully exercise their human rights, live with dignity, and participate as valued members of society.'
+        },
+        {
+          name: 'GoldStar Learning Options',
+          text: 'Our mission is to provide holistic, person-centered services that empower children and adults with intellectual and developmental disabilities to thrive. Through comprehensive care, innovative programs, and unwavering advocacy, we foster independence, inclusion, and a higher quality of life.'
+        },
+        {
+          name: 'JCIDDA',
+          text: 'It is the mission of the Jefferson County Intellectual and Developmental Disabilities Authority, Inc. (JCIDDA) to provide for system of effective and efficient services to citizens of Jefferson, Calhoun, Clay, Cleburne, Coosa, Talladega and Randolph Counties, Alabama, with intellectual disabilities and/or other developmental disabilities.'
+        },
+        {
+          name: 'Re-Circuit Electronics',
+          text: 'Re-Circuit Electronics LLC is a woman-owned technology and environmental services company based in Toledo, Ohio. Its multidisciplinary expertise spans AI-driven systems, renewable energy, and construction technologies, making it a trusted partner for organizations seeking modern, compliant, and sustainable technology solutions.'
+        },
+        {
+          name: 'Arc of Central Alabama',
+          text: 'The Arc of Central Alabama provides services to over 1,200 people throughout both Jefferson and Blount counties. The Arc of Central Alabama is the state’s largest provider of services and also designated as a crisis center for individuals with intellectual and developmental disabilities (IDD).'
+        },
+        {
+          name: 'Grace and Hope for Families',
+          text: 'Welcome to Grace & Hope for Families, where we are dedicated to creating a more supportive, inclusive and empowered world for underserved families. We are a compassionate and dynamic organization committed to supporting families impacted by chronic illnesses and/or disabilities.'
+        },
+        {
+          name: 'Connecting People & Places',
+          text: 'At CP&P, we support individuals with developmental disabilities in making connections with the people and places that bring meaning to their lives. We strive to eliminate barriers that hinder inclusion and ensure that every individual has the opportunity to participate fully and authentically in society.'
+        }
+      ];
+
+      const partnerLogoFiles = [
+        'assets/images/partners/399604448_835856118332026_3957939439104375314_n.jpg',
+        'assets/images/partners/400JpgdpiLogoNew.jpg',
+        'assets/images/partners/GoldStar & aSuggestion image vIII.jpg',
+        'assets/images/partners/JCIDDA.jpg',
+        'assets/images/partners/Re-Circuit Electronics.jpg',
+        'assets/images/partners/Suarez.png',
+        'assets/images/partners/lillian_northviewhealth_whitebackground.jpg',
+        'assets/images/partners/rolandcenter-logo.png',
+        'assets/images/partners/thearc-alabama.jpg'
+      ];
+
+      const partnerLogo = document.getElementById('partner-logo');
+      const partnerName = document.getElementById('partner-name');
+      const partnerText = document.getElementById('partner-text');
+      const prevButton = document.getElementById('partner-prev');
+      const nextButton = document.getElementById('partner-next');
+      const dotsWrap = document.getElementById('partner-dots');
+
+      if (!partnerLogo || !partnerName || !partnerText || !prevButton || !nextButton || !dotsWrap) return;
+
+      const normalize = (value) =>
+        value
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/&/g, ' and ')
+          .replace(/[^a-z0-9]+/g, ' ')
+          .trim();
+
+      const logoAliases = {
+        'the roland center': ['roland center', 'rolandcenter'],
+        'goldstar learning options': ['goldstar', 'gold star'],
+        jcidda: ['jcidda', 'jefferson county intellectual and developmental disabilities authority'],
+        're circuit electronics': ['re circuit', 're-circuit', 'rce'],
+        'arc of central alabama': ['arc central alabama', 'the arc', 'thearc alabama'],
+        'grace and hope for families': ['grace hope', 'hope for families', 'suarez'],
+        'connecting people places': ['connecting people places', 'connecting', 'people places']
+      };
+
+      const detectPartnerLogo = (name) => {
+        const normalizedName = normalize(name);
+        const aliases = [normalizedName, ...(logoAliases[normalizedName] || [])];
+
+        const scored = partnerLogoFiles
+          .map((path) => {
+            const normalizedPath = normalize(path.split('/').pop() || path);
+            const score = aliases.reduce((best, alias) => {
+              if (!alias) return best;
+              if (normalizedPath === alias) return Math.max(best, 100);
+              if (normalizedPath.includes(alias)) return Math.max(best, alias.length + 20);
+
+              const aliasWords = alias.split(' ').filter(Boolean);
+              const overlap = aliasWords.filter((word) => normalizedPath.includes(word)).length;
+              return Math.max(best, overlap * 10);
+            }, 0);
+
+            return { path, score };
+          })
+          .sort((a, b) => b.score - a.score);
+
+        return scored[0] && scored[0].score > 0 ? scored[0].path : '';
+      };
+
+      partners.forEach((partner) => {
+        partner.logo = detectPartnerLogo(partner.name);
+      });
+
+      let partnerIndex = 0;
+      let partnerIntervalId = null;
+
+      const dotButtons = partners.map((partner, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'h-3 w-8 rounded-full bg-white/30 transition hover:bg-white/60';
+        button.setAttribute('aria-label', `Show ${partner.name}`);
+        button.addEventListener('click', () => {
+          renderPartner(index);
+          restartPartnerAutoplay();
+        });
+        dotsWrap.appendChild(button);
+        return button;
+      });
+
+      const renderPartner = (index) => {
+        partnerIndex = (index + partners.length) % partners.length;
+        const partner = partners[partnerIndex];
+
+        partnerName.textContent = partner.name;
+        partnerText.textContent = partner.text;
+        partnerLogo.src = partner.logo || 'assets/images/a82a50da-00bb-491e-a426-5ceb06d215f2.png';
+        partnerLogo.alt = partner.logo ? `${partner.name} logo` : 'aSuggestion logo';
+
+        dotButtons.forEach((dot, dotIndex) => {
+          const active = dotIndex === partnerIndex;
+          dot.className = active
+            ? 'h-3 w-8 rounded-full bg-white transition'
+            : 'h-3 w-8 rounded-full bg-white/30 transition hover:bg-white/60';
+          dot.setAttribute('aria-current', active ? 'true' : 'false');
+        });
+      };
+
+      const restartPartnerAutoplay = () => {
+        if (partnerIntervalId) window.clearInterval(partnerIntervalId);
+        if (reduceMotion) return;
+        partnerIntervalId = window.setInterval(() => renderPartner(partnerIndex + 1), 5500);
+      };
+
+      prevButton.addEventListener('click', () => {
+        renderPartner(partnerIndex - 1);
+        restartPartnerAutoplay();
+      });
+
+      nextButton.addEventListener('click', () => {
+        renderPartner(partnerIndex + 1);
+        restartPartnerAutoplay();
+      });
+
+      renderPartner(0);
+      restartPartnerAutoplay();
     })();
   </script>
 </body>
