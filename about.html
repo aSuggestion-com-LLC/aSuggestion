@@ -2,76 +2,166 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Learn about aSuggestion's mission for safe, empathetic mental and behavioral health conversations." />
-  <title>aSuggestion – About Us</title>
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/about.css" />
+  <title>aSuggestion - About Us</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#01384a',
+              teal: '#00435d',
+              orange: '#ef8110',
+              blue: '#34b5ec'
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-<div class="page">
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-navy focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
 
-  <!-- NAVBAR -->
-  <header>
-  <nav class="navbar" aria-label="Primary navigation">
-    <div class="logo">
-      <img src="assets/images/ee6a43c7-c736-4da5-b579-2acbde14cbae.png" alt="aSuggestion Logo" />
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html">HOME</a></li>
-      <li><a href="about.html" aria-current="page">ABOUT US</a></li>
-      <li><a href="community.html">COMMUNITY</a></li>
-      <li><a href="payment.html">PAYMENT</a></li>
-      <li><a href="contact.html">CONTACT US</a></li>
-    </ul>
-    <a class="login-btn" href="#">Login</a>
-  </nav>
-  </header>
+  <div class="mx-auto min-h-screen max-w-[1440px] bg-white shadow-sm">
+    <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
+      <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
+        <a href="index.html" class="shrink-0">
+          <img src="assets/images/a82a50da-00bb-491e-a426-5ceb06d215f2.png" alt="aSuggestion Logo" class="h-10 w-auto" />
+        </a>
 
-  <main id="main-content">
-  <!-- HERO BANNER -->
-  <section class="about-hero" aria-labelledby="about-title">
-    <img src="assets/images/0b39d2eb-baee-4de9-8a9f-d793dd3b6e96.jpeg" alt="About Us hero" />
-    <h1 class="about-hero-text" id="about-title">
-      Introducing<br/>
-      <span class="a">a</span><span class="sug">Suggestion</span><br/>
-      for Wellness &amp; Care:
-    </h1>
-  </section>
+        <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
+          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+          <li><a href="about.html" aria-current="page" class="underline underline-offset-4">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+        </ul>
 
-  <!-- CONTENT AREA -->
-  <section class="about-content" aria-label="About aSuggestion">
-    <div class="about-text">
-      <p>In the intricate and complex mental and behavioral health arena, communication stands out as both a challenge and a solution. Recognizing the myriad of individual experiences and needs within this community, we've established the aSuggestion for Wellness &amp; Care platform.</p>
-      <p>Our aim is not merely to provide another social media space for idle interactions, but to pioneer a resource that prioritizes safety, understanding, and genuine connection. Here, we've integrated the power of advanced technology with the essence of human empathy. Our AI moderation ensures that every conversation is approached with the utmost respect, allowing for meaningful exchanges that foster growth and understanding.</p>
-      <p>For individuals navigating their own mental and behavioral health journey, this platform offers a social media experience where they can share and learn without fear of judgment. Families and caregivers will find a community that understands the challenges and joys of supporting a loved one. Therapists and professionals can engage, share insights, and collaborate, ensuring a holistic approach to wellness. Agencies can trust in a platform that reflects the highest standards of care and respect.</p>
-      <p>We believe in the transformative power of community. By weaving together technology and heart, we hope to elevate the discourse surrounding mental and behavioral health, making way for a brighter, more connected future for all.</p>
-      <p class="tagline">aSuggestion. Life Improved.</p>
-    </div>
-    <div class="about-photo">
-      <img src="assets/images/e526b47f-47bd-4287-9210-ecd534a5ff6b.jpeg" alt="Supporting parents and caregivers" loading="lazy" />
-    </div>
+        <a href="payment.html" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600">Login</a>
+      </nav>
+      <div class="border-t border-slate-100 px-4 py-2 md:hidden">
+        <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
+          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+          <li><a href="about.html" aria-current="page" class="underline underline-offset-4">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+        </ul>
+      </div>
+    </header>
 
-    <!-- LARGE IMAGE -->
-    <div class="about-large-img">
-      <img src="assets/images/d9a8bdcd-6288-4f83-84fa-a96bc03f45ae.jpeg" alt="Community care" loading="lazy" />
-    </div>
-  </section>
-  </main>
+    <main id="main-content">
+      <section class="relative overflow-hidden bg-brand-teal text-white">
+        <div class="absolute inset-0">
+          <img src="assets/images/0b39d2eb-baee-4de9-8a9f-d793dd3b6e96.jpeg" alt="About Us hero" class="h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-r from-brand-navy/90 via-brand-navy/75 to-brand-teal/70"></div>
+        </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>
-      <a href="#">Glossary</a> |
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms of Service</a> |
-      <a href="#">Tutorial</a>
-    </p>
-    <p>© 2024 aSuggestion LLC. | <a href="contact.html">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com">goodideas@aSuggestion.com</a></p>
-    <p class="credit">Design and Developed Ankita</p>
-  </footer>
+        <div class="relative grid gap-10 px-6 py-20 lg:grid-cols-[1.2fr_0.8fr] lg:px-12 lg:py-28">
+          <div>
+            <p class="mb-4 text-sm uppercase tracking-[0.28em] text-orange-200">About aSuggestion</p>
+            <h1 class="max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl">
+              Introducing
+              <span class="text-orange-300">a</span><span class="text-brand-blue">Suggestion</span>
+              for wellness, dignity, and care.
+            </h1>
+            <p class="mt-6 max-w-2xl text-base leading-8 text-slate-100 md:text-lg">
+              We are building a safer digital space for meaningful conversations around mental and behavioral health, connecting individuals, families, caregivers, professionals, and partner agencies through empathy and trust.
+            </p>
+          </div>
 
-</div>
+          <div class="self-end rounded-[2rem] border border-white/10 bg-white/10 p-6 backdrop-blur">
+            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-orange-100">Our Focus</p>
+            <ul class="mt-4 space-y-4 text-sm leading-7 text-orange-50 sm:text-base">
+              <li>Safe, moderated community experiences.</li>
+              <li>Respectful dialogue across different perspectives and needs.</li>
+              <li>Support for individuals, families, caregivers, and agencies.</li>
+              <li>Technology designed to strengthen human connection, not replace it.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="px-6 py-16 lg:px-12">
+        <div class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <article class="rounded-[2rem] bg-slate-50 p-6 shadow-sm ring-1 ring-slate-100 sm:p-8">
+            <h2 class="text-3xl font-extrabold text-brand-navy md:text-4xl">Why aSuggestion exists</h2>
+            <div class="mt-6 space-y-5 text-base leading-8 text-slate-700">
+              <p>In the intricate and complex mental and behavioral health arena, communication stands out as both a challenge and a solution. Recognizing the myriad of individual experiences and needs within this community, we established the aSuggestion for Wellness &amp; Care platform.</p>
+              <p>Our aim is not merely to provide another social media space for idle interactions, but to pioneer a resource that prioritizes safety, understanding, and genuine connection. We integrate advanced technology with the essence of human empathy, using AI moderation to support respectful and meaningful exchanges.</p>
+              <p>For individuals navigating their own mental and behavioral health journey, this platform offers a place to share and learn without fear of judgment. Families and caregivers find community. Therapists and professionals can engage and collaborate. Agencies can trust a platform aligned with high standards of care and respect.</p>
+              <p>We believe in the transformative power of community. By weaving together technology and heart, we hope to elevate the discourse surrounding mental and behavioral health and help create a brighter, more connected future for all.</p>
+            </div>
+            <p class="mt-8 text-xl font-semibold text-brand-orange">aSuggestion. Life Improved.</p>
+          </article>
+
+          <div class="grid gap-6">
+            <figure class="overflow-hidden rounded-[2rem] bg-white shadow-sm ring-1 ring-slate-100">
+              <img src="assets/images/e526b47f-47bd-4287-9210-ecd534a5ff6b.jpeg" alt="Supporting parents and caregivers" class="h-72 w-full object-cover sm:h-80" loading="lazy" />
+              <figcaption class="px-6 py-4 text-sm font-medium text-slate-600">Support for parents, caregivers, and families navigating complex care journeys.</figcaption>
+            </figure>
+
+            <div class="rounded-[2rem] bg-gradient-to-br from-brand-orange to-rose-700 p-8 text-white shadow-lg shadow-rose-900/10">
+              <p class="text-sm uppercase tracking-[0.25em] text-orange-100">What We Protect</p>
+              <div class="mt-5 grid gap-4 text-sm leading-7 sm:grid-cols-2 sm:text-base">
+                <div class="rounded-2xl bg-white/10 p-4">Psychological safety in conversation.</div>
+                <div class="rounded-2xl bg-white/10 p-4">Constructive support across care networks.</div>
+                <div class="rounded-2xl bg-white/10 p-4">Inclusion for different abilities and experiences.</div>
+                <div class="rounded-2xl bg-white/10 p-4">A better balance between technology and compassion.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-slate-50 px-6 py-16 lg:px-12">
+        <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <figure class="overflow-hidden rounded-[2.25rem] shadow-sm ring-1 ring-slate-100">
+            <img src="assets/images/d9a8bdcd-6288-4f83-84fa-a96bc03f45ae.jpeg" alt="Community care" class="h-full min-h-[320px] w-full object-cover" loading="lazy" />
+          </figure>
+
+          <div>
+            <p class="text-sm uppercase tracking-[0.25em] text-brand-orange">Built For Real People</p>
+            <h2 class="mt-3 text-3xl font-extrabold text-brand-navy md:text-4xl">A platform shaped by everyday care realities</h2>
+            <div class="mt-6 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-sm ring-1 ring-slate-100">
+                <h3 class="text-lg font-bold text-brand-navy">Individuals</h3>
+                <p class="mt-2 text-sm leading-7 text-slate-600">A place to be heard, supported, and informed without stigma.</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-sm ring-1 ring-slate-100">
+                <h3 class="text-lg font-bold text-brand-navy">Families</h3>
+                <p class="mt-2 text-sm leading-7 text-slate-600">Shared learning, connection, and practical encouragement.</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-sm ring-1 ring-slate-100">
+                <h3 class="text-lg font-bold text-brand-navy">Caregivers</h3>
+                <p class="mt-2 text-sm leading-7 text-slate-600">Community support for the demanding realities of daily care.</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-sm ring-1 ring-slate-100">
+                <h3 class="text-lg font-bold text-brand-navy">Professionals and Agencies</h3>
+                <p class="mt-2 text-sm leading-7 text-slate-600">A respectful environment for collaboration and insight sharing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
+      <p class="flex flex-wrap justify-center gap-3">
+        <a href="#" class="underline hover:text-brand-navy">Glossary</a>
+        <span>|</span>
+        <a href="#" class="underline hover:text-brand-navy">Privacy Policy</a>
+        <span>|</span>
+        <a href="#" class="underline hover:text-brand-navy">Terms of Service</a>
+        <span>|</span>
+        <a href="#" class="underline hover:text-brand-navy">Tutorial</a>
+      </p>
+      <p class="mt-3">&copy; 2024 aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
+    </footer>
+  </div>
 </body>
 </html>

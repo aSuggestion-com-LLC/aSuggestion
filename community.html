@@ -2,109 +2,173 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Community guidelines and support content for individuals, families, and caregivers in aSuggestion." />
-  <title>aSuggestion – Community</title>
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/community.css" />
+  <title>aSuggestion - Community</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#01384a',
+              teal: '#00435d',
+              orange: '#ef8110',
+              blue: '#34b5ec'
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-<div class="page">
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-navy focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
 
-  <!-- NAVBAR -->
-  <header>
-  <nav class="navbar" aria-label="Primary navigation">
-    <div class="logo">
-      <img src="assets/images/2255cca4-3aed-4f4b-a455-6c205ee47b68.png" alt="aSuggestion Logo" />
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html">HOME</a></li>
-      <li><a href="about.html">ABOUT US</a></li>
-      <li><a href="community.html" aria-current="page">COMMUNITY</a></li>
-      <li><a href="payment.html">PAYMENT</a></li>
-      <li><a href="contact.html">CONTACT US</a></li>
-    </ul>
-    <a class="login-btn" href="#">Login</a>
-  </nav>
-  </header>
+  <div class="mx-auto min-h-screen max-w-[1440px] bg-white shadow-sm">
+    <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
+      <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
+        <a href="index.html" class="shrink-0">
+          <img src="assets/images/a82a50da-00bb-491e-a426-5ceb06d215f2.png" alt="aSuggestion Logo" class="h-10 w-auto" />
+        </a>
 
-  <main id="main-content">
-  <!-- HERO BANNER -->
-  <section class="community-hero" aria-labelledby="community-title">
-    <img class="hero-bg" src="assets/images/cd371da1-abee-45be-9fef-75f3b1314083.jpeg" alt="Community background" />
-    <h1 id="community-title"><span class="c">C</span><span class="ommunity">OMMUNITY</span></h1>
-    <div class="intro-text">
-      <p>At aSuggestion, we encourage every author to write with clarity, respect, and consideration. This is not a space for conflict, but rather a community for growth, understanding, and meaningful connection.</p>
-      <p>When you encounter perspectives that differ from your own, see them as opportunities—to listen, to share, to learn, and perhaps even to teach. We remind our readers to pause before reacting, reflect on the comments received, and respond thoughtfully. Disagreement is natural, but retaliation is not the answer. Instead, embrace these moments as chances for improvement, empathy, and kindness.</p>
-      <p>Whether you've joined us to participate in our safe and welcoming social rooms, or to exchange meaningful ideas with family, colleagues, or new connections, we invite you to relax and enjoy the experience. Let this space reflect the best version of you—the version you want your community to know and appreciate.</p>
-      <p>Together, we can make aSuggestion a place where every voice is valued and every interaction leaves us better than before.</p>
-    </div>
-  </section>
+        <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
+          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
+          <li><a href="community.html" aria-current="page" class="underline underline-offset-4">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+        </ul>
 
-  <!-- IDD SECTION -->
-  <section class="idd-section" aria-labelledby="idd-label">
-    <div class="text-col">
-      <h2 class="section-label" id="idd-label">Individual dealing with IDD</h2>
-      <div class="section-text">
-        <p>IDD stands for Intellectual and Developmental Disabilities, which means you might learn or do some things differently from others — and that's completely okay. Everyone grows and develops at their own pace, and having IDD simply means you may need a bit more support in certain areas of life such as learning, communicating, or completing everyday tasks.</p>
-        <p>Taking care of yourself is important, and there are many simple ways to do it. Following a daily routine can make life feel easier and less stressful, while eating healthy foods and staying active helps you feel better overall. Try doing tasks on your own when possible, but remember it's always okay to ask for help. Regular visits to doctors and therapists are important for your health, and spending time with friends, family, and supportive people helps you stay connected.</p>
-        <p>With patience and practice, you can become more confident in your abilities. It's important to focus on your strengths and use them to overcome challenges. Remember that everyone needs support sometimes, and asking for it shows courage. Surround yourself with positive people who believe in you and encourage your growth. Each step you take, no matter how small, brings you closer to living a happier and more independent life.</p>
+        <a href="payment.html" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600">Login</a>
+      </nav>
+      <div class="border-t border-slate-100 px-4 py-2 md:hidden">
+        <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
+          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
+          <li><a href="community.html" aria-current="page" class="underline underline-offset-4">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+        </ul>
       </div>
-    </div>
-    <div class="photo-col">
-      <div class="round-photo">
-        <img src="assets/images/833d1bb6-c3c4-44e9-aef4-912c9fa62e55.jpeg" alt="Individual with IDD" loading="lazy" />
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- FAMILIES SECTION -->
-  <section class="families-section" aria-labelledby="families-label">
-    <div class="photo-col">
-      <div class="round-photo">
-        <img src="assets/images/67d23ee3-5636-4dd8-b98b-b67878c2977a.jpeg" alt="Families" loading="lazy" />
-      </div>
-    </div>
-    <div class="text-col">
-      <h2 id="families-label" class="families-label families-label-left">Families</h2>
-      <div class="section-text">
-        <p>Having a loved one with an Intellectual and Developmental Disability (IDD) can bring unique challenges — and also deep joy and meaning. Every person with IDD is different, and every family's journey is unique. One of the most helpful things you can do is create a consistent routine, since daily structure helps reduce anxiety and supports independence.</p>
-        <p>Caring for overall well-being is just as important. Helping with balanced meals, regular physical activity, good sleep, and mental health care lays the foundation for long-term health. Keeping up with medical and therapy appointments — whether speech, occupational, or behavioral therapies — also plays a key role in ongoing development.</p>
-        <p>It's equally essential to focus on strengths rather than just needs. Celebrating your loved one's abilities and interests nurtures their sense of purpose and shows the many ways they can contribute. Building a strong support network is also crucial, as no family should feel they have to face the journey alone.</p>
-      </div>
-    </div>
-  </section>
+    <main id="main-content">
+      <section class="relative overflow-hidden bg-brand-navy text-white">
+        <div class="absolute inset-0">
+          <img src="assets/images/cd371da1-abee-45be-9fef-75f3b1314083.jpeg" alt="Community background" class="h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-r from-brand-navy/95 via-brand-teal/80 to-brand-navy/70"></div>
+        </div>
 
-  <!-- CAREGIVER SECTION -->
-  <section class="caregiver-section" aria-labelledby="caregiver-label">
-    <div class="text-col">
-      <h2 class="section-label" id="caregiver-label">Caregiver</h2>
-      <div class="section-text">
-        <p>As a caregiver for someone with an Intellectual and Developmental Disability (IDD), your role is both deeply important and uniquely demanding. It can bring moments of reward, joy, and connection, but it can also feel challenging and, at times, overwhelming. Establishing a consistent routine is one of the most effective ways to create structure, reduce stress, and help your loved one feel safe and confident.</p>
-        <p>Supporting healthy living is another essential part of caregiving. This includes helping with nutritious meals, encouraging regular physical activity, promoting good sleep, and supporting emotional well-being. Staying on top of medical and therapy care is also crucial — from keeping track of appointments and medications to noticing any changes in behavior or health. Clear and accessible communication plays a key role as well, whether through visuals, gestures, simple words, or assistive devices. Practicing patience and empathy throughout the journey ensures that progress, however gradual, is met with encouragement rather than judgment.</p>
-      </div>
-    </div>
-    <div class="photo-col">
-      <div class="round-photo">
-        <img src="assets/images/3c5de2ca-8432-4ed4-8c94-7b510fe51dcc.jpeg" alt="Caregiver" loading="lazy" />
-      </div>
-    </div>
-  </section>
-  </main>
+        <div class="relative px-6 py-20 lg:px-12 lg:py-28">
+          <p class="mb-4 text-sm uppercase tracking-[0.28em] text-orange-200">Community</p>
+          <h1 class="max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl">A community centered on respect, support, and thoughtful connection.</h1>
+          <div class="mt-8 max-w-4xl rounded-[2rem] border border-white/10 bg-white/10 p-6 backdrop-blur sm:p-8">
+            <div class="space-y-4 text-sm leading-8 text-slate-100 sm:text-base">
+              <p>At aSuggestion, we encourage every author to write with clarity, respect, and consideration. This is not a space for conflict, but rather a community for growth, understanding, and meaningful connection.</p>
+              <p>When you encounter perspectives that differ from your own, see them as opportunities to listen, share, learn, and perhaps even teach. We remind our readers to pause before reacting, reflect on the comments received, and respond thoughtfully.</p>
+              <p>Whether you've joined us to participate in safe and welcoming social rooms or to exchange ideas with family, colleagues, or new connections, we invite you to relax and enjoy the experience. Together, we can make aSuggestion a place where every voice is valued and every interaction leaves us better than before.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>
-      <a href="#">Glossary</a> |
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms of Service</a> |
-      <a href="#">Tutorial</a>
-    </p>
-    <p>© 2024 aSuggestion LLC. | <a href="contact.html">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com">goodideas@aSuggestion.com</a></p>
-    <p class="credit">Design and Developed Ankita</p>
-  </footer>
+      <section class="px-6 py-16 lg:px-12">
+        <div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-sm uppercase tracking-[0.25em] text-brand-orange">Guided Support</p>
+            <h2 class="mt-2 text-3xl font-extrabold text-brand-navy md:text-4xl">Resources for every part of the care network</h2>
+          </div>
+        </div>
 
-</div>
+        <div class="grid gap-6">
+          <section class="overflow-hidden rounded-[2rem] bg-white shadow-sm ring-1 ring-slate-100">
+            <div class="grid lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div class="p-6 sm:p-8">
+                <p class="text-sm uppercase tracking-[0.25em] text-brand-orange">Support Track</p>
+                <h3 class="mt-3 text-2xl font-extrabold text-brand-navy sm:text-3xl">Individuals dealing with IDD</h3>
+                <div class="mt-5 space-y-4 text-sm leading-8 text-slate-700 sm:text-base">
+                  <p>IDD stands for Intellectual and Developmental Disabilities, which means you might learn or do some things differently from others, and that's completely okay. Everyone grows and develops at their own pace, and having IDD simply means you may need more support in areas such as learning, communicating, or completing everyday tasks.</p>
+                  <p>Taking care of yourself is important. Following a daily routine can make life feel easier and less stressful, while eating healthy foods and staying active helps you feel better overall. Try doing tasks on your own when possible, but remember it's always okay to ask for help.</p>
+                  <p>With patience and practice, you can become more confident in your abilities. Focus on your strengths and use them to overcome challenges. Each step you take, no matter how small, brings you closer to living a happier and more independent life.</p>
+                </div>
+              </div>
+              <div class="h-full min-h-[280px] bg-slate-100">
+                <img src="assets/images/833d1bb6-c3c4-44e9-aef4-912c9fa62e55.jpeg" alt="Individual with IDD" class="h-full w-full object-cover" loading="lazy" />
+              </div>
+            </div>
+          </section>
+
+          <section class="overflow-hidden rounded-[2rem] bg-slate-50 shadow-sm ring-1 ring-slate-100">
+            <div class="grid lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div class="order-2 h-full min-h-[280px] bg-slate-100 lg:order-1">
+                <img src="assets/images/67d23ee3-5636-4dd8-b98b-b67878c2977a.jpeg" alt="Families" class="h-full w-full object-cover" loading="lazy" />
+              </div>
+              <div class="order-1 p-6 sm:p-8 lg:order-2">
+                <p class="text-sm uppercase tracking-[0.25em] text-brand-orange">Support Track</p>
+                <h3 class="mt-3 text-2xl font-extrabold text-brand-navy sm:text-3xl">Families</h3>
+                <div class="mt-5 space-y-4 text-sm leading-8 text-slate-700 sm:text-base">
+                  <p>Having a loved one with an Intellectual and Developmental Disability can bring unique challenges and also deep joy and meaning. Every person with IDD is different, and every family's journey is unique. A consistent routine helps reduce anxiety and supports independence.</p>
+                  <p>Caring for overall well-being is just as important. Balanced meals, regular physical activity, good sleep, and mental health care lay the foundation for long-term health. Medical and therapy appointments also play a key role in development.</p>
+                  <p>It is equally essential to focus on strengths rather than just needs. Celebrating abilities and interests nurtures a sense of purpose, while a strong support network reminds families that they do not have to face the journey alone.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="overflow-hidden rounded-[2rem] bg-white shadow-sm ring-1 ring-slate-100">
+            <div class="grid lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div class="p-6 sm:p-8">
+                <p class="text-sm uppercase tracking-[0.25em] text-brand-orange">Support Track</p>
+                <h3 class="mt-3 text-2xl font-extrabold text-brand-navy sm:text-3xl">Caregivers</h3>
+                <div class="mt-5 space-y-4 text-sm leading-8 text-slate-700 sm:text-base">
+                  <p>As a caregiver for someone with an Intellectual and Developmental Disability, your role is deeply important and uniquely demanding. It can bring moments of reward, joy, and connection, but it can also feel challenging and overwhelming. Establishing a consistent routine is one of the most effective ways to create structure and reduce stress.</p>
+                  <p>Supporting healthy living is another essential part of caregiving. This includes nutritious meals, regular physical activity, good sleep, and attention to emotional well-being. Staying on top of medical and therapy care is also crucial.</p>
+                  <p>Clear and accessible communication matters, whether through visuals, gestures, simple words, or assistive devices. Practicing patience and empathy throughout the journey helps ensure that progress is met with encouragement rather than judgment.</p>
+                </div>
+              </div>
+              <div class="h-full min-h-[280px] bg-slate-100">
+                <img src="assets/images/3c5de2ca-8432-4ed4-8c94-7b510fe51dcc.jpeg" alt="Caregiver" class="h-full w-full object-cover" loading="lazy" />
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="bg-slate-50 px-6 py-16 lg:px-12">
+        <div class="rounded-[2rem] bg-gradient-to-r from-brand-orange to-rose-700 p-8 text-white shadow-lg shadow-rose-900/10">
+          <p class="text-sm uppercase tracking-[0.25em] text-orange-100">Community Principles</p>
+          <div class="mt-6 grid gap-4 md:grid-cols-3">
+            <div class="rounded-[1.5rem] bg-white/10 p-5">
+              <h3 class="text-lg font-bold">Pause Before Responding</h3>
+              <p class="mt-2 text-sm leading-7 text-orange-50">Thoughtful responses create safer, more useful conversations.</p>
+            </div>
+            <div class="rounded-[1.5rem] bg-white/10 p-5">
+              <h3 class="text-lg font-bold">Lead With Respect</h3>
+              <p class="mt-2 text-sm leading-7 text-orange-50">Different experiences deserve care, empathy, and dignity.</p>
+            </div>
+            <div class="rounded-[1.5rem] bg-white/10 p-5">
+              <h3 class="text-lg font-bold">Protect Connection</h3>
+              <p class="mt-2 text-sm leading-7 text-orange-50">The goal is not winning arguments, but building better understanding.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
+      <p class="flex flex-wrap justify-center gap-3">
+        <a href="#" class="underline hover:text-brand-navy">Glossary</a>
+        <span>|</span>
+        <a href="#" class="underline hover:text-brand-navy">Privacy Policy</a>
+        <span>|</span>
+        <a href="#" class="underline hover:text-brand-navy">Terms of Service</a>
+        <span>|</span>
+        <a href="#" class="underline hover:text-brand-navy">Tutorial</a>
+      </p>
+      <p class="mt-3">&copy; 2024 aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
+    </footer>
+  </div>
 </body>
 </html>
