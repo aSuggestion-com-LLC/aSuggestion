@@ -57,20 +57,24 @@
     <main id="main-content">
       <section class="relative overflow-hidden text-white">
 
-        <!-- Background image — no overlay on top of it -->
+        <!-- Background image -->
         <div class="absolute inset-0 rounded-3xl overflow-hidden mx-4 mt-4 lg:mx-8">
           <img src="assets/images/aS_2.0_Homepage.jpg" alt="aSuggestion community" class="h-full w-full object-cover rounded-3xl" />
         </div>
 
-        <!-- Dark gradient sits BEHIND the text content, not over the image -->
+        <!-- Subtle left-side gradient behind text only — lighter values -->
         <div class="absolute inset-0 mx-4 mt-4 lg:mx-8 rounded-3xl"
-             style="background: linear-gradient(to right, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.22) 55%, rgba(0,0,0,0.05) 100%);
+             style="background: linear-gradient(to right, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.22) 55%, rgba(0,0,0,0.05) 100%); z-index:1;">
         </div>
 
-        <!-- Text content sits above both image and gradient -->
+        <!-- Text content — sits above image and gradient -->
         <div class="relative px-6 py-24 lg:px-12 lg:py-32" style="z-index:2;">
-          <p class="mb-4 text-sm font-bold tracking-[0.25em] text-orange-200" style="text-shadow: 0 1px 4px rgba(0,0,0,0.7);">aSuggestion</p>
 
+          <!-- aSuggestion label — no uppercase class so casing is preserved exactly -->
+          <p class="mb-4 text-sm font-bold tracking-[0.25em] text-orange-200"
+             style="text-shadow: 0 1px 4px rgba(0,0,0,0.7);">aSuggestion</p>
+
+          <!-- Three-row rotating headline -->
           <h1 class="max-w-5xl text-4xl font-extrabold leading-[1.15] md:text-6xl"
               style="text-shadow: 0 2px 8px rgba(0,0,0,0.7);">
             <span class="block">Helping people with</span>
@@ -80,6 +84,7 @@
             <span class="block">navigate the world with confidence</span>
           </h1>
 
+          <!-- Bold subheading with strong text shadow for crisp readability -->
           <p class="mt-6 max-w-2xl text-base font-bold text-white md:text-lg"
              style="text-shadow: 0 1px 6px rgba(0,0,0,0.8);">
             A safe and supportive space for individuals, families, caregivers, and partner agencies to learn, connect, and grow.
