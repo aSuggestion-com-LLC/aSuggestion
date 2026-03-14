@@ -30,7 +30,7 @@
     <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
       <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
         <a href="index.html" class="shrink-0">
-          <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" class="h-12 w-auto rounded-lg" />
+          <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem; width:auto; border-radius:0.5rem;" />
         </a>
 
         <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
@@ -55,17 +55,15 @@
     </header>
 
     <main id="main-content">
-      <section class="relative overflow-hidden bg-brand-teal text-white">
-        <div class="absolute inset-0">
-          <img src="assets/images/home-hero-safe-space.jpg" alt="Child in a calm indoor setting" class="h-full w-full object-cover" />
-          <div class="absolute inset-0 bg-gradient-to-r from-brand-navy/90 via-brand-navy/75 to-brand-teal/80"></div>
+      <section class="relative overflow-hidden text-white">
+        <div class="absolute inset-0 rounded-3xl overflow-hidden mx-4 mt-4 lg:mx-8">
+          <img src="assets/images/home-hero-safe-space.jpg" alt="Child in a calm indoor setting" class="h-full w-full object-cover rounded-3xl" />
         </div>
 
         <div class="relative px-6 py-24 lg:px-12 lg:py-32">
-          <p class="mb-4 text-sm uppercase tracking-[0.25em] text-orange-200">aSuggestion</p>
+          <p class="mb-4 text-sm uppercase tracking-[0.25em] text-orange-200 drop-shadow">aSuggestion</p>
 
-          <!-- Three-row headline. Row 2 is reserved exclusively for the rotating term. -->
-          <h1 class="max-w-5xl text-4xl font-extrabold leading-[1.15] md:text-6xl">
+          <h1 class="max-w-5xl text-4xl font-extrabold leading-[1.15] md:text-6xl drop-shadow-lg">
             <span class="block">Helping people with</span>
             <span class="block min-h-[1.15em] whitespace-nowrap overflow-visible">
               <span id="condition-word" class="inline-block text-orange-300 transition-all duration-300 ease-out">Autism Spectrum Disorder</span>
@@ -73,7 +71,7 @@
             <span class="block">navigate the world with confidence</span>
           </h1>
 
-          <p class="mt-6 max-w-2xl text-base text-slate-100 md:text-lg">
+          <p class="mt-6 max-w-2xl text-base text-slate-100 md:text-lg drop-shadow">
             A safe and supportive space for individuals, families, caregivers, and partner agencies to learn, connect, and grow.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
@@ -150,37 +148,16 @@
                 </p>
               </div>
               <div class="flex flex-wrap gap-3">
-                <button
-                  type="button"
-                  id="partner-prev"
-                  class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 text-xl text-white transition hover:bg-white/20"
-                  aria-label="Previous partner"
-                >
-                  &larr;
-                </button>
-                <button
-                  type="button"
-                  id="partner-next"
-                  class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 text-xl text-white transition hover:bg-white/20"
-                  aria-label="Next partner"
-                >
-                  &rarr;
-                </button>
+                <button type="button" id="partner-prev" class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 text-xl text-white transition hover:bg-white/20" aria-label="Previous partner">&larr;</button>
+                <button type="button" id="partner-next" class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 text-xl text-white transition hover:bg-white/20" aria-label="Next partner">&rarr;</button>
                 <a href="contact.html" class="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-rose-700 transition hover:bg-rose-50">Become a Partner</a>
               </div>
             </div>
 
             <div class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,280px)_1fr] lg:items-stretch">
               <div class="flex min-h-[220px] items-center justify-center rounded-[1.75rem] bg-white p-6 shadow-lg shadow-slate-950/10">
-                <img
-                  id="partner-logo"
-                  src=""
-                  alt=""
-                  class="max-h-44 w-auto max-w-full object-contain"
-                  loading="lazy"
-                />
+                <img id="partner-logo" src="" alt="" class="max-h-44 w-auto max-w-full object-contain" loading="lazy" />
               </div>
-
               <article class="rounded-[1.75rem] border border-white/15 bg-white/10 p-6 shadow-lg shadow-slate-950/10 backdrop-blur">
                 <p class="text-xs font-semibold uppercase tracking-[0.3em] text-orange-100">Current Partner</p>
                 <h3 id="partner-name" class="mt-3 text-2xl font-extrabold sm:text-3xl"></h3>
@@ -210,7 +187,6 @@
 
   <script>
     (() => {
-      // ── Rotating headline word ──────────────────────────────────────────────
       const wordEl = document.getElementById('condition-word');
 
       const conditions = [
@@ -234,14 +210,8 @@
 
       const showNext = () => {
         index = (index + 1) % conditions.length;
-
-        if (reduceMotion) {
-          wordEl.textContent = conditions[index];
-          return;
-        }
-
+        if (reduceMotion) { wordEl.textContent = conditions[index]; return; }
         wordEl.classList.add('opacity-0', 'translate-y-1');
-
         window.setTimeout(() => {
           wordEl.textContent = conditions[index];
           wordEl.classList.remove('translate-y-1');
@@ -252,36 +222,14 @@
 
       if (wordEl) window.setInterval(showNext, intervalMs);
 
-      // ── Partner carousel ────────────────────────────────────────────────────
       const partners = [
-        {
-          name: 'The Roland Center',
-          text: 'The Roland Center is a 501(c)(3) nonprofit organization dedicated to building a California where individuals with intellectual and developmental disabilities (IDD), including those with autism spectrum disorder, behavioral health needs, aging-related conditions, and dementia, can fully exercise their human rights, live with dignity, and participate as valued members of society.'
-        },
-        {
-          name: 'GoldStar Learning Options',
-          text: 'Our mission is to provide holistic, person-centered services that empower children and adults with intellectual and developmental disabilities to thrive. Through comprehensive care, innovative programs, and unwavering advocacy, we foster independence, inclusion, and a higher quality of life.'
-        },
-        {
-          name: 'JCIDDA',
-          text: 'It is the mission of the Jefferson County Intellectual and Developmental Disabilities Authority, Inc. (JCIDDA) to provide for system of effective and efficient services to citizens of Jefferson, Calhoun, Clay, Cleburne, Coosa, Talladega and Randolph Counties, Alabama, with intellectual disabilities and/or other developmental disabilities.'
-        },
-        {
-          name: 'Re-Circuit Electronics',
-          text: 'Re-Circuit Electronics LLC is a woman-owned technology and environmental services company based in Toledo, Ohio. Its multidisciplinary expertise spans AI-driven systems, renewable energy, and construction technologies, making it a trusted partner for organizations seeking modern, compliant, and sustainable technology solutions.'
-        },
-        {
-          name: 'Arc of Central Alabama',
-          text: 'The Arc of Central Alabama provides services to over 1,200 people throughout both Jefferson and Blount counties. The Arc of Central Alabama is the state\'s largest provider of services and also designated as a crisis center for individuals with intellectual and developmental disabilities (IDD).'
-        },
-        {
-          name: 'Grace and Hope for Families',
-          text: 'Welcome to Grace & Hope for Families, where we are dedicated to creating a more supportive, inclusive and empowered world for underserved families. We are a compassionate and dynamic organization committed to supporting families impacted by chronic illnesses and/or disabilities.'
-        },
-        {
-          name: 'Connecting People & Places',
-          text: 'At CP&P, we support individuals with developmental disabilities in making connections with the people and places that bring meaning to their lives. We strive to eliminate barriers that hinder inclusion and ensure that every individual has the opportunity to participate fully and authentically in society.'
-        }
+        { name: 'The Roland Center', text: 'The Roland Center is a 501(c)(3) nonprofit organization dedicated to building a California where individuals with intellectual and developmental disabilities (IDD), including those with autism spectrum disorder, behavioral health needs, aging-related conditions, and dementia, can fully exercise their human rights, live with dignity, and participate as valued members of society.' },
+        { name: 'GoldStar Learning Options', text: 'Our mission is to provide holistic, person-centered services that empower children and adults with intellectual and developmental disabilities to thrive. Through comprehensive care, innovative programs, and unwavering advocacy, we foster independence, inclusion, and a higher quality of life.' },
+        { name: 'JCIDDA', text: 'It is the mission of the Jefferson County Intellectual and Developmental Disabilities Authority, Inc. (JCIDDA) to provide for system of effective and efficient services to citizens of Jefferson, Calhoun, Clay, Cleburne, Coosa, Talladega and Randolph Counties, Alabama, with intellectual disabilities and/or other developmental disabilities.' },
+        { name: 'Re-Circuit Electronics', text: 'Re-Circuit Electronics LLC is a woman-owned technology and environmental services company based in Toledo, Ohio. Its multidisciplinary expertise spans AI-driven systems, renewable energy, and construction technologies, making it a trusted partner for organizations seeking modern, compliant, and sustainable technology solutions.' },
+        { name: 'Arc of Central Alabama', text: 'The Arc of Central Alabama provides services to over 1,200 people throughout both Jefferson and Blount counties. The Arc of Central Alabama is the state\'s largest provider of services and also designated as a crisis center for individuals with intellectual and developmental disabilities (IDD).' },
+        { name: 'Grace and Hope for Families', text: 'Welcome to Grace & Hope for Families, where we are dedicated to creating a more supportive, inclusive and empowered world for underserved families. We are a compassionate and dynamic organization committed to supporting families impacted by chronic illnesses and/or disabilities.' },
+        { name: 'Connecting People & Places', text: 'At CP&P, we support individuals with developmental disabilities in making connections with the people and places that bring meaning to their lives. We strive to eliminate barriers that hinder inclusion and ensure that every individual has the opportunity to participate fully and authentically in society.' }
       ];
 
       const partnerLogoFiles = [
@@ -306,13 +254,7 @@
       if (!partnerLogo || !partnerName || !partnerText || !prevButton || !nextButton || !dotsWrap) return;
 
       const normalize = (value) =>
-        value
-          .toLowerCase()
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .replace(/&/g, ' and ')
-          .replace(/[^a-z0-9]+/g, ' ')
-          .trim();
+        value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, ' ').trim();
 
       const logoAliases = {
         'the roland center': ['roland center', 'rolandcenter'],
@@ -327,30 +269,22 @@
       const detectPartnerLogo = (name) => {
         const normalizedName = normalize(name);
         const aliases = [normalizedName, ...(logoAliases[normalizedName] || [])];
-
-        const scored = partnerLogoFiles
-          .map((path) => {
-            const normalizedPath = normalize(path.split('/').pop() || path);
-            const score = aliases.reduce((best, alias) => {
-              if (!alias) return best;
-              if (normalizedPath === alias) return Math.max(best, 100);
-              if (normalizedPath.includes(alias)) return Math.max(best, alias.length + 20);
-
-              const aliasWords = alias.split(' ').filter(Boolean);
-              const overlap = aliasWords.filter((word) => normalizedPath.includes(word)).length;
-              return Math.max(best, overlap * 10);
-            }, 0);
-
-            return { path, score };
-          })
-          .sort((a, b) => b.score - a.score);
-
+        const scored = partnerLogoFiles.map((path) => {
+          const normalizedPath = normalize(path.split('/').pop() || path);
+          const score = aliases.reduce((best, alias) => {
+            if (!alias) return best;
+            if (normalizedPath === alias) return Math.max(best, 100);
+            if (normalizedPath.includes(alias)) return Math.max(best, alias.length + 20);
+            const aliasWords = alias.split(' ').filter(Boolean);
+            const overlap = aliasWords.filter((word) => normalizedPath.includes(word)).length;
+            return Math.max(best, overlap * 10);
+          }, 0);
+          return { path, score };
+        }).sort((a, b) => b.score - a.score);
         return scored[0] && scored[0].score > 0 ? scored[0].path : '';
       };
 
-      partners.forEach((partner) => {
-        partner.logo = detectPartnerLogo(partner.name);
-      });
+      partners.forEach((partner) => { partner.logo = detectPartnerLogo(partner.name); });
 
       let partnerIndex = 0;
       let partnerIntervalId = null;
@@ -360,10 +294,7 @@
         button.type = 'button';
         button.className = 'h-3 w-8 rounded-full bg-white/30 transition hover:bg-white/60';
         button.setAttribute('aria-label', `Show ${partner.name}`);
-        button.addEventListener('click', () => {
-          renderPartner(i);
-          restartPartnerAutoplay();
-        });
+        button.addEventListener('click', () => { renderPartner(i); restartPartnerAutoplay(); });
         dotsWrap.appendChild(button);
         return button;
       });
@@ -371,17 +302,13 @@
       const renderPartner = (idx) => {
         partnerIndex = (idx + partners.length) % partners.length;
         const partner = partners[partnerIndex];
-
         partnerName.textContent = partner.name;
         partnerText.textContent = partner.text;
         partnerLogo.src = partner.logo || 'assets/images/aSuggestion_Logo.png';
         partnerLogo.alt = partner.logo ? `${partner.name} logo` : 'aSuggestion logo';
-
         dotButtons.forEach((dot, dotIndex) => {
           const active = dotIndex === partnerIndex;
-          dot.className = active
-            ? 'h-3 w-8 rounded-full bg-white transition'
-            : 'h-3 w-8 rounded-full bg-white/30 transition hover:bg-white/60';
+          dot.className = active ? 'h-3 w-8 rounded-full bg-white transition' : 'h-3 w-8 rounded-full bg-white/30 transition hover:bg-white/60';
           dot.setAttribute('aria-current', active ? 'true' : 'false');
         });
       };
@@ -392,15 +319,8 @@
         partnerIntervalId = window.setInterval(() => renderPartner(partnerIndex + 1), 5500);
       };
 
-      prevButton.addEventListener('click', () => {
-        renderPartner(partnerIndex - 1);
-        restartPartnerAutoplay();
-      });
-
-      nextButton.addEventListener('click', () => {
-        renderPartner(partnerIndex + 1);
-        restartPartnerAutoplay();
-      });
+      prevButton.addEventListener('click', () => { renderPartner(partnerIndex - 1); restartPartnerAutoplay(); });
+      nextButton.addEventListener('click', () => { renderPartner(partnerIndex + 1); restartPartnerAutoplay(); });
 
       renderPartner(0);
       restartPartnerAutoplay();
