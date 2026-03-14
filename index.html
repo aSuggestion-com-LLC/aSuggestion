@@ -63,13 +63,16 @@
 
         <div class="relative px-6 py-24 lg:px-12 lg:py-32">
           <p class="mb-4 text-sm uppercase tracking-[0.25em] text-orange-200">aSuggestion</p>
-          <h1 class="max-w-3xl text-4xl font-extrabold leading-tight md:text-6xl">
+
+          <!-- Three-row headline. Row 2 is reserved exclusively for the rotating term. -->
+          <h1 class="max-w-5xl text-4xl font-extrabold leading-[1.15] md:text-6xl">
             <span class="block">Helping people with</span>
-            <span class="block min-h-[1.2em]">
-              <span id="condition-word" class="inline-block text-orange-300 transition-all duration-300 ease-out">Autism</span>
+            <span class="block min-h-[1.15em] whitespace-nowrap overflow-visible">
+              <span id="condition-word" class="inline-block text-orange-300 transition-all duration-300 ease-out">Autism Spectrum Disorder</span>
             </span>
             <span class="block">navigate the world with confidence</span>
           </h1>
+
           <p class="mt-6 max-w-2xl text-base text-slate-100 md:text-lg">
             A safe and supportive space for individuals, families, caregivers, and partner agencies to learn, connect, and grow.
           </p>
@@ -105,17 +108,17 @@
           <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
             <img src="assets/images/bf3bb32a-047d-4b6f-9972-0f2189225a9b.jpeg" alt="Safe and Supportive" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
-            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Safe and Supportivie</figcaption>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Safe and Supportive</figcaption>
           </figure>
           <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
             <img src="assets/images/49e19b56-7909-431d-bdd9-ebecd9a38a5a.jpeg" alt="Learning and Skill Building" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
-            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Learning and Skillbuilding</figcaption>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Learning and Skill Building</figcaption>
           </figure>
           <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
             <img src="assets/images/2e873486-2c90-444c-a5be-6a0384020d88.jpeg" alt="Community Events and Interactions" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
-            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Community event and interaction</figcaption>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Community Events and Interactions</figcaption>
           </figure>
           <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
             <img src="assets/images/a38e3f06-31a1-4eef-a738-c3298de9e06d.jpeg" alt="Assistive Technology and Home Enabling Support" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
@@ -207,25 +210,18 @@
 
   <script>
     (() => {
-      const galleryCards = document.querySelectorAll('#community-gallery figure');
-      galleryCards.forEach((card) => {
-        const img = card.querySelector('img');
-        const caption = card.querySelector('figcaption');
-        if (img && caption) caption.textContent = img.alt;
-      });
-
+      // ── Rotating headline word ──────────────────────────────────────────────
       const wordEl = document.getElementById('condition-word');
-      if (!wordEl) return;
 
       const conditions = [
-        'Autism Specturm Disorder',
+        'Autism Spectrum Disorder',
         'Special Needs',
         'Developmental Disabilities',
         'Memory Loss',
         'Neurodivergence',
         'Mental Health Conditions',
         'Communication Disorders',
-        'Social anxiety',
+        'Social Anxiety',
         'Behavioral Health Needs',
         'Neurological Conditions',
         'Cognitive Disabilities',
@@ -254,8 +250,9 @@
         }, 180);
       };
 
-      window.setInterval(showNext, intervalMs);
+      if (wordEl) window.setInterval(showNext, intervalMs);
 
+      // ── Partner carousel ────────────────────────────────────────────────────
       const partners = [
         {
           name: 'The Roland Center',
@@ -275,7 +272,7 @@
         },
         {
           name: 'Arc of Central Alabama',
-          text: 'The Arc of Central Alabama provides services to over 1,200 people throughout both Jefferson and Blount counties. The Arc of Central Alabama is the state’s largest provider of services and also designated as a crisis center for individuals with intellectual and developmental disabilities (IDD).'
+          text: 'The Arc of Central Alabama provides services to over 1,200 people throughout both Jefferson and Blount counties. The Arc of Central Alabama is the state\'s largest provider of services and also designated as a crisis center for individuals with intellectual and developmental disabilities (IDD).'
         },
         {
           name: 'Grace and Hope for Families',
@@ -358,21 +355,21 @@
       let partnerIndex = 0;
       let partnerIntervalId = null;
 
-      const dotButtons = partners.map((partner, index) => {
+      const dotButtons = partners.map((partner, i) => {
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'h-3 w-8 rounded-full bg-white/30 transition hover:bg-white/60';
         button.setAttribute('aria-label', `Show ${partner.name}`);
         button.addEventListener('click', () => {
-          renderPartner(index);
+          renderPartner(i);
           restartPartnerAutoplay();
         });
         dotsWrap.appendChild(button);
         return button;
       });
 
-      const renderPartner = (index) => {
-        partnerIndex = (index + partners.length) % partners.length;
+      const renderPartner = (idx) => {
+        partnerIndex = (idx + partners.length) % partners.length;
         const partner = partners[partnerIndex];
 
         partnerName.textContent = partner.name;
