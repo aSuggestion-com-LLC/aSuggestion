@@ -2,178 +2,170 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Register for aSuggestion and submit your care and billing details securely." />
   <title>aSuggestion – Payment / Registration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#01384a',
+              teal: '#00435d',
+              orange: '#ef8110',
+              blue: '#0099CC'
+            }
+          }
+        }
+      }
+    }
+  </script>
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/payment.css" />
 </head>
-<body>
-<div class="page payment-page">
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-navy focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
 
-  <!-- NAVBAR -->
-  <header style="overflow:visible;">
-  <nav class="navbar" aria-label="Primary navigation" style="overflow:visible;">
-    <div class="logo" style="overflow:visible; position:relative; z-index:50;">
-      <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem; width:auto; border-radius:0.5rem; position:relative; z-index:50; display:block;" />
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html">HOME</a></li>
-      <li><a href="about.html">ABOUT US</a></li>
-      <li><a href="community.html">COMMUNITY</a></li>
-      <li><a href="payment.html" aria-current="page">PAYMENT</a></li>
-      <li><a href="contact.html">CONTACT US</a></li>
-    </ul>
-    <a class="login-btn" href="#">Login</a>
-  </nav>
-  </header>
-
-  <main id="main-content">
-  <!-- FORM WRAPPER -->
-  <section class="form-wrapper" aria-labelledby="registration-title">
-    <h1 class="form-title" id="registration-title">aSuggestion Registration Form</h1>
-    <h2 class="form-subtitle">Full Legal Name of Registered User</h2>
-
-    <form class="form-box" action="#" method="post">
-      <!-- Name Row -->
-      <div class="form-row">
-        <div class="form-field">
-          <label for="first-name">First Name</label>
-          <input id="first-name" type="text" name="first_name" autocomplete="given-name" required />
-        </div>
-        <div class="form-field">
-          <label for="last-name">Last Name</label>
-          <input id="last-name" type="text" name="last_name" autocomplete="family-name" required />
-        </div>
+  <div class="mx-auto min-h-screen max-w-[1440px] bg-white shadow-sm">
+    <!-- Consistent Tailwind header matching Home/About/Community -->
+    <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
+      <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
+        <a href="index.html" class="shrink-0">
+          <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem; width:auto; border-radius:0.5rem;" />
+        </a>
+        <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
+          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+          <li><a href="payment.html" aria-current="page" class="underline underline-offset-4">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+        </ul>
+        <a href="https://app.asuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600">Login</a>
+      </nav>
+      <div class="border-t border-slate-100 px-4 py-2 md:hidden">
+        <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
+          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+          <li><a href="payment.html" aria-current="page" class="underline underline-offset-4">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+        </ul>
       </div>
+    </header>
 
-      <!-- Email -->
-      <div class="full-width-field">
-        <label for="reg-email">Email of Registered User*</label>
-        <input id="reg-email" type="email" name="email" autocomplete="email" required />
-      </div>
+    <main id="main-content">
+      <section class="form-wrapper" aria-labelledby="registration-title">
+        <h1 class="form-title" id="registration-title">aSuggestion Registration Form</h1>
+        <h2 class="form-subtitle">Full Legal Name of Registered User</h2>
 
-      <!-- Address -->
-      <div class="full-width-field">
-        <label for="reg-address">Address (Street, Town, State, Zip)*</label>
-        <input id="reg-address" type="text" name="address" autocomplete="street-address" required />
-      </div>
+        <form class="form-box" action="#" method="post">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="first-name">First Name</label>
+              <input id="first-name" type="text" name="first_name" autocomplete="given-name" required />
+            </div>
+            <div class="form-field">
+              <label for="last-name">Last Name</label>
+              <input id="last-name" type="text" name="last_name" autocomplete="family-name" required />
+            </div>
+          </div>
+          <div class="full-width-field">
+            <label for="reg-email">Email of Registered User*</label>
+            <input id="reg-email" type="email" name="email" autocomplete="email" required />
+          </div>
+          <div class="full-width-field">
+            <label for="reg-address">Address (Street, Town, State, Zip)*</label>
+            <input id="reg-address" type="text" name="address" autocomplete="street-address" required />
+          </div>
+          <p class="note">Name of Parent or Registered Guardian if user is under 18 years of age or has a legal guardian.</p>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="guardian-name">Full Legal Name</label>
+              <input id="guardian-name" type="text" name="guardian_name" autocomplete="name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="guardian-phone">Phone Parent or Guardian</label>
+              <input id="guardian-phone" type="tel" name="guardian_phone" autocomplete="tel" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="guardian-email">Email Parent or Guardian</label>
+              <input id="guardian-email" type="email" name="guardian_email" autocomplete="email" />
+            </div>
+          </div>
+          <p class="note note-center">Tell Us About Your Care Team</p>
+          <div class="full-width-field">
+            <label for="referred-by">How were you referred to us?</label>
+            <input id="referred-by" type="text" name="referred_by" autocomplete="off" />
+          </div>
+          <div class="full-width-field">
+            <label for="caregiver-name">Name of Your Caregiver, Therapist or Social Worker</label>
+            <input id="caregiver-name" type="text" name="caregiver_name" autocomplete="name" />
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="care-email">Email Care Team</label>
+              <input id="care-email" type="email" name="care_email" autocomplete="email" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="care-phone">Phone Care Team</label>
+              <input id="care-phone" type="tel" name="care_phone" autocomplete="tel" />
+            </div>
+          </div>
+          <fieldset class="choice-group">
+            <legend>Can we contact your care team for validation?</legend>
+            <div class="radio-group">
+              <label for="contact-care-yes"><input id="contact-care-yes" type="radio" name="contact_care" value="yes" required /> Yes</label>
+              <label for="contact-care-no"><input id="contact-care-no" type="radio" name="contact_care" value="no" /> No</label>
+            </div>
+          </fieldset>
+          <p class="cc-note">Your Credit Card will not be charged until your application is accepted. We will contact you with your approval code and then process payment.</p>
+          <div class="full-width-field">
+            <label for="card-number">Card Number</label>
+            <input id="card-number" type="text" name="card_number" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" autocomplete="cc-number" inputmode="numeric" required />
+          </div>
+          <div class="cc-row">
+            <div class="cc-field">
+              <label for="card-expiry">Expiration Date</label>
+              <input id="card-expiry" type="text" name="expiry" placeholder="MM/YY" autocomplete="cc-exp" inputmode="numeric" required />
+            </div>
+            <div class="cc-field">
+              <label for="card-cvv">CVV Code</label>
+              <input id="card-cvv" type="text" name="cvv" maxlength="4" autocomplete="cc-csc" inputmode="numeric" required />
+            </div>
+          </div>
+          <div class="full-width-field">
+            <label for="card-name">Name on Card</label>
+            <input id="card-name" type="text" name="card_name" autocomplete="cc-name" required />
+          </div>
+          <div class="full-width-field">
+            <label for="billing-address">Full Billing Address (Street, City, State, Zip)</label>
+            <input id="billing-address" type="text" name="billing_address" autocomplete="street-address" required />
+          </div>
+          <button class="register-btn" type="submit">Register</button>
+        </form>
+      </section>
+    </main>
 
-      <!-- Guardian note -->
-      <p class="note">Name of Parent or Registered Guardian if user is under 18 years of age or has a legal guardian.</p>
+    <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
+      <p class="flex flex-wrap justify-center gap-3">
+        <a href="#" class="underline hover:text-brand-navy">Privacy Policy</a>
+        <span>|</span>
+        <a href="#" class="underline hover:text-brand-navy">Terms of Service</a>
+      </p>
+      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
+    </footer>
+  </div>
 
-      <!-- Guardian Name -->
-      <div class="form-row">
-        <div class="form-field">
-          <label for="guardian-name">Full Legal Name</label>
-          <input id="guardian-name" type="text" name="guardian_name" autocomplete="name" />
-        </div>
-      </div>
-
-      <!-- Guardian Phone / Email -->
-      <div class="form-row">
-        <div class="form-field">
-          <label for="guardian-phone">Phone Parent or Guardian</label>
-          <input id="guardian-phone" type="tel" name="guardian_phone" autocomplete="tel" />
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label for="guardian-email">Email Parent or Guardian</label>
-          <input id="guardian-email" type="email" name="guardian_email" autocomplete="email" />
-        </div>
-      </div>
-
-      <!-- Care Team heading -->
-      <p class="note note-center">Tell Us About Your Care Team</p>
-
-      <!-- How referred -->
-      <div class="full-width-field">
-        <label for="referred-by">How were you referred to us?</label>
-        <input id="referred-by" type="text" name="referred_by" autocomplete="off" />
-      </div>
-
-      <!-- Caregiver name -->
-      <div class="full-width-field">
-        <label for="caregiver-name">Name of Your Caregiver, Therapist or Social Worker</label>
-        <input id="caregiver-name" type="text" name="caregiver_name" autocomplete="name" />
-      </div>
-
-      <!-- Care Team Email & Phone -->
-      <div class="form-row">
-        <div class="form-field">
-          <label for="care-email">Email Care Team</label>
-          <input id="care-email" type="email" name="care_email" autocomplete="email" />
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label for="care-phone">Phone Care Team</label>
-          <input id="care-phone" type="tel" name="care_phone" autocomplete="tel" />
-        </div>
-      </div>
-
-      <!-- Contact care team -->
-      <fieldset class="choice-group">
-        <legend>Can we contact your care team for validation?</legend>
-        <div class="radio-group">
-          <label for="contact-care-yes"><input id="contact-care-yes" type="radio" name="contact_care" value="yes" required /> Yes</label>
-          <label for="contact-care-no"><input id="contact-care-no" type="radio" name="contact_care" value="no" /> No</label>
-        </div>
-      </fieldset>
-
-      <!-- Payment notice -->
-      <p class="cc-note">Your Credit Card will not be charged until your application is accepted. We will contact you with your approval code and then process payment.</p>
-
-      <!-- Card Number -->
-      <div class="full-width-field">
-        <label for="card-number">Card Number</label>
-        <input id="card-number" type="text" name="card_number" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" autocomplete="cc-number" inputmode="numeric" required />
-      </div>
-
-      <!-- Expiration / CVV -->
-      <div class="cc-row">
-        <div class="cc-field">
-          <label for="card-expiry">Expiration Date</label>
-          <input id="card-expiry" type="text" name="expiry" placeholder="MM/YY" autocomplete="cc-exp" inputmode="numeric" required />
-        </div>
-        <div class="cc-field">
-          <label for="card-cvv">CVV Code</label>
-          <input id="card-cvv" type="text" name="cvv" maxlength="4" autocomplete="cc-csc" inputmode="numeric" required />
-        </div>
-      </div>
-
-      <!-- Name on card -->
-      <div class="full-width-field">
-        <label for="card-name">Name on Card</label>
-        <input id="card-name" type="text" name="card_name" autocomplete="cc-name" required />
-      </div>
-
-      <!-- Billing address -->
-      <div class="full-width-field">
-        <label for="billing-address">Full Billing Address (Street, City, State, Zip)</label>
-        <input id="billing-address" type="text" name="billing_address" autocomplete="street-address" required />
-      </div>
-
-      <!-- Register button -->
-      <button class="register-btn" type="submit">Register</button>
-    </form>
-  </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>
-      <a href="#">Glossary</a> |
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms of Service</a> |
-      <a href="#">Tutorial</a>
-    </p>
-    <p>&copy; 2024 aSuggestion LLC. | <a href="contact.html">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com">goodideas@aSuggestion.com</a></p>
-    <p class="credit">Design and Developed Ankita</p>
-  </footer>
-
-</div>
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
