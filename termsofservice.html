@@ -23,6 +23,7 @@
     }
   </script>
   <style>
+    html { scroll-behavior: smooth; }
     .policy-body { font-size: 0.875rem; line-height: 1.8; color: #334155; }
     .policy-body h2 { font-size: 1rem; font-weight: 700; color: #01384a; margin-top: 2rem; margin-bottom: 0.5rem; padding-bottom: 0.375rem; border-bottom: 1px solid #e2e8f0; }
     .policy-body h3 { font-size: 0.875rem; font-weight: 700; color: #01384a; margin-top: 1.25rem; margin-bottom: 0.375rem; }
@@ -31,37 +32,26 @@
     .policy-body ul li { margin-bottom: 0.25rem; }
     .policy-body a { color: rgb(0,153,204); text-decoration: underline; }
     .policy-body a:hover { color: #ef8110; }
-    .policy-body .intro-box {
-      background: #f0f9ff;
-      border-left: 4px solid rgb(0,153,204);
-      border-radius: 0.75rem;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.875rem;
-      color: #334155;
-      line-height: 1.7;
-    }
+    .policy-body .intro-box { background: #f0f9ff; border-left: 4px solid rgb(0,153,204); border-radius: 0.75rem; padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 0.875rem; color: #334155; line-height: 1.7; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-navy focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
 
   <div class="mx-auto min-h-screen max-w-[1440px] bg-white shadow-sm">
-
-    <!-- Header -->
     <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
       <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
         <a href="index.html" class="shrink-0">
           <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem; width:auto; border-radius:0.5rem;" />
         </a>
         <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
-          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
-          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
-          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
-          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
-          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+          <li><a href="index.html" class="hover:text-brand-orange transition-colors">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange transition-colors">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange transition-colors">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange transition-colors">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange transition-colors">CONTACT US</a></li>
         </ul>
-        <a href="https://app.asuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600">Login</a>
+        <a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a>
       </nav>
       <div class="border-t border-slate-100 px-4 py-2 md:hidden">
         <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
@@ -75,15 +65,12 @@
     </header>
 
     <main id="main-content">
-
-      <!-- Page hero -->
       <section class="border-b border-slate-100 bg-slate-50 px-6 py-10 lg:px-12">
         <p class="text-sm font-bold uppercase tracking-[0.25em]" style="color:rgb(255,140,50);">Legal</p>
         <h1 class="mt-2 text-3xl font-extrabold text-brand-navy md:text-4xl">Terms of Service</h1>
         <p class="mt-3 text-sm text-slate-500">Last updated: March 15, 2026</p>
       </section>
 
-      <!-- Terms content -->
       <section class="px-6 py-12 lg:px-12">
         <div class="mx-auto max-w-3xl policy-body">
 
@@ -99,9 +86,8 @@
           <p>By using the Services, you represent that your activities are lawful in your jurisdiction.</p>
 
           <h2>3. Account Registration and Responsibilities</h2>
-          <p>You may be required to create an account to access certain features. You are responsible for maintaining the confidentiality of your account credentials.</p>
-          <p>You agree to provide accurate and current information. You are responsible for all activity that occurs under your account. You must immediately notify aSuggestion of any unauthorized use.</p>
-          <p>aSuggestion may suspend, restrict, or terminate your account if you violate these Terms, engage in harmful behavior, or for operational reasons.</p>
+          <p>You may be required to create an account to access certain features. You are responsible for maintaining the confidentiality of your account credentials. You agree to provide accurate and current information.</p>
+          <p>You are responsible for all activity that occurs under your account. You must immediately notify aSuggestion of any unauthorized use. aSuggestion may suspend, restrict, or terminate your account if you violate these Terms, engage in harmful behavior, or for operational reasons.</p>
 
           <h2>4. User Conduct and Safety</h2>
           <p>Users must not engage in any behavior that is abusive, unsafe, or harmful, including but not limited to:</p>
@@ -117,13 +103,11 @@
           <p>aSuggestion may remove content, suspend accounts, or permanently terminate accounts for violations, at its sole discretion.</p>
 
           <h2>5. Membership and Account Use</h2>
-          <p>Users may become Members by subscribing or signing up for premium features. Members must comply with these Terms and Additional Terms for premium or specialized services.</p>
-          <p>Membership fees, if applicable, are non-refundable except where required by law.</p>
+          <p>Users may become Members by subscribing or signing up for premium features. Members must comply with these Terms and Additional Terms for premium or specialized services. Membership fees, if applicable, are non-refundable except where required by law.</p>
 
           <h2>6. Content</h2>
           <p>You retain ownership of content you post ("User Content"), but grant aSuggestion a worldwide, royalty-free, sublicensable license to use, host, store, reproduce, modify, communicate, publish, and display such content in connection with the Services.</p>
-          <p>You are solely responsible for your User Content. You must not post illegal, infringing, harmful, or unsafe content.</p>
-          <p>aSuggestion may remove, modify, or refuse to host any content at its sole discretion.</p>
+          <p>You are solely responsible for your User Content. You must not post illegal, infringing, harmful, or unsafe content. aSuggestion may remove, modify, or refuse to host any content at its sole discretion.</p>
 
           <h2>7. Rights and Restrictions</h2>
           <p>You may not:</p>
@@ -142,8 +126,7 @@
           <p>You are responsible for all applicable fees for Services you use. Failure to pay may result in suspension or termination of your account. Fees are non-refundable except where legally required.</p>
 
           <h2>10. Termination</h2>
-          <p>aSuggestion may suspend or terminate your account at any time, with or without cause. You may also terminate your account at any time.</p>
-          <p>Sections relating to liability, indemnity, disputes, and intellectual property survive termination.</p>
+          <p>aSuggestion may suspend or terminate your account at any time, with or without cause. You may also terminate your account at any time. Sections relating to liability, indemnity, disputes, and intellectual property survive termination.</p>
 
           <h2>11. Linking</h2>
           <h3>11.1 Linked Services</h3>
@@ -174,8 +157,7 @@
           <p>Software may not be exported in violation of U.S. laws, including sanctions and export regulations.</p>
 
           <h2>17. Arbitration and No Class Action</h2>
-          <p>Disputes must first attempt resolution through a 60-day written notice and good-faith negotiation.</p>
-          <p>If unresolved, binding arbitration under JAMS rules applies where legally permitted. Arbitration is individual only; no class actions or consolidated claims.</p>
+          <p>Disputes must first attempt resolution through a 60-day written notice and good-faith negotiation. If unresolved, binding arbitration under JAMS rules applies where legally permitted. Arbitration is individual only; no class actions or consolidated claims.</p>
 
           <h2>18. Other Dispute Resolution</h2>
           <p>Where arbitration is prohibited, disputes are resolved in courts in Litchfield, Connecticut, with written notice and a 60-day negotiation period.</p>
@@ -205,23 +187,17 @@
 
         </div>
       </section>
-
     </main>
 
-    <!-- Footer -->
     <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
       <p class="flex flex-wrap justify-center gap-3">
-        <a href="privacy.html" class="underline hover:text-brand-navy">Privacy Policy</a>
+        <a href="privacy.html" class="underline hover:text-brand-navy transition-colors">Privacy Policy</a>
         <span>|</span>
-        <a href="termsofservice.html" class="underline font-semibold hover:text-brand-navy" style="color:rgb(0,153,204);">Terms of Service</a>
+        <a href="termsofservice.html" class="underline font-semibold transition-colors" style="color:rgb(0,153,204);">Terms of Service</a>
       </p>
       <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
     </footer>
-
   </div>
-
-  <script>
-    document.getElementById('footer-year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
