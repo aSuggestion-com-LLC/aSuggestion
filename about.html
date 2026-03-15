@@ -11,12 +11,7 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              navy: '#01384a',
-              teal: '#00435d',
-              orange: '#ef8110',
-              blue: '#0099CC'
-            }
+            brand: { navy:'#01384a', teal:'#00435d', orange:'#ef8110', blue:'#0099CC' }
           }
         }
       }
@@ -26,26 +21,36 @@
     html { scroll-behavior: smooth; }
     .lift-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .lift-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
-    /* Video container — no black, fills frame cleanly */
-    .video-wrap {
+
+    /*
+      Video wrapper strategy:
+      - The Google Drive embed player has its own chrome (title bar, controls)
+        which adds black space top/bottom AND left/right.
+      - We use overflow:hidden + negative margins on all 4 sides to crop it out.
+      - The padding-bottom sets the visible aspect ratio.
+      - We make the iframe larger than the container in all directions,
+        then let overflow:hidden clip the black edges.
+    */
+    .video-outer {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      background: #f8fafc;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      /* Maintain aspect ratio for the VISIBLE area */
       position: relative;
       width: 100%;
-      overflow: hidden;
-      border-radius: 1.75rem;
-      background: #f8fafc;
-      /* 2520:1080 = 42.86% but Google Drive adds its own chrome,
-         so we use a slightly taller container to avoid clipping */
-      padding-bottom: 48%;
+      padding-bottom: 42%;  /* visible height = 42% of width */
     }
-    .video-wrap iframe {
+    .video-outer iframe {
       position: absolute;
-      top: -6%;   /* nudge up to hide Google Drive top chrome */
-      left: 0;
-      width: 100%;
-      height: 112%; /* slightly oversized to crop black bars top/bottom */
+      /* Pull iframe outward on all sides to crop Google's black chrome */
+      top: -8%;
+      left: -5%;
+      width: 110%;
+      height: 116%;
       border: 0;
       display: block;
-      background: #f8fafc;
+      background: transparent;
     }
   </style>
 </head>
@@ -57,7 +62,7 @@
     <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
       <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
         <a href="index.html" class="shrink-0">
-          <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem; width:auto; border-radius:0.5rem;" />
+          <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem;width:auto;border-radius:0.5rem;" />
         </a>
         <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
           <li><a href="index.html" class="hover:text-brand-orange transition-colors">HOME</a></li>
@@ -87,16 +92,13 @@
           <img src="assets/images/aSuggestion_Family.jpg" alt="Family reading together" class="h-full w-full object-cover rounded-3xl" />
         </div>
         <div class="absolute inset-0 mx-4 mt-4 lg:mx-8 rounded-3xl"
-             style="background:linear-gradient(to right, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.02) 100%); z-index:1;"></div>
+             style="background:linear-gradient(to right,rgba(0,0,0,0.40) 0%,rgba(0,0,0,0.18) 45%,rgba(0,0,0,0.02) 100%);z-index:1;"></div>
         <div class="relative px-6 py-20 lg:px-12 lg:py-28" style="z-index:2;">
-          <p class="mb-4 text-sm font-bold tracking-[0.25em]"
-             style="color:rgb(255,140,50); text-shadow:0 1px 4px rgba(0,0,0,0.6);">About aSuggestion</p>
-          <h1 class="max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl"
-              style="text-shadow:0 2px 8px rgba(0,0,0,0.7);">
+          <p class="mb-4 text-sm font-bold tracking-[0.25em]" style="color:rgb(255,140,50);text-shadow:0 1px 4px rgba(0,0,0,0.6);">About aSuggestion</p>
+          <h1 class="max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl" style="text-shadow:0 2px 8px rgba(0,0,0,0.7);">
             Introducing <span style="color:rgb(255,140,50);">a</span><span style="color:#34b5ec;">Suggestion</span> for wellness, dignity, and care.
           </h1>
-          <p class="mt-6 max-w-2xl text-base font-bold text-white md:text-lg"
-             style="text-shadow:0 1px 6px rgba(0,0,0,0.8);">
+          <p class="mt-6 max-w-2xl text-base font-bold text-white md:text-lg" style="text-shadow:0 1px 6px rgba(0,0,0,0.8);">
             We are building a safer digital space for meaningful conversations around mental and behavioral health, connecting individuals, families, caregivers, professionals, and partner agencies through empathy and trust.
           </p>
         </div>
@@ -113,12 +115,11 @@
               <p>You're looking for a place to connect, to share, and to learn — without fear of judgment. A place where you can be yourself and find people who truly understand.</p>
               <p class="font-semibold text-brand-navy">That's why we built aSuggestion for Wellness &amp; Care.</p>
               <p>We're not just another social media app. We are a private digital community built from the ground up with one mission: to provide a safe, supportive, and truly helpful ecosystem for you, your family, and your entire care team.</p>
-              <p>We wanted to build more than just a platform; we wanted to build a community centered on "technology and heart." Here's what that means for you:</p>
               <ul class="space-y-4 pl-2">
-                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold mt-1 shrink-0">&#x2022;</span><span><strong>Safety is Everything:</strong> This is our number one promise. Our community is a "predator-free" zone. We use a powerful combination of trained human moderators (often, your own care providers!) and smart AI to ensure every conversation is respectful, constructive, and safe.</span></li>
-                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold mt-1 shrink-0">&#x2022;</span><span><strong>A Place for Everyone:</strong> This space is for you, your family, and your support team. Individuals can join themed "social rooms" to talk about hobbies, life skills, or just hang out. Families and caregivers get their own private areas to connect, share experiences, and learn from each other.</span></li>
-                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold mt-1 shrink-0">&#x2022;</span><span><strong>Learn and Grow:</strong> This is way more than just a chat room. We have huge libraries packed with videos, guides, and activities to help with daily living skills, emotional regulation, and so much more. And for caregivers, we have matching content to help you support that learning every step of the way.</span></li>
-                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold mt-1 shrink-0">&#x2022;</span><span><strong>Real Connection, Not "Idle Interaction":</strong> We're here to help you build genuine skills and relationships. Our goal is to bridge the gaps when in-person care is hard to find, helping you feel supported anytime, anywhere.</span></li>
+                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span><span><strong>Safety is Everything:</strong> This is our number one promise. Our community is a "predator-free" zone. We use a powerful combination of trained human moderators and smart AI to ensure every conversation is respectful, constructive, and safe.</span></li>
+                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span><span><strong>A Place for Everyone:</strong> Individuals can join themed "social rooms" to talk about hobbies, life skills, or just hang out. Families and caregivers get their own private areas to connect, share experiences, and learn from each other.</span></li>
+                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span><span><strong>Learn and Grow:</strong> We have libraries packed with videos, guides, and activities to help with daily living skills, emotional regulation, and so much more — with matching content for caregivers too.</span></li>
+                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span><span><strong>Real Connection:</strong> Our goal is to bridge the gaps when in-person care is hard to find, helping you feel supported anytime, anywhere.</span></li>
               </ul>
             </div>
             <p class="mt-8 text-xl font-semibold text-brand-orange">aSuggestion. Life Improved.</p>
@@ -132,15 +133,15 @@
 
             <!-- What We Protect -->
             <div class="overflow-hidden rounded-[2rem] p-1 shadow-xl"
-                 style="background:linear-gradient(135deg, rgb(0,153,204) 0%, rgb(255,255,255) 50%, rgb(255,102,0) 100%);">
+                 style="background:linear-gradient(135deg,rgb(0,153,204) 0%,rgb(255,255,255) 50%,rgb(255,102,0) 100%);">
               <div class="rounded-[1.85rem] p-6 sm:p-8"
-                   style="background:linear-gradient(135deg, rgba(0,153,204,0.25) 0%, rgba(255,255,255,0.97) 40%, rgba(255,255,255,0.97) 60%, rgba(255,102,0,0.25) 100%);">
+                   style="background:linear-gradient(135deg,rgba(0,153,204,0.25) 0%,rgba(255,255,255,0.97) 40%,rgba(255,255,255,0.97) 60%,rgba(255,102,0,0.25) 100%);">
                 <p class="text-sm font-extrabold uppercase tracking-[0.25em]" style="color:#000;">What We Protect</p>
                 <div class="mt-5 grid gap-4 text-sm leading-7 sm:grid-cols-2 sm:text-base">
-                  <div class="rounded-2xl p-4 font-bold lift-card" style="background:rgba(0,153,204,0.1); color:#000;">Psychological safety in conversation.</div>
-                  <div class="rounded-2xl p-4 font-bold lift-card" style="background:rgba(255,255,255,0.8); color:#000;">Constructive support across care networks.</div>
-                  <div class="rounded-2xl p-4 font-bold lift-card" style="background:rgba(255,255,255,0.8); color:#000;">Inclusion for different abilities and experiences.</div>
-                  <div class="rounded-2xl p-4 font-bold lift-card" style="background:rgba(255,102,0,0.1); color:#000;">A better balance between technology and compassion.</div>
+                  <div class="rounded-2xl p-4 font-bold lift-card" style="background:rgba(0,153,204,0.1);color:#000;">Psychological safety in conversation.</div>
+                  <div class="rounded-2xl p-4 font-bold lift-card" style="background:rgba(255,255,255,0.8);color:#000;">Constructive support across care networks.</div>
+                  <div class="rounded-2xl p-4 font-bold lift-card" style="background:rgba(255,255,255,0.8);color:#000;">Inclusion for different abilities and experiences.</div>
+                  <div class="rounded-2xl p-4 font-bold lift-card" style="background:rgba(255,102,0,0.1);color:#000;">A better balance between technology and compassion.</div>
                 </div>
               </div>
             </div>
@@ -150,7 +151,9 @@
 
       <!-- Platform shaped by everyday care realities -->
       <section class="bg-slate-50 px-6 py-16 lg:px-12">
-        <div class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-start">
+        <!-- Two-column layout: cards left, video right, vertically centered -->
+        <div class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
+
           <div>
             <p class="text-sm font-bold uppercase tracking-[0.25em]" style="color:rgb(255,140,50);">Built For Real People</p>
             <h2 class="mt-3 text-3xl font-extrabold text-brand-navy md:text-4xl">A platform shaped by everyday care realities</h2>
@@ -174,9 +177,9 @@
             </div>
           </div>
 
-          <!-- Video — cropped to remove black bars -->
-          <div>
-            <div class="video-wrap shadow-sm ring-1 ring-slate-200">
+          <!-- Video — cropped on all 4 sides, centered in column -->
+          <div class="flex flex-col items-center justify-center">
+            <div class="video-outer w-full">
               <iframe
                 src="https://drive.google.com/file/d/1CDD_jS0yKeOwTQgPOLOYs72qM42wVt18/preview"
                 allowfullscreen
@@ -186,6 +189,7 @@
             </div>
             <p class="mt-3 text-sm font-semibold text-slate-500 text-center">aSuggestion Platform Overview — click play to watch</p>
           </div>
+
         </div>
       </section>
 
@@ -193,7 +197,7 @@
 
     <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
       <p class="flex flex-wrap justify-center gap-3">
-        <a href="privacy.html" class="underline hover:text-brand-navy transition-colors">Privacy Policy</a>
+        <a href="privacypolicy.html" class="underline hover:text-brand-navy transition-colors">Privacy Policy</a>
         <span>|</span>
         <a href="termsofservice.html" class="underline hover:text-brand-navy transition-colors">Terms of Service</a>
       </p>
