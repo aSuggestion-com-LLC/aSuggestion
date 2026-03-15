@@ -22,6 +22,49 @@
       }
     }
   </script>
+  <style>
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Community gallery hover effect */
+    .gallery-card { position: relative; overflow: hidden; border-radius: 1.5rem; }
+    .gallery-card img { transition: transform 0.5s ease, opacity 0.4s ease; }
+    .gallery-card:hover img,
+    .gallery-card:focus-within img { transform: scale(1.04); opacity: 0.1; }
+    .gallery-caption-bar {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 1.25rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+      transition: background 0.4s ease;
+    }
+    .gallery-card:hover .gallery-caption-bar,
+    .gallery-card:focus-within .gallery-caption-bar {
+      background: rgba(0,57,74,0.92);
+      justify-content: center;
+    }
+    .gallery-title {
+      font-size: 1.1rem; font-weight: 700; color: white; line-height: 1.3;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .gallery-desc {
+      font-size: 0.82rem; color: rgba(255,255,255,0.92); line-height: 1.6;
+      margin-top: 0.5rem; opacity: 0; transform: translateY(8px);
+      transition: opacity 0.35s ease 0.05s, transform 0.35s ease 0.05s;
+      display: none;
+    }
+    .gallery-card:hover .gallery-title,
+    .gallery-card:focus-within .gallery-title { white-space: normal; }
+    .gallery-card:hover .gallery-desc,
+    .gallery-card:focus-within .gallery-desc { opacity: 1; transform: translateY(0); display: block; }
+
+    /* Subtle card lift on hover for info cards */
+    .lift-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .lift-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
+
+    /* Partner fade transition */
+    .partner-fade { transition: opacity 0.35s ease; }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-navy focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
@@ -35,12 +78,12 @@
         </a>
         <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
           <li><a href="index.html" aria-current="page" class="underline underline-offset-4">HOME</a></li>
-          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
-          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
-          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
-          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange transition-colors">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange transition-colors">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange transition-colors">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange transition-colors">CONTACT US</a></li>
         </ul>
-        <a href="https://app.asuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600">Login</a>
+        <a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a>
       </nav>
       <div class="border-t border-slate-100 px-4 py-2 md:hidden">
         <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
@@ -61,7 +104,7 @@
           <img src="assets/images/aS_2.0_Homepage.jpg" alt="aSuggestion community" class="h-full w-full object-cover rounded-3xl" />
         </div>
         <div class="absolute inset-0 mx-4 mt-4 lg:mx-8 rounded-3xl"
-             style="background: linear-gradient(to right, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.02) 100%); z-index:1;"></div>
+             style="background:linear-gradient(to right, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.02) 100%); z-index:1;"></div>
         <div class="relative px-6 py-24 lg:px-12 lg:py-32" style="z-index:2;">
           <p class="mb-4 font-bold tracking-[0.25em]"
              style="font-size:1.25rem; color:rgb(255,140,50); text-shadow:0 1px 4px rgba(0,0,0,0.6);">aSuggestion</p>
@@ -69,8 +112,7 @@
               style="text-shadow:0 2px 8px rgba(0,0,0,0.7);">
             <span class="block">Helping people with</span>
             <span class="block min-h-[1.15em] whitespace-nowrap overflow-visible">
-              <span id="condition-word" class="inline-block transition-all duration-300 ease-out"
-                    style="color:rgb(255,140,50);">Autism Spectrum Disorder</span>
+              <span id="condition-word" class="inline-block" style="color:rgb(255,140,50); transition:opacity 0.25s ease;">Autism Spectrum Disorder</span>
             </span>
             <span class="block">navigate the world with confidence</span>
           </h1>
@@ -79,8 +121,8 @@
             A safe and supportive space for individuals, families, caregivers, and partner agencies to learn, connect, and grow.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
-            <a href="community.html" class="rounded-full bg-white px-6 py-3 text-sm font-bold text-brand-navy hover:bg-slate-100">Explore Community</a>
-            <a href="about.html" class="rounded-full border border-white/70 px-6 py-3 text-sm font-bold text-white hover:bg-white/10">Learn More</a>
+            <a href="community.html" class="rounded-full bg-white px-6 py-3 text-sm font-bold text-brand-navy hover:bg-slate-100 transition-colors">Explore Community</a>
+            <a href="about.html" class="rounded-full border border-white/70 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-colors">Learn More</a>
           </div>
         </div>
       </section>
@@ -90,7 +132,7 @@
         <h2 class="text-3xl font-extrabold text-brand-navy md:text-4xl">
           Welcome to <span class="text-brand-orange">a</span><span class="text-brand-blue">Suggestion</span> for Wellness &amp; Care
         </h2>
-        <p class="mt-4 text-lg font-semibold text-slate-600 italic">A digital community where connection, growth, and support come together.</p>
+        <p class="mt-4 text-lg font-semibold text-slate-500 italic">A digital community where connection, growth, and support come together.</p>
         <div class="mt-6 grid gap-6 text-base leading-8 text-slate-700 lg:grid-cols-2 lg:text-lg">
           <p>At aSuggestion, we believe that everyone deserves access to meaningful connection, personal development, and emotional support. Our platform is built for individuals with autism, intellectual and developmental disabilities, mental and behavioral health challenges, and other forms of neurodiversity. It also provides powerful tools for families, caregivers, and professionals who support them.</p>
           <p>This is more than just another social media platform. aSuggestion is a digital health ecosystem that blends social engagement with structured learning and practical resources. Here, you can connect with others, share experiences, explore interests, and enjoy a safe, welcoming space designed for positivity and inclusion.</p>
@@ -100,43 +142,68 @@
         <p class="mt-6 text-xl font-semibold text-brand-orange">aSuggestion is more than a platform. It is a community that helps people learn, connect, and grow together.</p>
       </section>
 
-      <!-- Community Highlights -->
+      <!-- Community Highlights — hover effect, standardized captions -->
       <section class="bg-slate-50 px-6 py-16 lg:px-12" aria-label="Community gallery">
         <div class="mb-8 flex items-end justify-between gap-4">
           <h2 class="text-3xl font-extrabold text-brand-navy md:text-4xl">Community Highlights</h2>
-          <a href="community.html" class="text-sm font-semibold text-brand-teal hover:text-brand-orange">View all</a>
+          <a href="community.html" class="text-sm font-semibold text-brand-teal hover:text-brand-orange transition-colors">View all</a>
         </div>
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
-            <img src="assets/images/bf3bb32a-047d-4b6f-9972-0f2189225a9b.jpeg" alt="Safe and Supportive" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
-            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Safe and Supportive</figcaption>
-          </figure>
-          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
-            <img src="assets/images/49e19b56-7909-431d-bdd9-ebecd9a38a5a.jpeg" alt="Learning and Skill Building" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
-            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Learning and Skill Building</figcaption>
-          </figure>
-          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
-            <img src="assets/images/2e873486-2c90-444c-a5be-6a0384020d88.jpeg" alt="Community Events and Interactions" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
-            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Community Events and Interactions</figcaption>
-          </figure>
-          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
-            <img src="assets/images/a38e3f06-31a1-4eef-a738-c3298de9e06d.jpeg" alt="Assistive Technology and Remote Support" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
-            <figcaption class="absolute inset-x-0 bottom-0 p-4 text-base font-bold leading-tight text-white whitespace-nowrap overflow-hidden text-ellipsis">Assistive Technology and Remote Support</figcaption>
-          </figure>
-          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
-            <img src="assets/images/supporting-parents-caregivers.jpg" alt="Parent and Caregiver Resources" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
-            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-xl font-bold leading-tight text-white">Parent and Caregiver Resources</figcaption>
-          </figure>
-          <figure class="group relative h-64 overflow-hidden rounded-3xl shadow-sm">
-            <img src="assets/images/d9a8bdcd-6288-4f83-84fa-a96bc03f45ae.jpeg" alt="Real-Time Insight and Collaboration" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
-            <figcaption class="absolute inset-x-0 bottom-0 p-4 text-base font-bold leading-tight text-white whitespace-nowrap overflow-hidden text-ellipsis">Real-Time Insight and Collaboration</figcaption>
-          </figure>
+
+          <!-- Card 1 -->
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Safe and Supportive">
+            <img src="assets/images/bf3bb32a-047d-4b6f-9972-0f2189225a9b.jpeg" alt="Safe and Supportive" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+            <div class="gallery-caption-bar">
+              <p class="gallery-title">Safe and Supportive</p>
+              <p class="gallery-desc">A secure, moderated environment where individuals, families, and caregivers can connect, share, and grow together.</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Learning and Skill Building">
+            <img src="assets/images/49e19b56-7909-431d-bdd9-ebecd9a38a5a.jpeg" alt="Learning and Skill Building" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+            <div class="gallery-caption-bar">
+              <p class="gallery-title">Learning and Skill Building</p>
+              <p class="gallery-desc">Access educational videos, activities, and guided lessons that promote independence, confidence, and everyday life skills.</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Community Events and Interactions">
+            <img src="assets/images/2e873486-2c90-444c-a5be-6a0384020d88.jpeg" alt="Community Events and Interactions" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+            <div class="gallery-caption-bar">
+              <p class="gallery-title">Community Events and Interactions</p>
+              <p class="gallery-desc">Enjoy fun, friendly, and inclusive interactions through AI-supported rooms that encourage communication and belonging.</p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Assistive Technology and Remote Support">
+            <img src="assets/images/a38e3f06-31a1-4eef-a738-c3298de9e06d.jpeg" alt="Assistive Technology and Remote Support" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+            <div class="gallery-caption-bar">
+              <p class="gallery-title">Assistive Technology and Remote Support</p>
+              <p class="gallery-desc">Extend care beyond traditional settings with digital tools that support state, community, and individualized goals.</p>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Parent and Caregiver Resources">
+            <img src="assets/images/supporting-parents-caregivers.jpg" alt="Parent and Caregiver Resources" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+            <div class="gallery-caption-bar">
+              <p class="gallery-title">Parent and Caregiver Resources</p>
+              <p class="gallery-desc">Discover tools, discussions, and supports created to help families and caregivers provide thoughtful, effective, and compassionate care.</p>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Real-Time Insight and Collaboration">
+            <img src="assets/images/d9a8bdcd-6288-4f83-84fa-a96bc03f45ae.jpeg" alt="Real-Time Insight and Collaboration" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+            <div class="gallery-caption-bar">
+              <p class="gallery-title">Real-Time Insight and Collaboration</p>
+              <p class="gallery-desc">Empower care teams with notifications and summaries that can integrate with Electronic Health Records to improve coordination and outcomes.</p>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -150,9 +217,7 @@
               <div>
                 <p class="text-sm font-extrabold uppercase tracking-[0.25em]" style="color:#000;">Partner Agencies</p>
                 <h2 id="partner-agencies-title" class="mt-2 text-3xl font-extrabold md:text-4xl" style="color:#000;">Organizations building better support systems</h2>
-                <p class="mt-4 max-w-3xl text-sm font-bold leading-7 sm:text-base" style="color:#000;">
-                  Explore the agencies and organizations partnering with aSuggestion.
-                </p>
+                <p class="mt-4 max-w-3xl text-sm font-bold leading-7 sm:text-base" style="color:#000;">Explore the agencies and organizations partnering with aSuggestion.</p>
               </div>
               <div class="flex flex-wrap gap-3">
                 <button type="button" id="partner-prev"
@@ -171,13 +236,13 @@
             <div class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,280px)_1fr] lg:items-stretch">
               <div class="flex min-h-[220px] items-center justify-center rounded-[1.75rem] bg-white p-6 shadow-lg"
                    style="border:1px solid rgba(0,153,204,0.2);">
-                <img id="partner-logo" src="" alt="" class="max-h-44 w-auto max-w-full object-contain" />
+                <img id="partner-logo" src="" alt="" class="max-h-44 w-auto max-w-full object-contain partner-fade" />
               </div>
               <article class="rounded-[1.75rem] p-6 shadow-sm"
                        style="background:rgba(255,255,255,0.85); border:1px solid rgba(0,0,0,0.08);">
                 <p class="text-xs font-extrabold uppercase tracking-[0.3em]" style="color:rgb(255,102,0);">Current Partner</p>
-                <h3 id="partner-name" class="mt-3 text-2xl font-extrabold sm:text-3xl" style="color:#000;"></h3>
-                <p id="partner-text" class="mt-4 max-w-3xl text-sm font-bold leading-7 sm:text-base" style="color:#000;"></p>
+                <h3 id="partner-name" class="mt-3 text-2xl font-extrabold sm:text-3xl partner-fade" style="color:#000;"></h3>
+                <p id="partner-text" class="mt-4 max-w-3xl text-sm font-bold leading-7 sm:text-base partner-fade" style="color:#000;"></p>
               </article>
             </div>
             <div id="partner-dots" class="mt-6 flex flex-wrap gap-2" aria-label="Partner carousel pagination"></div>
@@ -189,26 +254,26 @@
 
     <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
       <p class="flex flex-wrap justify-center gap-3">
-        <a href="#" class="underline hover:text-brand-navy">Privacy Policy</a>
+        <a href="privacy.html" class="underline hover:text-brand-navy transition-colors">Privacy Policy</a>
         <span>|</span>
-        <a href="#" class="underline hover:text-brand-navy">Terms of Service</a>
+        <a href="termsofservice.html" class="underline hover:text-brand-navy transition-colors">Terms of Service</a>
       </p>
       <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
     </footer>
 
-  </div><!-- end max-width wrapper -->
+  </div>
 
   <script>
-    // ── Footer year ────────────────────────────────────────────────────────────
+    // Footer year
     document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-    // ── Rotating headline word ─────────────────────────────────────────────────
+    // Rotating headline word
     var conditionWord = document.getElementById('condition-word');
     var conditions = [
-      'Autism Spectrum Disorder', 'Special Needs', 'Developmental Disabilities',
-      'Memory Loss', 'Neurodivergence', 'Mental Health Conditions',
-      'Communication Disorders', 'Social Anxiety', 'Behavioral Health Needs',
-      'Neurological Conditions', 'Cognitive Disabilities', 'Age-Related Needs'
+      'Autism Spectrum Disorder','Special Needs','Developmental Disabilities',
+      'Memory Loss','Neurodivergence','Mental Health Conditions',
+      'Communication Disorders','Social Anxiety','Behavioral Health Needs',
+      'Neurological Conditions','Cognitive Disabilities','Age-Related Needs'
     ];
     var condIndex = 0;
     if (conditionWord) {
@@ -222,38 +287,16 @@
       }, 2600);
     }
 
-    // ── Partner carousel ───────────────────────────────────────────────────────
+    // Partner carousel
     var partners = [
-      {
-        name: 'The Roland Center',
-        text: 'The Roland Center is a 501(c)(3) nonprofit organization dedicated to building a California where individuals with intellectual and developmental disabilities (IDD), including those with autism spectrum disorder, behavioral health needs, aging-related conditions, and dementia, can fully exercise their human rights, live with dignity, and participate as valued members of society.'
-      },
-      {
-        name: 'GoldStar Learning Options',
-        text: 'Our mission is to provide holistic, person-centered services that empower children and adults with intellectual and developmental disabilities to thrive. Through comprehensive care, innovative programs, and unwavering advocacy, we foster independence, inclusion, and a higher quality of life.'
-      },
-      {
-        name: 'JCIDDA',
-        text: 'It is the mission of the Jefferson County Intellectual and Developmental Disabilities Authority, Inc. (JCIDDA) to provide for system of effective and efficient services to citizens of Jefferson, Calhoun, Clay, Cleburne, Coosa, Talladega and Randolph Counties, Alabama, with intellectual disabilities and/or other developmental disabilities.'
-      },
-      {
-        name: 'Re-Circuit Electronics',
-        text: 'Re-Circuit Electronics LLC is a woman-owned technology and environmental services company based in Toledo, Ohio. Its multidisciplinary expertise spans AI-driven systems, renewable energy, and construction technologies, making it a trusted partner for organizations seeking modern, compliant, and sustainable technology solutions.'
-      },
-      {
-        name: 'Arc of Central Alabama',
-        text: 'The Arc of Central Alabama provides services to over 1,200 people throughout both Jefferson and Blount counties. The Arc of Central Alabama is the state\'s largest provider of services and also designated as a crisis center for individuals with intellectual and developmental disabilities (IDD).'
-      },
-      {
-        name: 'Grace and Hope for Families',
-        text: 'Welcome to Grace & Hope for Families, where we are dedicated to creating a more supportive, inclusive and empowered world for underserved families. We are a compassionate and dynamic organization committed to supporting families impacted by chronic illnesses and/or disabilities.'
-      },
-      {
-        name: 'Connecting People & Places',
-        text: 'At CP&P, we support individuals with developmental disabilities in making connections with the people and places that bring meaning to their lives. We strive to eliminate barriers that hinder inclusion and ensure that every individual has the opportunity to participate fully and authentically in society.'
-      }
+      { name:'The Roland Center', text:'The Roland Center is a 501(c)(3) nonprofit organization dedicated to building a California where individuals with intellectual and developmental disabilities (IDD), including those with autism spectrum disorder, behavioral health needs, aging-related conditions, and dementia, can fully exercise their human rights, live with dignity, and participate as valued members of society.' },
+      { name:'GoldStar Learning Options', text:'Our mission is to provide holistic, person-centered services that empower children and adults with intellectual and developmental disabilities to thrive. Through comprehensive care, innovative programs, and unwavering advocacy, we foster independence, inclusion, and a higher quality of life.' },
+      { name:'JCIDDA', text:'It is the mission of the Jefferson County Intellectual and Developmental Disabilities Authority, Inc. (JCIDDA) to provide for system of effective and efficient services to citizens of Jefferson, Calhoun, Clay, Cleburne, Coosa, Talladega and Randolph Counties, Alabama, with intellectual disabilities and/or other developmental disabilities.' },
+      { name:'Re-Circuit Electronics', text:'Re-Circuit Electronics LLC is a woman-owned technology and environmental services company based in Toledo, Ohio. Its multidisciplinary expertise spans AI-driven systems, renewable energy, and construction technologies, making it a trusted partner for organizations seeking modern, compliant, and sustainable technology solutions.' },
+      { name:'Arc of Central Alabama', text:'The Arc of Central Alabama provides services to over 1,200 people throughout both Jefferson and Blount counties. The Arc of Central Alabama is the state\'s largest provider of services and also designated as a crisis center for individuals with intellectual and developmental disabilities (IDD).' },
+      { name:'Grace and Hope for Families', text:'Welcome to Grace & Hope for Families, where we are dedicated to creating a more supportive, inclusive and empowered world for underserved families. We are a compassionate and dynamic organization committed to supporting families impacted by chronic illnesses and/or disabilities.' },
+      { name:'Connecting People & Places', text:'At CP&P, we support individuals with developmental disabilities in making connections with the people and places that bring meaning to their lives. We strive to eliminate barriers that hinder inclusion and ensure that every individual has the opportunity to participate fully and authentically in society.' }
     ];
-
     var partnerLogoFiles = [
       'assets/images/partners/399604448_835856118332026_3957939439104375314_n.jpg',
       'assets/images/partners/GoldStar & aSuggestion image vIII.jpg',
@@ -267,128 +310,79 @@
     ];
 
     function normalizeName(val) {
-      return val.toLowerCase()
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/&/g, ' and ')
-        .replace(/[^a-z0-9]+/g, ' ')
-        .trim();
+      return val.toLowerCase().replace(/[\u0300-\u036f]/g,'').replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ').trim();
     }
-
     var logoAliases = {
-      'the roland center': ['roland center', 'rolandcenter'],
-      'goldstar learning options': ['goldstar', 'gold star'],
-      'jcidda': ['jcidda'],
-      're circuit electronics': ['re circuit', 're-circuit', 'rce'],
-      'arc of central alabama': ['arc central alabama', 'the arc', 'thearc alabama'],
-      'grace and hope for families': ['grace hope', 'hope for families', 'suarez'],
-      'connecting people places': ['connecting people places', 'connecting', 'people places']
+      'the roland center':['roland center','rolandcenter'],
+      'goldstar learning options':['goldstar','gold star'],
+      'jcidda':['jcidda'],
+      're circuit electronics':['re circuit','re-circuit','rce'],
+      'arc of central alabama':['arc central alabama','the arc','thearc alabama'],
+      'grace and hope for families':['grace hope','hope for families','suarez'],
+      'connecting people places':['connecting people places','connecting','people places']
     };
-
     function detectLogo(name) {
       var n = normalizeName(name);
-      var aliases = [n].concat(logoAliases[n] || []);
-      var best = { path: '', score: 0 };
-      for (var i = 0; i < partnerLogoFiles.length; i++) {
-        var filePath = partnerLogoFiles[i];
-        var fileName = normalizeName(filePath.split('/').pop());
-        var score = 0;
-        for (var j = 0; j < aliases.length; j++) {
-          var alias = aliases[j];
-          if (!alias) continue;
-          if (fileName === alias) { score = Math.max(score, 100); break; }
-          if (fileName.indexOf(alias) !== -1) { score = Math.max(score, alias.length + 20); }
-          else {
-            var words = alias.split(' ');
-            var matches = 0;
-            for (var k = 0; k < words.length; k++) {
-              if (words[k] && fileName.indexOf(words[k]) !== -1) matches++;
-            }
-            score = Math.max(score, matches * 10);
-          }
+      var aliases = [n].concat(logoAliases[n]||[]);
+      var best = {path:'',score:0};
+      for (var i=0;i<partnerLogoFiles.length;i++) {
+        var fp=partnerLogoFiles[i], fn=normalizeName(fp.split('/').pop());
+        var score=0;
+        for (var j=0;j<aliases.length;j++) {
+          var a=aliases[j]; if(!a) continue;
+          if(fn===a){score=Math.max(score,100);break;}
+          if(fn.indexOf(a)!==-1){score=Math.max(score,a.length+20);}
+          else{var ws=a.split(' '),m=0;for(var k=0;k<ws.length;k++){if(ws[k]&&fn.indexOf(ws[k])!==-1)m++;}score=Math.max(score,m*10);}
         }
-        if (score > best.score) { best = { path: filePath, score: score }; }
+        if(score>best.score)best={path:fp,score:score};
       }
-      return best.score > 0 ? best.path : '';
+      return best.score>0?best.path:'';
     }
+    for(var i=0;i<partners.length;i++) partners[i].logo=detectLogo(partners[i].name);
 
-    for (var i = 0; i < partners.length; i++) {
-      partners[i].logo = detectLogo(partners[i].name);
-    }
+    var pLogoEl=document.getElementById('partner-logo');
+    var pNameEl=document.getElementById('partner-name');
+    var pTextEl=document.getElementById('partner-text');
+    var prevBtn=document.getElementById('partner-prev');
+    var nextBtn=document.getElementById('partner-next');
+    var dotsWrap=document.getElementById('partner-dots');
+    var pIndex=0, autoId=null;
 
-    var partnerLogoEl  = document.getElementById('partner-logo');
-    var partnerNameEl  = document.getElementById('partner-name');
-    var partnerTextEl  = document.getElementById('partner-text');
-    var prevBtn        = document.getElementById('partner-prev');
-    var nextBtn        = document.getElementById('partner-next');
-    var dotsWrap       = document.getElementById('partner-dots');
-    var partnerIndex   = 0;
-    var autoScrollId   = null;
-
-    // Build dot buttons
-    var dotButtons = [];
-    for (var d = 0; d < partners.length; d++) {
-      var dot = document.createElement('button');
-      dot.type = 'button';
-      dot.style.cssText = 'height:0.75rem;width:2rem;border-radius:9999px;background:rgba(0,0,0,0.2);border:1px solid rgba(0,0,0,0.15);transition:background 0.3s;cursor:pointer;';
-      dot.setAttribute('aria-label', 'Show ' + partners[d].name);
-      (function(idx) {
-        dot.addEventListener('click', function() { showPartner(idx); resetTimer(); });
-      })(d);
+    var dots=[];
+    for(var d=0;d<partners.length;d++){
+      var dot=document.createElement('button');
+      dot.type='button';
+      dot.style.cssText='height:0.75rem;width:2rem;border-radius:9999px;background:rgba(0,0,0,0.2);border:1px solid rgba(0,0,0,0.15);transition:background 0.3s;cursor:pointer;';
+      dot.setAttribute('aria-label','Show '+partners[d].name);
+      (function(idx){dot.addEventListener('click',function(){showPartner(idx);resetTimer();});})(d);
       dotsWrap.appendChild(dot);
-      dotButtons.push(dot);
+      dots.push(dot);
     }
 
-    function showPartner(idx) {
-      partnerIndex = (idx + partners.length) % partners.length;
-      var p = partners[partnerIndex];
-
-      // Fade out
-      partnerLogoEl.style.transition  = 'opacity 0.25s';
-      partnerNameEl.style.transition  = 'opacity 0.25s';
-      partnerTextEl.style.transition  = 'opacity 0.25s';
-      partnerLogoEl.style.opacity = '0';
-      partnerNameEl.style.opacity = '0';
-      partnerTextEl.style.opacity = '0';
-
-      setTimeout(function() {
-        // Update content
-        partnerNameEl.textContent = p.name;
-        partnerTextEl.textContent = p.text;
-        partnerLogoEl.src = p.logo || 'assets/images/aSuggestion_Logo.png';
-        partnerLogoEl.alt = p.logo ? p.name + ' logo' : 'aSuggestion logo';
-
-        // Fade in
-        partnerLogoEl.style.transition  = 'opacity 0.4s';
-        partnerNameEl.style.transition  = 'opacity 0.4s';
-        partnerTextEl.style.transition  = 'opacity 0.4s';
-        partnerLogoEl.style.opacity = '1';
-        partnerNameEl.style.opacity = '1';
-        partnerTextEl.style.opacity = '1';
-      }, 260);
-
-      // Update dots
-      for (var i = 0; i < dotButtons.length; i++) {
-        dotButtons[i].style.background = (i === partnerIndex)
-          ? 'rgb(0,153,204)' : 'rgba(0,0,0,0.2)';
-        dotButtons[i].setAttribute('aria-current', i === partnerIndex ? 'true' : 'false');
+    function showPartner(idx){
+      pIndex=(idx+partners.length)%partners.length;
+      var p=partners[pIndex];
+      pLogoEl.style.opacity='0'; pNameEl.style.opacity='0'; pTextEl.style.opacity='0';
+      setTimeout(function(){
+        pNameEl.textContent=p.name;
+        pTextEl.textContent=p.text;
+        pLogoEl.src=p.logo||'assets/images/aSuggestion_Logo.png';
+        pLogoEl.alt=p.logo?p.name+' logo':'aSuggestion logo';
+        pLogoEl.style.opacity='1'; pNameEl.style.opacity='1'; pTextEl.style.opacity='1';
+      },260);
+      for(var i=0;i<dots.length;i++){
+        dots[i].style.background=i===pIndex?'rgb(0,153,204)':'rgba(0,0,0,0.2)';
+        dots[i].setAttribute('aria-current',i===pIndex?'true':'false');
       }
     }
-
-    function resetTimer() {
-      if (autoScrollId) clearInterval(autoScrollId);
-      // Auto-advance every 5 seconds
-      autoScrollId = setInterval(function() {
-        showPartner(partnerIndex + 1);
-      }, 5000);
+    function resetTimer(){
+      if(autoId)clearInterval(autoId);
+      autoId=setInterval(function(){showPartner(pIndex+1);},5000);
     }
-
-    prevBtn.addEventListener('click', function() { showPartner(partnerIndex - 1); resetTimer(); });
-    nextBtn.addEventListener('click', function() { showPartner(partnerIndex + 1); resetTimer(); });
-
-    // Initialise — show first partner and start auto-scroll
+    prevBtn.addEventListener('click',function(){showPartner(pIndex-1);resetTimer();});
+    nextBtn.addEventListener('click',function(){showPartner(pIndex+1);resetTimer();});
     showPartner(0);
     resetTimer();
-
   </script>
 </body>
 </html>
