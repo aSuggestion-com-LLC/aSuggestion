@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Thank you for contacting aSuggestion. We will be in touch shortly." />
+  <title>aSuggestion – Thank You</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { navy:'#01384a', teal:'#00435d', orange:'#ef8110', blue:'#0099CC' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease forwards; }
+    .fade-up-delay { animation: fadeUp 0.7s ease 0.25s forwards; opacity: 0; }
+    .fade-up-delay2 { animation: fadeUp 0.7s ease 0.45s forwards; opacity: 0; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-navy focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
+
+  <div class="mx-auto min-h-screen max-w-[1440px] bg-white shadow-sm flex flex-col">
+
+    <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
+      <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
+        <a href="index.html" class="shrink-0">
+          <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem;width:auto;border-radius:0.5rem;" />
+        </a>
+        <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
+          <li><a href="index.html" class="hover:text-brand-orange transition-colors">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange transition-colors">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange transition-colors">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange transition-colors">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange transition-colors">CONTACT US</a></li>
+        </ul>
+        <a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a>
+      </nav>
+      <div class="border-t border-slate-100 px-4 py-2 md:hidden">
+        <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
+          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Main content — vertically centered in remaining space -->
+    <main id="main-content" class="flex flex-1 items-center justify-center px-6 py-20 lg:px-12">
+      <div class="mx-auto max-w-xl text-center">
+
+        <!-- Checkmark icon -->
+        <div class="fade-up mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full"
+             style="background:linear-gradient(135deg,rgb(0,153,204),rgb(0,87,115));">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="fade-up-delay text-3xl font-extrabold text-brand-navy md:text-4xl">
+          Thank You!
+        </h1>
+
+        <!-- Message -->
+        <div class="fade-up-delay2">
+          <p class="mt-4 text-lg leading-8 text-slate-600">
+            We received your submission and we'll be back in touch with you shortly.
+          </p>
+          <p class="mt-3 text-base text-slate-500">
+            In the meantime, feel free to explore the aSuggestion community or learn more about what we do.
+          </p>
+
+          <!-- Divider -->
+          <div class="my-8 border-t border-slate-100"></div>
+
+          <!-- CTA buttons -->
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="index.html"
+               class="rounded-full px-6 py-3 text-sm font-bold text-white transition hover:opacity-90"
+               style="background:rgb(0,153,204);">
+              Back to Home
+            </a>
+            <a href="community.html"
+               class="rounded-full border-2 px-6 py-3 text-sm font-bold transition hover:bg-slate-50"
+               style="border-color:rgb(0,153,204);color:rgb(0,153,204);">
+              Explore Community
+            </a>
+          </div>
+
+          <!-- Contact note -->
+          <p class="mt-8 text-sm text-slate-400">
+            Questions? Email us anytime at
+            <a href="mailto:goodideas@aSuggestion.com"
+               class="underline hover:text-brand-navy transition-colors">
+              goodideas@aSuggestion.com
+            </a>
+          </p>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
+      <p class="flex flex-wrap justify-center gap-3">
+        <a href="privacypolicy.html" class="underline hover:text-brand-navy transition-colors">Privacy Policy</a>
+        <span>|</span>
+        <a href="termsofservice.html" class="underline hover:text-brand-navy transition-colors">Terms of Service</a>
+      </p>
+      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
