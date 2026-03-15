@@ -11,68 +11,74 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              navy: '#01384a',
-              teal: '#00435d',
-              orange: '#ef8110',
-              blue: '#0099CC'
-            }
+            brand: { navy:'#01384a', teal:'#00435d', orange:'#ef8110', blue:'#0099CC' }
           }
         }
       }
     }
   </script>
   <style>
-    /* Smooth scroll */
     html { scroll-behavior: smooth; }
 
-    /* Community gallery hover effect */
-    .gallery-card { position: relative; overflow: hidden; border-radius: 1.5rem; }
-    .gallery-card img { transition: transform 0.5s ease, opacity 0.4s ease; }
-    .gallery-card:hover img,
-    .gallery-card:focus-within img { transform: scale(1.04); opacity: 0.1; }
-    .gallery-caption-bar {
-      position: absolute; inset: 0; display: flex; flex-direction: column;
-      justify-content: flex-end; padding: 1.1rem;
-      background: linear-gradient(to top, rgba(1,56,74,0.85) 0%, rgba(1,56,74,0.3) 60%, transparent 100%);
+    /* ── Gallery cards ─────────────────────────────────────────────────────── */
+    .gallery-card {
+      position: relative; overflow: hidden; border-radius: 1.5rem;
+      cursor: pointer;
+    }
+    .gallery-card img {
+      transition: transform 0.5s ease, opacity 0.4s ease;
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    }
+    /* Default: NO blue hue — just a natural dark gradient at the bottom for readability */
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 45%, transparent 100%);
       transition: background 0.4s ease;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 1rem;
     }
-    .gallery-card:hover .gallery-caption-bar,
-    .gallery-card:focus-within .gallery-caption-bar {
-      /* Brand navy #01384a at high opacity */
-      background: rgba(1,56,74,0.94);
+    /* On hover: brand navy fills the cell, image fades to 10% */
+    .gallery-card:hover img,
+    .gallery-card:focus-within img { transform: scale(1.04); opacity: 0.08; }
+    .gallery-card:hover .gallery-overlay,
+    .gallery-card:focus-within .gallery-overlay {
+      background: rgba(1,56,74,0.96);
       justify-content: center;
-      padding: 1.25rem;
+      padding: 1rem 1.1rem;
     }
+
+    /* Title — visible by default at bottom, centered + orange on hover */
     .gallery-title {
-      /* clamp: scales between 0.9rem and 1.1rem based on available width */
-      font-size: clamp(0.9rem, 2vw, 1.1rem);
-      font-weight: 700; color: white; line-height: 1.35;
+      color: white; font-weight: 700; line-height: 1.3;
+      /* Fill available width dynamically */
+      font-size: clamp(0.85rem, 1.8vw + 0.2rem, 1.15rem);
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transition: color 0.3s ease, white-space 0.1s;
     }
     .gallery-card:hover .gallery-title,
     .gallery-card:focus-within .gallery-title {
+      color: rgb(255,140,50);
       white-space: normal;
-      font-size: clamp(0.9rem, 2vw, 1.05rem);
-      color: rgb(255,140,50); /* brand lighter orange for title on hover */
+      /* Larger on hover so it fills the cell header */
+      font-size: clamp(1rem, 2vw + 0.2rem, 1.2rem);
+      text-align: center;
     }
+
+    /* Description — hidden by default, fades in on hover */
     .gallery-desc {
-      font-size: clamp(0.75rem, 1.5vw, 0.85rem);
-      color: rgba(255,255,255,0.93); line-height: 1.65;
-      margin-top: 0.6rem; opacity: 0; transform: translateY(8px);
-      transition: opacity 0.35s ease 0.05s, transform 0.35s ease 0.05s;
-      display: none;
+      display: none; opacity: 0;
+      color: rgba(255,255,255,0.92); line-height: 1.65;
+      font-size: clamp(0.78rem, 1.2vw + 0.1rem, 0.9rem);
+      margin-top: 0.5rem;
+      text-align: center;
+      transition: opacity 0.35s ease 0.05s;
     }
     .gallery-card:hover .gallery-desc,
-    .gallery-card:focus-within .gallery-desc { opacity: 1; transform: translateY(0); display: block; }
+    .gallery-card:focus-within .gallery-desc { display: block; opacity: 1; }
 
-    /* Subtle card lift on hover for info cards */
+    /* Subtle lift for info cards */
     .lift-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .lift-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
-
-    /* Partner fade transition */
-    .partner-fade { transition: opacity 0.35s ease; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
@@ -83,7 +89,7 @@
     <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
       <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
         <a href="index.html" class="shrink-0">
-          <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem; width:auto; border-radius:0.5rem;" />
+          <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem;width:auto;border-radius:0.5rem;" />
         </a>
         <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
           <li><a href="index.html" aria-current="page" class="underline underline-offset-4">HOME</a></li>
@@ -113,20 +119,19 @@
           <img src="assets/images/aS_2.0_Homepage.jpg" alt="aSuggestion community" class="h-full w-full object-cover rounded-3xl" />
         </div>
         <div class="absolute inset-0 mx-4 mt-4 lg:mx-8 rounded-3xl"
-             style="background:linear-gradient(to right, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.02) 100%); z-index:1;"></div>
+             style="background:linear-gradient(to right,rgba(0,0,0,0.40) 0%,rgba(0,0,0,0.18) 45%,rgba(0,0,0,0.02) 100%);z-index:1;"></div>
         <div class="relative px-6 py-24 lg:px-12 lg:py-32" style="z-index:2;">
-          <p class="mb-4 font-bold tracking-[0.25em]"
-             style="font-size:1.25rem; color:rgb(255,140,50); text-shadow:0 1px 4px rgba(0,0,0,0.6);">aSuggestion</p>
+          <p id="hero-label" class="mb-4 font-bold tracking-[0.25em]"
+             style="font-size:1.25rem;color:rgb(255,140,50);text-shadow:0 1px 4px rgba(0,0,0,0.6);">aSuggestion</p>
           <h1 class="max-w-5xl text-4xl font-extrabold leading-[1.15] md:text-6xl"
               style="text-shadow:0 2px 8px rgba(0,0,0,0.7);">
             <span class="block">Helping people with</span>
             <span class="block min-h-[1.15em] whitespace-nowrap overflow-visible">
-              <span id="condition-word" class="inline-block" style="color:rgb(255,140,50); transition:opacity 0.25s ease;">Autism Spectrum Disorder</span>
+              <span id="condition-word" style="color:rgb(255,140,50);transition:opacity 0.25s ease;display:inline-block;">Autism Spectrum Disorder</span>
             </span>
             <span class="block">navigate the world with confidence</span>
           </h1>
-          <p class="mt-6 max-w-2xl text-base font-bold text-white md:text-lg"
-             style="text-shadow:0 1px 6px rgba(0,0,0,0.8);">
+          <p class="mt-6 max-w-2xl text-base font-bold text-white md:text-lg" style="text-shadow:0 1px 6px rgba(0,0,0,0.8);">
             A safe and supportive space for individuals, families, caregivers, and partner agencies to learn, connect, and grow.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
@@ -151,7 +156,7 @@
         <p class="mt-6 text-xl font-semibold text-brand-orange">aSuggestion is more than a platform. It is a community that helps people learn, connect, and grow together.</p>
       </section>
 
-      <!-- Community Highlights — hover effect, standardized captions -->
+      <!-- Community Highlights -->
       <section class="bg-slate-50 px-6 py-16 lg:px-12" aria-label="Community gallery">
         <div class="mb-8 flex items-end justify-between gap-4">
           <h2 class="text-3xl font-extrabold text-brand-navy md:text-4xl">Community Highlights</h2>
@@ -159,55 +164,49 @@
         </div>
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
-          <!-- Card 1 -->
-          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Safe and Supportive">
-            <img src="assets/images/bf3bb32a-047d-4b6f-9972-0f2189225a9b.jpeg" alt="Safe and Supportive" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-            <div class="gallery-caption-bar">
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0">
+            <img src="assets/images/bf3bb32a-047d-4b6f-9972-0f2189225a9b.jpeg" alt="Safe and Supportive" loading="lazy" />
+            <div class="gallery-overlay">
               <p class="gallery-title">Safe and Supportive</p>
               <p class="gallery-desc">A secure, moderated environment where individuals, families, and caregivers can connect, share, and grow together.</p>
             </div>
           </div>
 
-          <!-- Card 2 -->
-          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Learning and Skill Building">
-            <img src="assets/images/49e19b56-7909-431d-bdd9-ebecd9a38a5a.jpeg" alt="Learning and Skill Building" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-            <div class="gallery-caption-bar">
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0">
+            <img src="assets/images/49e19b56-7909-431d-bdd9-ebecd9a38a5a.jpeg" alt="Learning and Skill Building" loading="lazy" />
+            <div class="gallery-overlay">
               <p class="gallery-title">Learning and Skill Building</p>
               <p class="gallery-desc">Access educational videos, activities, and guided lessons that promote independence, confidence, and everyday life skills.</p>
             </div>
           </div>
 
-          <!-- Card 3 -->
-          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Community Events and Interactions">
-            <img src="assets/images/2e873486-2c90-444c-a5be-6a0384020d88.jpeg" alt="Community Events and Interactions" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-            <div class="gallery-caption-bar">
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0">
+            <img src="assets/images/2e873486-2c90-444c-a5be-6a0384020d88.jpeg" alt="Community Events and Interactions" loading="lazy" />
+            <div class="gallery-overlay">
               <p class="gallery-title">Community Events and Interactions</p>
               <p class="gallery-desc">Enjoy fun, friendly, and inclusive interactions through AI-supported rooms that encourage communication and belonging.</p>
             </div>
           </div>
 
-          <!-- Card 4 -->
-          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Assistive Technology and Remote Support">
-            <img src="assets/images/a38e3f06-31a1-4eef-a738-c3298de9e06d.jpeg" alt="Assistive Technology and Remote Support" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-            <div class="gallery-caption-bar">
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0">
+            <img src="assets/images/a38e3f06-31a1-4eef-a738-c3298de9e06d.jpeg" alt="Assistive Technology and Remote Support" loading="lazy" />
+            <div class="gallery-overlay">
               <p class="gallery-title">Assistive Technology and Remote Support</p>
               <p class="gallery-desc">Extend care beyond traditional settings with digital tools that support state, community, and individualized goals.</p>
             </div>
           </div>
 
-          <!-- Card 5 -->
-          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Parent and Caregiver Resources">
-            <img src="assets/images/supporting-parents-caregivers.jpg" alt="Parent and Caregiver Resources" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-            <div class="gallery-caption-bar">
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0">
+            <img src="assets/images/supporting-parents-caregivers.jpg" alt="Parent and Caregiver Resources" loading="lazy" />
+            <div class="gallery-overlay">
               <p class="gallery-title">Parent and Caregiver Resources</p>
               <p class="gallery-desc">Discover tools, discussions, and supports created to help families and caregivers provide thoughtful, effective, and compassionate care.</p>
             </div>
           </div>
 
-          <!-- Card 6 -->
-          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0" role="img" aria-label="Real-Time Insight and Collaboration">
-            <img src="assets/images/d9a8bdcd-6288-4f83-84fa-a96bc03f45ae.jpeg" alt="Real-Time Insight and Collaboration" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-            <div class="gallery-caption-bar">
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0">
+            <img src="assets/images/d9a8bdcd-6288-4f83-84fa-a96bc03f45ae.jpeg" alt="Real-Time Insight and Collaboration" loading="lazy" />
+            <div class="gallery-overlay">
               <p class="gallery-title">Real-Time Insight and Collaboration</p>
               <p class="gallery-desc">Empower care teams with notifications and summaries that can integrate with Electronic Health Records to improve coordination and outcomes.</p>
             </div>
@@ -219,9 +218,9 @@
       <!-- Partner Agencies -->
       <section class="px-6 py-16 lg:px-12" aria-labelledby="partner-agencies-title">
         <div class="overflow-hidden rounded-[2rem] p-1 shadow-xl"
-             style="background:linear-gradient(135deg, rgb(0,153,204) 0%, rgb(255,255,255) 50%, rgb(255,102,0) 100%);">
+             style="background:linear-gradient(135deg,rgb(0,153,204) 0%,rgb(255,255,255) 50%,rgb(255,102,0) 100%);">
           <div class="rounded-[1.85rem] p-6 sm:p-8"
-               style="background:linear-gradient(135deg, rgba(0,153,204,0.25) 0%, rgba(255,255,255,0.97) 40%, rgba(255,255,255,0.97) 60%, rgba(255,102,0,0.25) 100%);">
+               style="background:linear-gradient(135deg,rgba(0,153,204,0.25) 0%,rgba(255,255,255,0.97) 40%,rgba(255,255,255,0.97) 60%,rgba(255,102,0,0.25) 100%);">
             <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div>
                 <p class="text-sm font-extrabold uppercase tracking-[0.25em]" style="color:#000;">Partner Agencies</p>
@@ -231,11 +230,11 @@
               <div class="flex flex-wrap gap-3">
                 <button type="button" id="partner-prev"
                         class="inline-flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold transition hover:opacity-80"
-                        style="border:2px solid rgb(0,153,204); color:rgb(0,153,204); background:white;"
+                        style="border:2px solid rgb(0,153,204);color:rgb(0,153,204);background:white;"
                         aria-label="Previous partner">&larr;</button>
                 <button type="button" id="partner-next"
                         class="inline-flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold transition hover:opacity-80"
-                        style="border:2px solid rgb(255,102,0); color:rgb(255,102,0); background:white;"
+                        style="border:2px solid rgb(255,102,0);color:rgb(255,102,0);background:white;"
                         aria-label="Next partner">&rarr;</button>
                 <a href="contact.html"
                    class="inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-extrabold text-white transition hover:opacity-90"
@@ -245,13 +244,13 @@
             <div class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,280px)_1fr] lg:items-stretch">
               <div class="flex min-h-[220px] items-center justify-center rounded-[1.75rem] bg-white p-6 shadow-lg"
                    style="border:1px solid rgba(0,153,204,0.2);">
-                <img id="partner-logo" src="" alt="" class="max-h-44 w-auto max-w-full object-contain partner-fade" />
+                <img id="partner-logo" src="" alt="" class="max-h-44 w-auto max-w-full object-contain" style="transition:opacity 0.35s ease;" />
               </div>
               <article class="rounded-[1.75rem] p-6 shadow-sm"
-                       style="background:rgba(255,255,255,0.85); border:1px solid rgba(0,0,0,0.08);">
+                       style="background:rgba(255,255,255,0.85);border:1px solid rgba(0,0,0,0.08);">
                 <p class="text-xs font-extrabold uppercase tracking-[0.3em]" style="color:rgb(255,102,0);">Current Partner</p>
-                <h3 id="partner-name" class="mt-3 text-2xl font-extrabold sm:text-3xl partner-fade" style="color:#000;"></h3>
-                <p id="partner-text" class="mt-4 max-w-3xl text-sm font-bold leading-7 sm:text-base partner-fade" style="color:#000;"></p>
+                <h3 id="partner-name" class="mt-3 text-2xl font-extrabold sm:text-3xl" style="color:#000;transition:opacity 0.35s ease;"></h3>
+                <p id="partner-text" class="mt-4 max-w-3xl text-sm font-bold leading-7 sm:text-base" style="color:#000;transition:opacity 0.35s ease;"></p>
               </article>
             </div>
             <div id="partner-dots" class="mt-6 flex flex-wrap gap-2" aria-label="Partner carousel pagination"></div>
@@ -263,130 +262,133 @@
 
     <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
       <p class="flex flex-wrap justify-center gap-3">
-        <a href="privacy.html" class="underline hover:text-brand-navy transition-colors">Privacy Policy</a>
+        <a href="privacypolicy.html" class="underline hover:text-brand-navy transition-colors">Privacy Policy</a>
         <span>|</span>
         <a href="termsofservice.html" class="underline hover:text-brand-navy transition-colors">Terms of Service</a>
       </p>
-      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="/cdn-cgi/l/email-protection#ef8880808b868b8a8e9caf8ebc9a88888a9c9b868081c18c8082" class="underline hover:text-brand-navy"><span class="__cf_email__" data-cfemail="03646c6c676a676662704362507664646670776a6c6d2d606c6e">[email&#160;protected]</span></a></p>
+      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
     </footer>
 
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Footer year
-    document.getElementById('footer-year').textContent = new Date().getFullYear();
+</body>
+<script>
+  // ── Footer year ──────────────────────────────────────────────────────────
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-    // Rotating headline word
-    var conditionWord = document.getElementById('condition-word');
-    var conditions = [
-      'Autism Spectrum Disorder','Special Needs','Developmental Disabilities',
-      'Memory Loss','Neurodivergence','Mental Health Conditions',
-      'Communication Disorders','Social Anxiety','Behavioral Health Needs',
-      'Neurological Conditions','Cognitive Disabilities','Age-Related Needs'
-    ];
-    var condIndex = 0;
-    if (conditionWord) {
-      setInterval(function() {
-        condIndex = (condIndex + 1) % conditions.length;
-        conditionWord.style.opacity = '0';
-        setTimeout(function() {
-          conditionWord.textContent = conditions[condIndex];
-          conditionWord.style.opacity = '1';
-        }, 200);
-      }, 2600);
+  // ── Rotating headline word ───────────────────────────────────────────────
+  var cw = document.getElementById('condition-word');
+  var conds = [
+    'Autism Spectrum Disorder','Special Needs','Developmental Disabilities',
+    'Memory Loss','Neurodivergence','Mental Health Conditions',
+    'Communication Disorders','Social Anxiety','Behavioral Health Needs',
+    'Neurological Conditions','Cognitive Disabilities','Age-Related Needs'
+  ];
+  var ci = 0;
+  if (cw) {
+    setInterval(function() {
+      ci = (ci + 1) % conds.length;
+      cw.style.opacity = '0';
+      setTimeout(function() {
+        cw.textContent = conds[ci];
+        cw.style.opacity = '1';
+      }, 220);
+    }, 2600);
+  }
+
+  // ── Partner carousel ─────────────────────────────────────────────────────
+  var partners = [
+    { name:'The Roland Center', text:'The Roland Center is a 501(c)(3) nonprofit organization dedicated to building a California where individuals with intellectual and developmental disabilities (IDD), including those with autism spectrum disorder, behavioral health needs, aging-related conditions, and dementia, can fully exercise their human rights, live with dignity, and participate as valued members of society.' },
+    { name:'GoldStar Learning Options', text:'Our mission is to provide holistic, person-centered services that empower children and adults with intellectual and developmental disabilities to thrive. Through comprehensive care, innovative programs, and unwavering advocacy, we foster independence, inclusion, and a higher quality of life.' },
+    { name:'JCIDDA', text:'It is the mission of the Jefferson County Intellectual and Developmental Disabilities Authority, Inc. (JCIDDA) to provide for system of effective and efficient services to citizens of Jefferson, Calhoun, Clay, Cleburne, Coosa, Talladega and Randolph Counties, Alabama, with intellectual disabilities and/or other developmental disabilities.' },
+    { name:'Re-Circuit Electronics', text:'Re-Circuit Electronics LLC is a woman-owned technology and environmental services company based in Toledo, Ohio. Its multidisciplinary expertise spans AI-driven systems, renewable energy, and construction technologies, making it a trusted partner for organizations seeking modern, compliant, and sustainable technology solutions.' },
+    { name:'Arc of Central Alabama', text:'The Arc of Central Alabama provides services to over 1,200 people throughout both Jefferson and Blount counties. The Arc of Central Alabama is the state\'s largest provider of services and also designated as a crisis center for individuals with intellectual and developmental disabilities (IDD).' },
+    { name:'Grace and Hope for Families', text:'Welcome to Grace & Hope for Families, where we are dedicated to creating a more supportive, inclusive and empowered world for underserved families. We are a compassionate and dynamic organization committed to supporting families impacted by chronic illnesses and/or disabilities.' },
+    { name:'Connecting People & Places', text:'At CP&P, we support individuals with developmental disabilities in making connections with the people and places that bring meaning to their lives. We strive to eliminate barriers that hinder inclusion and ensure that every individual has the opportunity to participate fully and authentically in society.' },
+    { name:'Equilibrium Consulting', text:'Whether you\'re just starting out, ready for growth, looking to restructure, looking for innovative ways to stay competitive, or troubleshooting industry related problems, I\'ve got you covered. I excel at learning your organization first and understanding how it functions so a true assessment can be made before taking action. My promise is that I will be there, as questions or issues arise, every step of the way with results-based evidence.' }
+  ];
+
+  var logoFiles = [
+    'assets/images/partners/rolandcenter-logo.png',
+    'assets/images/partners/GoldStar & aSuggestion image vIII.jpg',
+    'assets/images/partners/JCIDDA.jpg',
+    'assets/images/partners/Re-Circuit Electronics.jpg',
+    'assets/images/partners/thearc-alabama.jpg',
+    'assets/images/partners/grace_and_hope_for_families.jpg',
+    'assets/images/partners/connecting_people_and_places.jpg',
+    'assets/images/partners/lillian_northviewhealth_whitebackground.jpg',
+    'assets/images/partners/399604448_835856118332026_3957939439104375314_n.jpg',
+    'assets/images/partners/equilibrium_consulting.png'
+  ];
+
+  // Direct logo mapping — no fuzzy matching needed, just pair by index
+  var directLogoMap = {
+    'The Roland Center':        'assets/images/partners/rolandcenter-logo.png',
+    'GoldStar Learning Options':'assets/images/partners/GoldStar & aSuggestion image vIII.jpg',
+    'JCIDDA':                   'assets/images/partners/JCIDDA.jpg',
+    'Re-Circuit Electronics':   'assets/images/partners/Re-Circuit Electronics.jpg',
+    'Arc of Central Alabama':   'assets/images/partners/thearc-alabama.jpg',
+    'Grace and Hope for Families':'assets/images/partners/grace_and_hope_for_families.jpg',
+    'Connecting People & Places':'assets/images/partners/connecting_people_and_places.jpg',
+    'Equilibrium Consulting':   'assets/images/partners/equilibrium_consulting.png'
+  };
+
+  for (var i = 0; i < partners.length; i++) {
+    partners[i].logo = directLogoMap[partners[i].name] || '';
+  }
+
+  var pLogo = document.getElementById('partner-logo');
+  var pName = document.getElementById('partner-name');
+  var pText = document.getElementById('partner-text');
+  var prevBtn = document.getElementById('partner-prev');
+  var nextBtn = document.getElementById('partner-next');
+  var dotsWrap = document.getElementById('partner-dots');
+  var pIdx = 0;
+  var autoId = null;
+
+  var dots = [];
+  for (var d = 0; d < partners.length; d++) {
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.style.cssText = 'height:0.75rem;width:2rem;border-radius:9999px;background:rgba(0,0,0,0.2);border:1px solid rgba(0,0,0,0.15);transition:background 0.3s;cursor:pointer;';
+    dot.setAttribute('aria-label', 'Show ' + partners[d].name);
+    (function(idx) {
+      dot.addEventListener('click', function() { showPartner(idx); resetTimer(); });
+    })(d);
+    dotsWrap.appendChild(dot);
+    dots.push(dot);
+  }
+
+  function showPartner(idx) {
+    pIdx = (idx + partners.length) % partners.length;
+    var p = partners[pIdx];
+    pLogo.style.opacity = '0';
+    pName.style.opacity = '0';
+    pText.style.opacity = '0';
+    setTimeout(function() {
+      pName.textContent = p.name;
+      pText.textContent = p.text;
+      pLogo.src = p.logo || 'assets/images/aSuggestion_Logo.png';
+      pLogo.alt = p.logo ? p.name + ' logo' : 'aSuggestion logo';
+      pLogo.style.opacity = '1';
+      pName.style.opacity = '1';
+      pText.style.opacity = '1';
+    }, 260);
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].style.background = (i === pIdx) ? 'rgb(0,153,204)' : 'rgba(0,0,0,0.2)';
+      dots[i].setAttribute('aria-current', i === pIdx ? 'true' : 'false');
     }
+  }
 
-    // Partner carousel
-    var partners = [
-      { name:'The Roland Center', text:'The Roland Center is a 501(c)(3) nonprofit organization dedicated to building a California where individuals with intellectual and developmental disabilities (IDD), including those with autism spectrum disorder, behavioral health needs, aging-related conditions, and dementia, can fully exercise their human rights, live with dignity, and participate as valued members of society.' },
-      { name:'GoldStar Learning Options', text:'Our mission is to provide holistic, person-centered services that empower children and adults with intellectual and developmental disabilities to thrive. Through comprehensive care, innovative programs, and unwavering advocacy, we foster independence, inclusion, and a higher quality of life.' },
-      { name:'JCIDDA', text:'It is the mission of the Jefferson County Intellectual and Developmental Disabilities Authority, Inc. (JCIDDA) to provide for system of effective and efficient services to citizens of Jefferson, Calhoun, Clay, Cleburne, Coosa, Talladega and Randolph Counties, Alabama, with intellectual disabilities and/or other developmental disabilities.' },
-      { name:'Re-Circuit Electronics', text:'Re-Circuit Electronics LLC is a woman-owned technology and environmental services company based in Toledo, Ohio. Its multidisciplinary expertise spans AI-driven systems, renewable energy, and construction technologies, making it a trusted partner for organizations seeking modern, compliant, and sustainable technology solutions.' },
-      { name:'Arc of Central Alabama', text:'The Arc of Central Alabama provides services to over 1,200 people throughout both Jefferson and Blount counties. The Arc of Central Alabama is the state\'s largest provider of services and also designated as a crisis center for individuals with intellectual and developmental disabilities (IDD).' },
-      { name:'Grace and Hope for Families', text:'Welcome to Grace & Hope for Families, where we are dedicated to creating a more supportive, inclusive and empowered world for underserved families. We are a compassionate and dynamic organization committed to supporting families impacted by chronic illnesses and/or disabilities.' },
-      { name:'Connecting People & Places', text:'At CP&P, we support individuals with developmental disabilities in making connections with the people and places that bring meaning to their lives. We strive to eliminate barriers that hinder inclusion and ensure that every individual has the opportunity to participate fully and authentically in society.' },
-      { name:'Equilibrium Consulting', text:'Whether you\'re just starting out, ready for growth, looking to restructure, looking for innovative ways to stay competitive, or troubleshooting industry related problems, I\'ve got you covered. I excel at learning your organization first and understanding how it functions so a true assessment can be made before taking action. It is essential in providing any consultation services to know the outcome that you are expecting and ensure I have the appropriate tools needed to produce the results you are expecting. My promise is that I will be there, as questions or issues arise, every step of the way with results-based evidence.' }
-    ];
-    var partnerLogoFiles = [
-      'assets/images/partners/399604448_835856118332026_3957939439104375314_n.jpg',
-      'assets/images/partners/GoldStar & aSuggestion image vIII.jpg',
-      'assets/images/partners/JCIDDA.jpg',
-      'assets/images/partners/Re-Circuit Electronics.jpg',
-      'assets/images/partners/grace_and_hope_for_families.jpg',
-      'assets/images/partners/connecting_people_and_places.jpg',
-      'assets/images/partners/lillian_northviewhealth_whitebackground.jpg',
-      'assets/images/partners/rolandcenter-logo.png',
-      'assets/images/partners/thearc-alabama.jpg',
-      'assets/images/partners/equilibrium_consulting.png'
-    ];
+  function resetTimer() {
+    if (autoId) clearInterval(autoId);
+    autoId = setInterval(function() { showPartner(pIdx + 1); }, 5000);
+  }
 
-    function normalizeName(val) {
-      return val.toLowerCase().replace(/[\u0300-\u036f]/g,'').replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ').trim();
-    }
-    var logoAliases = {
-      'the roland center':['roland center','rolandcenter'],
-      'goldstar learning options':['goldstar','gold star'],
-      'jcidda':['jcidda'],
-      're circuit electronics':['re circuit','re-circuit','rce'],
-      'arc of central alabama':['arc central alabama','the arc','thearc alabama'],
-      'grace and hope for families':['grace hope','hope for families','grace and hope'],
-      'connecting people places':['connecting people places','connecting','people places'],
-      'equilibrium consulting':['equilibrium','equilibrium consulting']
-    };
-    function detectLogo(name) {
-      var n = normalizeName(name);
-      var aliases = [n].concat(logoAliases[n]||[]);
-      var best = {path:'',score:0};
-      for (var i=0;i<partnerLogoFiles.length;i++) {
-        var fp=partnerLogoFiles[i], fn=normalizeName(fp.split('/').pop());
-        var score=0;
-        for (var j=0;j<aliases.length;j++) {
-          var a=aliases[j]; if(!a) continue;
-          if(fn===a){score=Math.max(score,100);break;}
-          if(fn.indexOf(a)!==-1){score=Math.max(score,a.length+20);}
-          else{var ws=a.split(' '),m=0;for(var k=0;k<ws.length;k++){if(ws[k]&&fn.indexOf(ws[k])!==-1)m++;}score=Math.max(score,m*10);}
-        }
-        if(score>best.score)best={path:fp,score:score};
-      }
-      return best.score>0?best.path:'';
-    }
-    for(var i=0;i<partners.length;i++) partners[i].logo=detectLogo(partners[i].name);
+  prevBtn.addEventListener('click', function() { showPartner(pIdx - 1); resetTimer(); });
+  nextBtn.addEventListener('click', function() { showPartner(pIdx + 1); resetTimer(); });
 
-    var pLogoEl=document.getElementById('partner-logo');
-    var pNameEl=document.getElementById('partner-name');
-    var pTextEl=document.getElementById('partner-text');
-    var prevBtn=document.getElementById('partner-prev');
-    var nextBtn=document.getElementById('partner-next');
-    var dotsWrap=document.getElementById('partner-dots');
-    var pIndex=0, autoId=null;
-
-    var dots=[];
-    for(var d=0;d<partners.length;d++){
-      var dot=document.createElement('button');
-      dot.type='button';
-      dot.style.cssText='height:0.75rem;width:2rem;border-radius:9999px;background:rgba(0,0,0,0.2);border:1px solid rgba(0,0,0,0.15);transition:background 0.3s;cursor:pointer;';
-      dot.setAttribute('aria-label','Show '+partners[d].name);
-      (function(idx){dot.addEventListener('click',function(){showPartner(idx);resetTimer();});})(d);
-      dotsWrap.appendChild(dot);
-      dots.push(dot);
-    }
-
-    function showPartner(idx){
-      pIndex=(idx+partners.length)%partners.length;
-      var p=partners[pIndex];
-      pLogoEl.style.opacity='0'; pNameEl.style.opacity='0'; pTextEl.style.opacity='0';
-      setTimeout(function(){
-        pNameEl.textContent=p.name;
-        pTextEl.textContent=p.text;
-        pLogoEl.src=p.logo||'assets/images/aSuggestion_Logo.png';
-        pLogoEl.alt=p.logo?p.name+' logo':'aSuggestion logo';
-        pLogoEl.style.opacity='1'; pNameEl.style.opacity='1'; pTextEl.style.opacity='1';
-      },260);
-      for(var i=0;i<dots.length;i++){
-        dots[i].style.background=i===pIndex?'rgb(0,153,204)':'rgba(0,0,0,0.2)';
-        dots[i].setAttribute('aria-current',i===pIndex?'true':'false');
-      }
-    }
-    function resetTimer(){
-      if(autoId)clearInterval(autoId);
-      autoId=setInterval(function(){showPartner(pIndex+1);
+  showPartner(0);
+  resetTimer();
+</script>
+</html>
