@@ -2,86 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Contact the aSuggestion team for support, questions, and partnership requests." />
   <title>aSuggestion – Contact Us</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#01384a',
+              teal: '#00435d',
+              orange: '#ef8110',
+              blue: '#0099CC'
+            }
+          }
+        }
+      }
+    }
+  </script>
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/contact.css" />
 </head>
-<body>
-<div class="page contact-page">
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-navy focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
 
-  <!-- NAVBAR -->
-  <header style="overflow:visible;">
-  <nav class="navbar" aria-label="Primary navigation" style="overflow:visible;">
-    <div class="logo" style="overflow:visible; position:relative; z-index:50;">
-      <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem; width:auto; border-radius:0.5rem; position:relative; z-index:50; display:block;" />
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html">HOME</a></li>
-      <li><a href="about.html">ABOUT US</a></li>
-      <li><a href="community.html">COMMUNITY</a></li>
-      <li><a href="payment.html">PAYMENT</a></li>
-      <li><a href="contact.html" aria-current="page">CONTACT US</a></li>
-    </ul>
-    <a class="login-btn" href="#">Login</a>
-  </nav>
-  </header>
-
-  <main id="main-content">
-  <!-- CONTACT FORM -->
-  <section class="contact-wrapper" aria-labelledby="contact-title">
-    <h1 class="contact-title" id="contact-title">Contact Us</h1>
-    <p class="contact-subtitle">We will be happy to help you. Please fill in your contact information below and let us know how we can assist you.</p>
-    <form action="#" method="post">
-    <!-- Topic -->
-    <div class="contact-field">
-      <label for="topic">Topic To Discuss</label>
-      <input id="topic" type="text" name="topic" autocomplete="off" />
-    </div>
-    <!-- Name and Email row -->
-    <div class="contact-row">
-      <div class="contact-field">
-        <label for="name">Name</label>
-        <input id="name" type="text" name="name" autocomplete="name" required />
+  <div class="mx-auto min-h-screen max-w-[1440px] bg-white shadow-sm">
+    <!-- Consistent Tailwind header matching Home/About/Community -->
+    <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
+      <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
+        <a href="index.html" class="shrink-0">
+          <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem; width:auto; border-radius:0.5rem;" />
+        </a>
+        <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
+          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+          <li><a href="contact.html" aria-current="page" class="underline underline-offset-4">CONTACT US</a></li>
+        </ul>
+        <a href="https://app.asuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600">Login</a>
+      </nav>
+      <div class="border-t border-slate-100 px-4 py-2 md:hidden">
+        <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
+          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+          <li><a href="contact.html" aria-current="page" class="underline underline-offset-4">CONTACT US</a></li>
+        </ul>
       </div>
-      <div class="contact-field">
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" autocomplete="email" required />
-      </div>
-    </div>
-    <!-- Phone -->
-    <div class="contact-field contact-field--narrow">
-      <label for="phone">Phone</label>
-      <input id="phone" type="tel" name="phone" autocomplete="tel" />
-    </div>
-    <!-- Comment -->
-    <div class="contact-field">
-      <label for="comment">Comment</label>
-      <textarea id="comment" name="comment" required></textarea>
-    </div>
-    <!-- Buttons -->
-    <div class="btn-row">
-      <button class="btn-cancel" type="reset">Clear</button>
-      <button class="btn-submit" type="submit">Submit</button>
-    </div>
-    </form>
-  </section>
-  </main>
+    </header>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>
-      <a href="#">Glossary</a> |
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms of Service</a> |
-      <a href="#">Tutorial</a>
-    </p>
-    <p>&copy; 2024 aSuggestion LLC. | <a href="contact.html">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com">goodideas@aSuggestion.com</a></p>
-    <p class="credit">Design and Developed Ankita</p>
-  </footer>
+    <main id="main-content">
+      <section class="contact-wrapper" aria-labelledby="contact-title">
+        <h1 class="contact-title" id="contact-title">Contact Us</h1>
+        <p class="contact-subtitle">We will be happy to help you. Please fill in your contact information below and let us know how we can assist you.</p>
+        <form action="#" method="post">
+          <div class="contact-field">
+            <label for="topic">Topic To Discuss</label>
+            <input id="topic" type="text" name="topic" autocomplete="off" />
+          </div>
+          <div class="contact-row">
+            <div class="contact-field">
+              <label for="name">Name</label>
+              <input id="name" type="text" name="name" autocomplete="name" required />
+            </div>
+            <div class="contact-field">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" autocomplete="email" required />
+            </div>
+          </div>
+          <div class="contact-field contact-field--narrow">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" name="phone" autocomplete="tel" />
+          </div>
+          <div class="contact-field">
+            <label for="comment">Comment</label>
+            <textarea id="comment" name="comment" required></textarea>
+          </div>
+          <div class="btn-row">
+            <button class="btn-cancel" type="reset">Clear</button>
+            <button class="btn-submit" type="submit">Submit</button>
+          </div>
+        </form>
+      </section>
+    </main>
 
-</div>
+    <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
+      <p class="flex flex-wrap justify-center gap-3">
+        <a href="#" class="underline hover:text-brand-navy">Privacy Policy</a>
+        <span>|</span>
+        <a href="#" class="underline hover:text-brand-navy">Terms of Service</a>
+      </p>
+      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
