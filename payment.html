@@ -23,7 +23,7 @@
     }
   </script>
   <style>
-    /* Consistent field sizing across all form inputs */
+    html { scroll-behavior: smooth; }
     .form-section { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
     .form-title { font-size: 2rem; font-weight: 800; color: #01384a; margin-bottom: 0.5rem; }
     .form-subtitle { font-size: 1rem; font-weight: 600; color: #475569; margin-bottom: 2rem; }
@@ -31,73 +31,20 @@
     .field-group.two-col { grid-template-columns: 1fr 1fr; }
     @media (max-width: 640px) { .field-group.two-col { grid-template-columns: 1fr; } }
     .field label { display: block; font-size: 0.875rem; font-weight: 600; color: #334155; margin-bottom: 0.375rem; }
-    .field input, .field textarea, .field select {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      font-size: 1rem;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 0.75rem;
-      background: #f8fafc;
-      color: #1e293b;
-      transition: border-color 0.2s;
-      box-sizing: border-box;
+    .field input {
+      width: 100%; padding: 0.75rem 1rem; font-size: 1rem;
+      border: 1.5px solid #cbd5e1; border-radius: 0.75rem;
+      background: #f8fafc; color: #1e293b;
+      transition: border-color 0.2s; box-sizing: border-box;
     }
-    .field input:focus, .field textarea:focus {
-      outline: none;
-      border-color: rgb(0,153,204);
-      background: white;
-    }
-    .section-label {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: rgb(0,153,204);
-      margin: 1.75rem 0 1rem;
-    }
-    .note-box {
-      background: #f1f5f9;
-      border-left: 4px solid rgb(0,153,204);
-      border-radius: 0.75rem;
-      padding: 1rem 1.25rem;
-      font-size: 0.9rem;
-      color: #334155;
-      margin-bottom: 1.25rem;
-      line-height: 1.7;
-    }
+    .field input:focus { outline: none; border-color: rgb(0,153,204); background: white; }
+    .section-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: rgb(0,153,204); margin: 1.75rem 0 1rem; }
+    .note-box { background: #f0f9ff; border-left: 4px solid rgb(0,153,204); border-radius: 0.75rem; padding: 1rem 1.25rem; font-size: 0.9rem; color: #334155; margin-bottom: 1.25rem; line-height: 1.7; }
     .note-box strong { color: #01384a; }
-    .checkbox-group {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      background: #f8fafc;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 0.75rem;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.25rem;
-    }
-    .checkbox-group input[type="checkbox"] {
-      width: 1.25rem;
-      height: 1.25rem;
-      margin-top: 0.15rem;
-      accent-color: rgb(0,153,204);
-      flex-shrink: 0;
-    }
+    .checkbox-group { display: flex; align-items: flex-start; gap: 0.75rem; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 0.75rem; padding: 1rem 1.25rem; margin-bottom: 1.25rem; }
+    .checkbox-group input[type="checkbox"] { width: 1.25rem; height: 1.25rem; margin-top: 0.15rem; accent-color: rgb(0,153,204); flex-shrink: 0; }
     .checkbox-group label { font-size: 0.95rem; font-weight: 600; color: #334155; line-height: 1.6; cursor: pointer; }
-    .submit-btn {
-      display: block;
-      width: 100%;
-      padding: 0.875rem;
-      font-size: 1rem;
-      font-weight: 700;
-      color: white;
-      background: rgb(0,153,204);
-      border: none;
-      border-radius: 9999px;
-      cursor: pointer;
-      margin-top: 1.5rem;
-      transition: opacity 0.2s;
-    }
+    .submit-btn { display: block; width: 100%; padding: 0.875rem; font-size: 1rem; font-weight: 700; color: white; background: rgb(0,153,204); border: none; border-radius: 9999px; cursor: pointer; margin-top: 1.5rem; transition: opacity 0.2s; }
     .submit-btn:hover { opacity: 0.9; }
     .divider { border: none; border-top: 1.5px solid #e2e8f0; margin: 1.75rem 0; }
   </style>
@@ -112,13 +59,13 @@
           <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem; width:auto; border-radius:0.5rem;" />
         </a>
         <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
-          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
-          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
-          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+          <li><a href="index.html" class="hover:text-brand-orange transition-colors">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange transition-colors">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange transition-colors">COMMUNITY</a></li>
           <li><a href="payment.html" aria-current="page" class="underline underline-offset-4">PAYMENT</a></li>
-          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange transition-colors">CONTACT US</a></li>
         </ul>
-        <a href="https://app.asuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600">Login</a>
+        <a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a>
       </nav>
       <div class="border-t border-slate-100 px-4 py-2 md:hidden">
         <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
@@ -135,127 +82,62 @@
       <div class="form-section">
         <h1 class="form-title">aSuggestion Registration Form</h1>
         <p class="form-subtitle">Full Legal Name of Registered User</p>
-
         <form action="#" method="post">
-          <!-- Name -->
           <div class="field-group two-col">
-            <div class="field">
-              <label for="first-name">First Name</label>
-              <input id="first-name" type="text" name="first_name" autocomplete="given-name" required placeholder="First name" />
-            </div>
-            <div class="field">
-              <label for="last-name">Last Name</label>
-              <input id="last-name" type="text" name="last_name" autocomplete="family-name" required placeholder="Last name" />
-            </div>
-          </div>
-
-          <!-- Email & Address -->
-          <div class="field-group">
-            <div class="field">
-              <label for="reg-email">Email of Registered User *</label>
-              <input id="reg-email" type="email" name="email" autocomplete="email" required placeholder="your@email.com" />
-            </div>
+            <div class="field"><label for="first-name">First Name</label><input id="first-name" type="text" name="first_name" autocomplete="given-name" required placeholder="First name" /></div>
+            <div class="field"><label for="last-name">Last Name</label><input id="last-name" type="text" name="last_name" autocomplete="family-name" required placeholder="Last name" /></div>
           </div>
           <div class="field-group">
-            <div class="field">
-              <label for="reg-address">Address (Street, Town, State, Zip) *</label>
-              <input id="reg-address" type="text" name="address" autocomplete="street-address" required placeholder="123 Main St, Town, ST 00000" />
-            </div>
+            <div class="field"><label for="reg-email">Email of Registered User *</label><input id="reg-email" type="email" name="email" autocomplete="email" required placeholder="your@email.com" /></div>
           </div>
-
+          <div class="field-group">
+            <div class="field"><label for="reg-address">Address (Street, Town, State, Zip) *</label><input id="reg-address" type="text" name="address" autocomplete="street-address" required placeholder="123 Main St, Town, ST 00000" /></div>
+          </div>
           <hr class="divider" />
           <p class="section-label">Parent or Guardian (if applicable)</p>
           <p style="font-size:0.875rem; color:#475569; margin-bottom:1rem;">Required if the user is under 18 years of age or has a legal guardian.</p>
-
           <div class="field-group">
-            <div class="field">
-              <label for="guardian-name">Full Legal Name</label>
-              <input id="guardian-name" type="text" name="guardian_name" autocomplete="name" placeholder="Guardian full name" />
-            </div>
+            <div class="field"><label for="guardian-name">Full Legal Name</label><input id="guardian-name" type="text" name="guardian_name" autocomplete="name" placeholder="Guardian full name" /></div>
           </div>
           <div class="field-group two-col">
-            <div class="field">
-              <label for="guardian-phone">Phone — Parent or Guardian</label>
-              <input id="guardian-phone" type="tel" name="guardian_phone" autocomplete="tel" placeholder="(000) 000-0000" />
-            </div>
-            <div class="field">
-              <label for="guardian-email">Email — Parent or Guardian</label>
-              <input id="guardian-email" type="email" name="guardian_email" autocomplete="email" placeholder="guardian@email.com" />
-            </div>
+            <div class="field"><label for="guardian-phone">Phone — Parent or Guardian</label><input id="guardian-phone" type="tel" name="guardian_phone" autocomplete="tel" placeholder="(000) 000-0000" /></div>
+            <div class="field"><label for="guardian-email">Email — Parent or Guardian</label><input id="guardian-email" type="email" name="guardian_email" autocomplete="email" placeholder="guardian@email.com" /></div>
           </div>
-
           <hr class="divider" />
           <p class="section-label">Tell Us About Your Care Team</p>
-
           <div class="field-group">
-            <div class="field">
-              <label for="referred-by">How were you referred to us?</label>
-              <input id="referred-by" type="text" name="referred_by" autocomplete="off" placeholder="e.g. Care provider, friend, online search" />
-            </div>
+            <div class="field"><label for="referred-by">How were you referred to us?</label><input id="referred-by" type="text" name="referred_by" autocomplete="off" placeholder="e.g. Care provider, friend, online search" /></div>
           </div>
           <div class="field-group">
-            <div class="field">
-              <label for="caregiver-name">Name of Your Caregiver, Therapist or Social Worker</label>
-              <input id="caregiver-name" type="text" name="caregiver_name" autocomplete="name" placeholder="Full name" />
-            </div>
+            <div class="field"><label for="caregiver-name">Name of Your Caregiver, Therapist or Social Worker</label><input id="caregiver-name" type="text" name="caregiver_name" autocomplete="name" placeholder="Full name" /></div>
           </div>
           <div class="field-group two-col">
-            <div class="field">
-              <label for="care-email">Email — Care Team</label>
-              <input id="care-email" type="email" name="care_email" autocomplete="email" placeholder="careteam@email.com" />
-            </div>
-            <div class="field">
-              <label for="care-phone">Phone — Care Team</label>
-              <input id="care-phone" type="tel" name="care_phone" autocomplete="tel" placeholder="(000) 000-0000" />
-            </div>
+            <div class="field"><label for="care-email">Email — Care Team</label><input id="care-email" type="email" name="care_email" autocomplete="email" placeholder="careteam@email.com" /></div>
+            <div class="field"><label for="care-phone">Phone — Care Team</label><input id="care-phone" type="tel" name="care_phone" autocomplete="tel" placeholder="(000) 000-0000" /></div>
           </div>
-
-          <!-- Single acknowledgement checkbox -->
           <div class="checkbox-group">
             <input id="contact-care-approved" type="checkbox" name="contact_care" value="approved" required />
-            <label for="contact-care-approved">
-              <strong>Approved</strong> — Please acknowledge that a member of the aSuggestion team can reach out to your Care Team to ensure a safe and predator-free environment.
-            </label>
+            <label for="contact-care-approved"><strong>Approved</strong> — Please acknowledge that a member of the aSuggestion team can reach out to your Care Team to ensure a safe and predator-free environment.</label>
           </div>
-
           <hr class="divider" />
           <p class="section-label">Payment Information</p>
-
-          <!-- Updated payment notice -->
           <div class="note-box">
             <strong>Self-Pay participants will be charged $30 per month.</strong> Your Credit Card will not be charged until your application is accepted. We will contact you with your approval code and then process payment.<br /><br />
             The aSuggestion team can assist individuals and families with Waiver Funding to leverage these funds to offset subscription fees.
           </div>
-
           <div class="field-group">
-            <div class="field">
-              <label for="card-number">Card Number</label>
-              <input id="card-number" type="text" name="card_number" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" autocomplete="cc-number" inputmode="numeric" required />
-            </div>
+            <div class="field"><label for="card-number">Card Number</label><input id="card-number" type="text" name="card_number" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" autocomplete="cc-number" inputmode="numeric" required /></div>
           </div>
           <div class="field-group two-col">
-            <div class="field">
-              <label for="card-expiry">Expiration Date</label>
-              <input id="card-expiry" type="text" name="expiry" placeholder="MM/YY" autocomplete="cc-exp" inputmode="numeric" required />
-            </div>
-            <div class="field">
-              <label for="card-cvv">CVV Code</label>
-              <input id="card-cvv" type="text" name="cvv" maxlength="4" placeholder="CVV" autocomplete="cc-csc" inputmode="numeric" required />
-            </div>
+            <div class="field"><label for="card-expiry">Expiration Date</label><input id="card-expiry" type="text" name="expiry" placeholder="MM/YY" autocomplete="cc-exp" inputmode="numeric" required /></div>
+            <div class="field"><label for="card-cvv">CVV Code</label><input id="card-cvv" type="text" name="cvv" maxlength="4" placeholder="CVV" autocomplete="cc-csc" inputmode="numeric" required /></div>
           </div>
           <div class="field-group">
-            <div class="field">
-              <label for="card-name">Name on Card</label>
-              <input id="card-name" type="text" name="card_name" autocomplete="cc-name" placeholder="As it appears on the card" required />
-            </div>
+            <div class="field"><label for="card-name">Name on Card</label><input id="card-name" type="text" name="card_name" autocomplete="cc-name" placeholder="As it appears on the card" required /></div>
           </div>
           <div class="field-group">
-            <div class="field">
-              <label for="billing-address">Full Billing Address (Street, City, State, Zip)</label>
-              <input id="billing-address" type="text" name="billing_address" autocomplete="street-address" required placeholder="123 Main St, City, ST 00000" />
-            </div>
+            <div class="field"><label for="billing-address">Full Billing Address (Street, City, State, Zip)</label><input id="billing-address" type="text" name="billing_address" autocomplete="street-address" required placeholder="123 Main St, City, ST 00000" /></div>
           </div>
-
           <button class="submit-btn" type="submit">Register</button>
         </form>
       </div>
@@ -263,9 +145,9 @@
 
     <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
       <p class="flex flex-wrap justify-center gap-3">
-        <a href="#" class="underline hover:text-brand-navy">Privacy Policy</a>
+        <a href="privacy.html" class="underline hover:text-brand-navy transition-colors">Privacy Policy</a>
         <span>|</span>
-        <a href="#" class="underline hover:text-brand-navy">Terms of Service</a>
+        <a href="termsofservice.html" class="underline hover:text-brand-navy transition-colors">Terms of Service</a>
       </p>
       <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
     </footer>
