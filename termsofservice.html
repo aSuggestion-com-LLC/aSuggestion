@@ -3,200 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="aSuggestion Terms of Service — the agreement governing your use of the platform." />
+  <meta name="description" content="aSuggestion Terms of Service." />
   <title>aSuggestion – Terms of Service</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              navy: '#01384a',
-              teal: '#00435d',
-              orange: '#ef8110',
-              blue: '#0099CC'
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{navy:'#01384a',teal:'#00435d',orange:'#ef8110',blue:'#0099CC'}}}}}</script>
   <style>
-    html { scroll-behavior: smooth; }
-    .policy-body { font-size: 0.875rem; line-height: 1.8; color: #334155; }
-    .policy-body h2 { font-size: 1rem; font-weight: 700; color: #01384a; margin-top: 2rem; margin-bottom: 0.5rem; padding-bottom: 0.375rem; border-bottom: 1px solid #e2e8f0; }
-    .policy-body h3 { font-size: 0.875rem; font-weight: 700; color: #01384a; margin-top: 1.25rem; margin-bottom: 0.375rem; }
-    .policy-body p { margin-bottom: 0.75rem; }
-    .policy-body ul { margin: 0.5rem 0 0.75rem 1.25rem; list-style: disc; }
-    .policy-body ul li { margin-bottom: 0.25rem; }
-    .policy-body a { color: rgb(0,153,204); text-decoration: underline; }
-    .policy-body a:hover { color: #ef8110; }
-    .policy-body .intro-box { background: #f0f9ff; border-left: 4px solid rgb(0,153,204); border-radius: 0.75rem; padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 0.875rem; color: #334155; line-height: 1.7; }
+    html{scroll-behavior:smooth;}
+    .policy-body{font-size:0.875rem;line-height:1.8;color:#334155;}
+    .policy-body h2{font-size:1rem;font-weight:700;color:#01384a;margin-top:2rem;margin-bottom:0.5rem;padding-bottom:0.375rem;border-bottom:1px solid #e2e8f0;}
+    .policy-body h3{font-size:0.875rem;font-weight:700;color:#01384a;margin-top:1.25rem;margin-bottom:0.375rem;}
+    .policy-body p{margin-bottom:0.75rem;}
+    .policy-body ul{margin:0.5rem 0 0.75rem 1.25rem;list-style:disc;}
+    .policy-body ul li{margin-bottom:0.25rem;}
+    .policy-body a{color:rgb(0,153,204);text-decoration:underline;}
+    .policy-body a:hover{color:#ef8110;}
+    .intro-box{background:#f0f9ff;border-left:4px solid rgb(0,153,204);border-radius:0.75rem;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.875rem;color:#334155;line-height:1.7;}
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-navy focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
-
-  <div class="mx-auto min-h-screen max-w-[1440px] bg-white shadow-sm">
-    <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
-      <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
-        <a href="index.html" class="shrink-0">
-          <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem; width:auto; border-radius:0.5rem;" />
-        </a>
-        <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
-          <li><a href="index.html" class="hover:text-brand-orange transition-colors">HOME</a></li>
-          <li><a href="about.html" class="hover:text-brand-orange transition-colors">ABOUT US</a></li>
-          <li><a href="community.html" class="hover:text-brand-orange transition-colors">COMMUNITY</a></li>
-          <li><a href="payment.html" class="hover:text-brand-orange transition-colors">PAYMENT</a></li>
-          <li><a href="contact.html" class="hover:text-brand-orange transition-colors">CONTACT US</a></li>
-        </ul>
-        <a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a>
-      </nav>
-      <div class="border-t border-slate-100 px-4 py-2 md:hidden">
-        <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
-          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
-          <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
-          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
-          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
-          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
-        </ul>
-      </div>
-    </header>
-
-    <main id="main-content">
-      <section class="border-b border-slate-100 bg-slate-50 px-6 py-10 lg:px-12">
-        <p class="text-sm font-bold uppercase tracking-[0.25em]" style="color:rgb(255,140,50);">Legal</p>
-        <h1 class="mt-2 text-3xl font-extrabold text-brand-navy md:text-4xl">Terms of Service</h1>        
-      </section>
-
-      <section class="px-6 py-12 lg:px-12">
-        <div class="mx-auto max-w-3xl policy-body">
-
-          <div class="intro-box">
-            These Terms of Service ("Agreement") govern your access and use of the aSuggestion website, mobile apps, services, and software (collectively, the "Services"). By accessing or using the Services, you agree to be bound by this Agreement, any Additional Terms, and the <a href="privacy.html">aSuggestion Privacy Policy</a>.
-          </div>
-
-          <h2>1. Acceptance of Terms</h2>
-          <p>By using the Services, you accept and agree to these Terms, whether or not you create an account. If you do not agree, do not use the Services.</p>
-
-          <h2>2. Eligibility</h2>
-          <p>You must be at least 13 years old to use the Services. If you are under 18, your use must be supervised by a parent or legal guardian who agrees to these Terms.</p>
-          <p>By using the Services, you represent that your activities are lawful in your jurisdiction.</p>
-
-          <h2>3. Account Registration and Responsibilities</h2>
-          <p>You may be required to create an account to access certain features. You are responsible for maintaining the confidentiality of your account credentials. You agree to provide accurate and current information.</p>
-          <p>You are responsible for all activity that occurs under your account. You must immediately notify aSuggestion of any unauthorized use. aSuggestion may suspend, restrict, or terminate your account if you violate these Terms, engage in harmful behavior, or for operational reasons.</p>
-
-          <h2>4. User Conduct and Safety</h2>
-          <p>Users must not engage in any behavior that is abusive, unsafe, or harmful, including but not limited to:</p>
-          <ul>
-            <li>Harassment, intimidation, or threats</li>
-            <li>Stalking or predatory behavior</li>
-            <li>Grooming or exploiting minors</li>
-            <li>Manipulation or disruption of discussions</li>
-            <li>Coordinated harassment or targeted attacks</li>
-            <li>Impersonation of others</li>
-            <li>Posting content that incites violence or discrimination</li>
-          </ul>
-          <p>aSuggestion may remove content, suspend accounts, or permanently terminate accounts for violations, at its sole discretion.</p>
-
-          <h2>5. Membership and Account Use</h2>
-          <p>Users may become Members by subscribing or signing up for premium features. Members must comply with these Terms and Additional Terms for premium or specialized services. Membership fees, if applicable, are non-refundable except where required by law.</p>
-
-          <h2>6. Content</h2>
-          <p>You retain ownership of content you post ("User Content"), but grant aSuggestion a worldwide, royalty-free, sublicensable license to use, host, store, reproduce, modify, communicate, publish, and display such content in connection with the Services.</p>
-          <p>You are solely responsible for your User Content. You must not post illegal, infringing, harmful, or unsafe content. aSuggestion may remove, modify, or refuse to host any content at its sole discretion.</p>
-
-          <h2>7. Rights and Restrictions</h2>
-          <p>You may not:</p>
-          <ul>
-            <li>Use the Services for unlawful purposes.</li>
-            <li>Circumvent security, manipulate features, or disrupt service operation.</li>
-            <li>Reverse engineer software or attempt unauthorized access.</li>
-            <li>Sell, distribute, or commercialize the Services or Software without authorization.</li>
-            <li>Use Services to threaten life, property, or personal safety.</li>
-          </ul>
-
-          <h2>8. Additional Terms</h2>
-          <p>Certain Services, features, or software may have Additional Terms. You must accept these to access those features.</p>
-
-          <h2>9. Payment and Fees</h2>
-          <p>You are responsible for all applicable fees for Services you use. Failure to pay may result in suspension or termination of your account. Fees are non-refundable except where legally required.</p>
-
-          <h2>10. Termination</h2>
-          <p>aSuggestion may suspend or terminate your account at any time, with or without cause. You may also terminate your account at any time. Sections relating to liability, indemnity, disputes, and intellectual property survive termination.</p>
-
-          <h2>11. Linking</h2>
-          <h3>11.1 Linked Services</h3>
-          <p>Third-party services may be linked to or accessible via the Services. These are not controlled by aSuggestion, and you use them at your own risk. Third parties may collect, use, or share your data according to their own policies.</p>
-          <h3>11.2 Hyperlinks to aSuggestion</h3>
-          <p>You may link to the Services only in compliance with rules prohibiting use of logos, trademarks, or misleading implications of affiliation. aSuggestion may revoke linking rights at any time.</p>
-
-          <h2>12. Member Disputes</h2>
-          <p>You are responsible for your interactions with other users and third parties. aSuggestion may intervene if necessary but is not obligated to do so.</p>
-
-          <h2>13. Privacy and Communications</h2>
-          <h3>13.1 Privacy Policy</h3>
-          <p>Use of the Services constitutes acceptance of the <a href="privacy.html">aSuggestion Privacy Policy</a>.</p>
-          <h3>13.2 Communications</h3>
-          <p>aSuggestion may send notifications, marketing, and operational communications. You may adjust preferences, but essential account communications may still be sent.</p>
-          <h3>13.3 Electronic Communications</h3>
-          <p>Electronic notices satisfy legal writing requirements. aSuggestion is not obligated to respond to all inquiries.</p>
-          <h3>13.4 Law Enforcement</h3>
-          <p>aSuggestion may disclose information to authorities to comply with legal requests or protect users.</p>
-
-          <h2>14. Disclaimers</h2>
-          <p>The Services are provided "AS IS" and "AS AVAILABLE". aSuggestion disclaims all warranties, express or implied, including accuracy, reliability, security, or fitness for purpose.</p>
-
-          <h2>15. Limitation of Liability</h2>
-          <p>aSuggestion shall not be liable for indirect, incidental, consequential, special, or punitive damages, including loss of profits or data. Liability is capped at the amount paid to aSuggestion during the relevant membership period. Some jurisdictions may not allow these limitations.</p>
-
-          <h2>16. U.S. Export Controls</h2>
-          <p>Software may not be exported in violation of U.S. laws, including sanctions and export regulations.</p>
-
-          <h2>17. Arbitration and No Class Action</h2>
-          <p>Disputes must first attempt resolution through a 60-day written notice and good-faith negotiation. If unresolved, binding arbitration under JAMS rules applies where legally permitted. Arbitration is individual only; no class actions or consolidated claims.</p>
-
-          <h2>18. Other Dispute Resolution</h2>
-          <p>Where arbitration is prohibited, disputes are resolved in courts in Litchfield, Connecticut, with written notice and a 60-day negotiation period.</p>
-
-          <h2>19. Indemnification</h2>
-          <p>You agree to indemnify and hold harmless aSuggestion, its affiliates, officers, and employees from any claims arising from:</p>
-          <ul>
-            <li>your use of Services</li>
-            <li>violation of laws or Terms</li>
-            <li>content you provide</li>
-            <li>infringement of rights</li>
-          </ul>
-          <p>aSuggestion may assume exclusive defense of such claims.</p>
-
-          <h2>20. Wireless Features</h2>
-          <p>Wireless access may involve data or messaging fees from carriers. Location-based services may collect location information, consistent with the Privacy Policy.</p>
-
-          <h2>21. Operation and International Use</h2>
-          <p>Services are controlled from the U.S. Use from other countries is at your own risk, and compliance with local law is your responsibility.</p>
-
-          <h2>22. Software License</h2>
-          <p>aSuggestion grants a limited, non-exclusive, non-transferable license to use software only for accessing Services. You may not reverse engineer, copy, redistribute, or use software for unsafe or illegal purposes. License may be revoked at any time.</p>
-
-          <h2>23. General Terms</h2>
-          <p>This Agreement, along with Additional Terms, constitutes the entire agreement. Failure to enforce provisions does not waive them. Section titles are for convenience only. Severable provisions: if one section is invalid, remaining sections remain effective.</p>
-          <p>To contact aSuggestion regarding these Terms: <a href="mailto:goodideas@asuggestion.com">goodideas@asuggestion.com</a></p>
-
-        </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
-      <p class="flex flex-wrap justify-center gap-3">
-        <a href="privacy.html" class="underline hover:text-brand-navy transition-colors">Privacy Policy</a>
-        <span>|</span>
-        <a href="termsofservice.html" class="underline font-semibold transition-colors" style="color:rgb(0,153,204);">Terms of Service</a>
-      </p>
-      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
-    </footer>
+<div class="mx-auto min-h-screen max-w-[1440px] bg-white shadow-sm">
+<header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
+  <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8">
+    <a href="index.html" class="shrink-0"><img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem;width:auto;border-radius:0.5rem;" /></a>
+    <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
+      <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+      <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
+      <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+      <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+      <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+    </ul>
+    <a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600">Login</a>
+  </nav>
+  <div class="border-t border-slate-100 px-4 py-2 md:hidden">
+    <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
+      <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+      <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
+      <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+      <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+      <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+    </ul>
   </div>
-  <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+</header>
+<main id="main-content">
+  <section class="border-b border-slate-100 bg-slate-50 px-6 py-10 lg:px-12">
+    <p class="text-sm font-bold uppercase tracking-[0.25em]" style="color:rgb(255,140,50);">Legal</p>
+    <h1 class="mt-2 text-3xl font-extrabold text-brand-navy md:text-4xl">Terms of Service</h1>
+  </section>
+  <section class="px-6 py-12 lg:px-12">
+    <div class="mx-auto max-w-3xl policy-body">
+      <div class="intro-box">These Terms of Service ("Agreement") govern your access and use of the aSuggestion website, mobile apps, services, and software (collectively, the "Services"). By accessing or using the Services, you agree to be bound by this Agreement, any Additional Terms, and the <a href="privacypolicy.html">aSuggestion Privacy Policy</a>.</div>
+      <h2>1. Acceptance of Terms</h2><p>By using the Services, you accept and agree to these Terms, whether or not you create an account. If you do not agree, do not use the Services.</p>
+      <h2>2. Eligibility</h2><p>You must be at least 13 years old to use the Services. If you are under 18, your use must be supervised by a parent or legal guardian who agrees to these Terms. By using the Services, you represent that your activities are lawful in your jurisdiction.</p>
+      <h2>3. Account Registration and Responsibilities</h2><p>You may be required to create an account to access certain features. You are responsible for maintaining the confidentiality of your account credentials. You agree to provide accurate and current information. You are responsible for all activity that occurs under your account and must immediately notify aSuggestion of any unauthorized use. aSuggestion may suspend, restrict, or terminate your account if you violate these Terms, engage in harmful behavior, or for operational reasons.</p>
+      <h2>4. User Conduct and Safety</h2>
+      <p>Users must not engage in any behavior that is abusive, unsafe, or harmful, including but not limited to:</p>
+      <ul>
+        <li>Harassment, intimidation, or threats</li><li>Stalking or predatory behavior</li><li>Grooming or exploiting minors</li>
+        <li>Manipulation or disruption of discussions</li><li>Coordinated harassment or targeted attacks</li>
+        <li>Impersonation of others</li><li>Posting content that incites violence or discrimination</li>
+      </ul>
+      <p>aSuggestion may remove content, suspend accounts, or permanently terminate accounts for violations, at its sole discretion.</p>
+      <h2>5. Membership and Account Use</h2><p>Users may become Members by subscribing or signing up for premium features. Membership fees, if applicable, are non-refundable except where required by law.</p>
+      <h2>6. Content</h2><p>You retain ownership of content you post ("User Content"), but grant aSuggestion a worldwide, royalty-free, sublicensable license to use, host, store, reproduce, modify, communicate, publish, and display such content in connection with the Services. You are solely responsible for your User Content and must not post illegal, infringing, harmful, or unsafe content.</p>
+      <h2>7. Rights and Restrictions</h2>
+      <p>You may not:</p>
+      <ul>
+        <li>Use the Services for unlawful purposes.</li><li>Circumvent security, manipulate features, or disrupt service operation.</li>
+        <li>Reverse engineer software or attempt unauthorized access.</li>
+        <li>Sell, distribute, or commercialize the Services or Software without authorization.</li>
+        <li>Use Services to threaten life, property, or personal safety.</li>
+      </ul>
+      <h2>8. Additional Terms</h2><p>Certain Services, features, or software may have Additional Terms. You must accept these to access those features.</p>
+      <h2>9. Payment and Fees</h2><p>You are responsible for all applicable fees for Services you use. Failure to pay may result in suspension or termination of your account. Fees are non-refundable except where legally required.</p>
+      <h2>10. Termination</h2><p>aSuggestion may suspend or terminate your account at any time, with or without cause. You may also terminate your account at any time. Sections relating to liability, indemnity, disputes, and intellectual property survive termination.</p>
+      <h2>11. Linking</h2>
+      <h3>11.1 Linked Services</h3><p>Third-party services may be linked to or accessible via the Services. These are not controlled by aSuggestion, and you use them at your own risk.</p>
+      <h3>11.2 Hyperlinks to aSuggestion</h3><p>You may link to the Services only in compliance with rules prohibiting use of logos, trademarks, or misleading implications of affiliation. aSuggestion may revoke linking rights at any time.</p>
+      <h2>12. Member Disputes</h2><p>You are responsible for your interactions with other users and third parties. aSuggestion may intervene if necessary but is not obligated to do so.</p>
+      <h2>13. Privacy and Communications</h2>
+      <h3>13.1 Privacy Policy</h3><p>Use of the Services constitutes acceptance of the <a href="privacypolicy.html">aSuggestion Privacy Policy</a>.</p>
+      <h3>13.2 Communications</h3><p>aSuggestion may send notifications, marketing, and operational communications. You may adjust preferences, but essential account communications may still be sent.</p>
+      <h3>13.3 Electronic Communications</h3><p>Electronic notices satisfy legal writing requirements. aSuggestion is not obligated to respond to all inquiries.</p>
+      <h3>13.4 Law Enforcement</h3><p>aSuggestion may disclose information to authorities to comply with legal requests or protect users.</p>
+      <h2>14. Disclaimers</h2><p>The Services are provided "AS IS" and "AS AVAILABLE". aSuggestion disclaims all warranties, express or implied, including accuracy, reliability, security, or fitness for purpose.</p>
+      <h2>15. Limitation of Liability</h2><p>aSuggestion shall not be liable for indirect, incidental, consequential, special, or punitive damages, including loss of profits or data. Liability is capped at the amount paid to aSuggestion during the relevant membership period.</p>
+      <h2>16. U.S. Export Controls</h2><p>Software may not be exported in violation of U.S. laws, including sanctions and export regulations.</p>
+      <h2>17. Arbitration and No Class Action</h2><p>Disputes must first attempt resolution through a 60-day written notice and good-faith negotiation. If unresolved, binding arbitration under JAMS rules applies where legally permitted. Arbitration is individual only; no class actions or consolidated claims.</p>
+      <h2>18. Other Dispute Resolution</h2><p>Where arbitration is prohibited, disputes are resolved in courts in Litchfield, Connecticut, with written notice and a 60-day negotiation period.</p>
+      <h2>19. Indemnification</h2>
+      <p>You agree to indemnify and hold harmless aSuggestion, its affiliates, officers, and employees from any claims arising from:</p>
+      <ul><li>your use of Services</li><li>violation of laws or Terms</li><li>content you provide</li><li>infringement of rights</li></ul>
+      <h2>20. Wireless Features</h2><p>Wireless access may involve data or messaging fees from carriers. Location-based services may collect location information, consistent with the Privacy Policy.</p>
+      <h2>21. Operation and International Use</h2><p>Services are controlled from the U.S. Use from other countries is at your own risk, and compliance with local law is your responsibility.</p>
+      <h2>22. Software License</h2><p>aSuggestion grants a limited, non-exclusive, non-transferable license to use software only for accessing Services. You may not reverse engineer, copy, redistribute, or use software for unsafe or illegal purposes. License may be revoked at any time.</p>
+      <h2>23. General Terms</h2><p>This Agreement constitutes the entire agreement. Failure to enforce provisions does not waive them. If one section is invalid, remaining sections remain effective. To contact aSuggestion: <a href="mailto:goodideas@asuggestion.com">goodideas@asuggestion.com</a></p>
+    </div>
+  </section>
+</main>
+<footer class="border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
+  <p class="flex flex-wrap justify-center gap-3">
+    <a href="privacypolicy.html" class="underline hover:text-brand-navy">Privacy Policy</a>
+    <span>|</span>
+    <a href="termsofservice.html" class="underline font-semibold" style="color:rgb(0,153,204);">Terms of Service</a>
+  </p>
+  <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
+</footer>
+</div>
+<script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
