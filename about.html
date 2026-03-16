@@ -22,28 +22,17 @@
     .lift-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .lift-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
 
-    /*
-      Video wrapper strategy:
-      - The Google Drive embed player has its own chrome (title bar, controls)
-        which adds black space top/bottom AND left/right.
-      - We use overflow:hidden + negative margins on all 4 sides to crop it out.
-      - The padding-bottom sets the visible aspect ratio.
-      - We make the iframe larger than the container in all directions,
-        then let overflow:hidden clip the black edges.
-    */
     .video-outer {
       border-radius: 1.5rem;
       overflow: hidden;
       background: #f8fafc;
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-      /* Maintain aspect ratio for the VISIBLE area */
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%;  /* visible height = 42% of width */
+      padding-bottom: 56.25%;
     }
     .video-outer iframe {
       position: absolute;
-      /* Pull iframe outward on all sides to crop Google's black chrome */
       top: -8%;
       left: -5%;
       width: 110%;
@@ -86,19 +75,25 @@
 
     <main id="main-content">
 
-      <!-- Hero -->
+      <!-- Hero — same padding as Home page, object-position targets faces -->
       <section class="relative overflow-hidden text-white">
         <div class="absolute inset-0 rounded-3xl overflow-hidden mx-4 mt-4 lg:mx-8">
-          <img src="assets/images/aSuggestion_Family.jpg" alt="Family reading together" class="h-full w-full object-cover object-top rounded-3xl" />
+          <img src="assets/images/aSuggestion_Family.jpg"
+               alt="Family reading together"
+               class="h-full w-full object-cover rounded-3xl"
+               style="object-position: center 20%;" />
         </div>
         <div class="absolute inset-0 mx-4 mt-4 lg:mx-8 rounded-3xl"
              style="background:linear-gradient(to right,rgba(0,0,0,0.40) 0%,rgba(0,0,0,0.18) 45%,rgba(0,0,0,0.02) 100%);z-index:1;"></div>
         <div class="relative px-6 py-24 lg:px-12 lg:py-32" style="z-index:2;">
-          <p class="mb-4 text-sm font-bold tracking-[0.25em]" style="color:rgb(255,140,50);text-shadow:0 1px 4px rgba(0,0,0,0.6);">About aSuggestion</p>
-          <h1 class="max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl" style="text-shadow:0 2px 8px rgba(0,0,0,0.7);">
+          <p class="mb-4 text-sm font-bold tracking-[0.25em]"
+             style="color:rgb(255,140,50);text-shadow:0 1px 4px rgba(0,0,0,0.6);">About aSuggestion</p>
+          <h1 class="max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl"
+              style="text-shadow:0 2px 8px rgba(0,0,0,0.7);">
             Introducing <span style="color:rgb(255,140,50);">a</span><span style="color:#34b5ec;">Suggestion</span> for wellness, dignity, and care.
           </h1>
-          <p class="mt-6 max-w-2xl text-base font-bold text-white md:text-lg" style="text-shadow:0 1px 6px rgba(0,0,0,0.8);">
+          <p class="mt-6 max-w-2xl text-base font-bold text-white md:text-lg"
+             style="text-shadow:0 1px 6px rgba(0,0,0,0.8);">
             We are building a safer digital space for meaningful conversations around mental and behavioral health, connecting individuals, families, caregivers, professionals, and partner agencies through empathy and trust.
           </p>
         </div>
@@ -116,10 +111,22 @@
               <p class="font-semibold text-brand-navy">That's why we built aSuggestion for Wellness &amp; Care.</p>
               <p>We're not just another social media app. We are a private digital community built from the ground up with one mission: to provide a safe, supportive, and truly helpful ecosystem for you, your family, and your entire care team.</p>
               <ul class="space-y-4 pl-2">
-                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span><span><strong>Safety is Everything:</strong> This is our number one promise. Our community is a "predator-free" zone. We use a powerful combination of trained human moderators and smart AI to ensure every conversation is respectful, constructive, and safe.</span></li>
-                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span><span><strong>A Place for Everyone:</strong> Individuals can join themed "social rooms" to talk about hobbies, life skills, or just hang out. Families and caregivers get their own private areas to connect, share experiences, and learn from each other.</span></li>
-                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span><span><strong>Learn and Grow:</strong> We have libraries packed with videos, guides, and activities to help with daily living skills, emotional regulation, and so much more — with matching content for caregivers too.</span></li>
-                <li class="flex gap-3"><span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span><span><strong>Real Connection:</strong> Our goal is to bridge the gaps when in-person care is hard to find, helping you feel supported anytime, anywhere.</span></li>
+                <li class="flex gap-3">
+                  <span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span>
+                  <span><strong>Safety is Everything:</strong> This is our number one promise. Our community is a "predator-free" zone. We use a powerful combination of trained human moderators and smart AI to ensure every conversation is respectful, constructive, and safe.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span>
+                  <span><strong>A Place for Everyone:</strong> Individuals can join themed "social rooms" to talk about hobbies, life skills, or just hang out. Families and caregivers get their own private areas to connect, share experiences, and learn from each other.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span>
+                  <span><strong>Learn and Grow:</strong> We have libraries packed with videos, guides, and activities to help with daily living skills, emotional regulation, and so much more — with matching content for caregivers too.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span style="color:rgb(0,153,204);" class="font-extrabold shrink-0 mt-1">&#x2022;</span>
+                  <span><strong>Real Connection:</strong> Our goal is to bridge the gaps when in-person care is hard to find, helping you feel supported anytime, anywhere.</span>
+                </li>
               </ul>
             </div>
             <p class="mt-8 text-xl font-semibold text-brand-orange">aSuggestion. Life Improved.</p>
@@ -127,7 +134,9 @@
 
           <div class="grid gap-6">
             <figure class="overflow-hidden rounded-[2rem] bg-white shadow-sm ring-1 ring-slate-100 lift-card">
-              <img src="assets/images/08e70dcb-ae1a-4e71-b6fb-b0607dcb542b.jpeg" alt="aSuggestion community support" class="h-72 w-full object-cover sm:h-80" loading="lazy" />
+              <img src="assets/images/08e70dcb-ae1a-4e71-b6fb-b0607dcb542b.jpeg"
+                   alt="aSuggestion community support"
+                   class="h-72 w-full object-cover sm:h-80" loading="lazy" />
               <figcaption class="px-6 py-4 text-sm font-medium text-slate-600">Support for parents, caregivers, and families navigating complex care journeys.</figcaption>
             </figure>
 
@@ -151,7 +160,6 @@
 
       <!-- Platform shaped by everyday care realities -->
       <section class="bg-slate-50 px-6 py-16 lg:px-12">
-        <!-- Two-column layout: cards left, video right, vertically centered -->
         <div class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
 
           <div>
