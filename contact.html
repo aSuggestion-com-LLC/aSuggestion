@@ -41,12 +41,32 @@
     .btn-clear:hover { background: #e2e8f0; }
     .btn-submit { flex: 2; padding: 0.875rem; font-size: 1rem; font-weight: 700; color: white; background: rgb(0,153,204); border: none; border-radius: 9999px; cursor: pointer; transition: opacity 0.2s; }
     .btn-submit:hover { opacity: 0.9; }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Sending spinner */
+    .spinner {
+      display: inline-block; width: 1rem; height: 1rem;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: white; border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle; margin-right: 0.4rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Error message */
+    .error-box {
+      background: #fff1f2; border: 1.5px solid #fca5a5;
+      border-radius: 0.75rem; padding: 0.875rem 1rem;
+      font-size: 0.9rem; color: #b91c1c; margin-top: 1rem;
+      display: none;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-navy focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
 
   <div class="mx-auto min-h-screen max-w-[1440px] bg-white shadow-sm">
+
     <header class="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
       <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
         <a href="index.html" class="shrink-0">
@@ -76,43 +96,63 @@
       <div class="form-section">
         <h1 class="form-title">Contact Us</h1>
         <p class="form-subtitle">We will be happy to assist you. Please fill in your contact information and let us know how we can help.</p>
-        <form action="thankyou.html" method="get">
+
+        <form id="contact-form">
+
           <div class="field-group">
             <div class="field">
               <label for="topic">Topic To Discuss</label>
-              <input id="topic" type="text" name="topic" autocomplete="off" placeholder="e.g. Membership, Partnership, Support, General Inquiry" />
+              <input id="topic" type="text" name="topic" autocomplete="off"
+                     placeholder="e.g. Membership, Partnership, Support, General Inquiry" />
             </div>
           </div>
+
           <hr class="divider" />
           <p class="section-label">Your Contact Information</p>
+
           <div class="field-group two-col">
             <div class="field">
               <label for="name">Name *</label>
-              <input id="name" type="text" name="name" autocomplete="name" required placeholder="Your full name" />
+              <input id="name" type="text" name="name" autocomplete="name"
+                     required placeholder="Your full name" />
             </div>
             <div class="field">
               <label for="email">Email *</label>
-              <input id="email" type="email" name="email" autocomplete="email" required placeholder="your@email.com" />
+              <input id="email" type="email" name="email" autocomplete="email"
+                     required placeholder="your@email.com" />
             </div>
           </div>
+
           <div class="field-group">
             <div class="field">
               <label for="phone">Phone</label>
-              <input id="phone" type="tel" name="phone" autocomplete="tel" placeholder="(000) 000-0000" />
+              <input id="phone" type="tel" name="phone" autocomplete="tel"
+                     placeholder="(000) 000-0000" />
             </div>
           </div>
+
           <hr class="divider" />
           <p class="section-label">Your Message</p>
+
           <div class="field-group">
             <div class="field">
               <label for="comment">Comment *</label>
-              <textarea id="comment" name="comment" required placeholder="Tell us how we can help you..."></textarea>
+              <textarea id="comment" name="comment" required
+                        placeholder="Tell us how we can help you..."></textarea>
             </div>
           </div>
+
+          <!-- Error message box (hidden by default) -->
+          <div id="error-box" class="error-box">
+            Something went wrong sending your message. Please try again or email us directly at
+            <a href="mailto:ContactUs@aSuggestion.com">ContactUs@aSuggestion.com</a>.
+          </div>
+
           <div class="btn-row">
             <button class="btn-clear" type="reset">Clear</button>
-            <button class="btn-submit" type="submit">Submit</button>
+            <button class="btn-submit" type="submit" id="submit-btn">Submit</button>
           </div>
+
         </form>
       </div>
     </main>
@@ -123,4 +163,52 @@
         <span>|</span>
         <a href="termsofservice.html" class="underline hover:text-brand-navy transition-colors">Terms of Service</a>
       </p>
-      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="/cdn-cgi/l/email-protection#06616969626f626367754667557361616375726f69682865696b" class="underline hover:text-brand-navy"><span class="__cf_email__" data-cfemail="0e6961616a676a6b6f7d4e6f5d7b69696b7d7a676160206d6163">[email&#160;protected]</span
+      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:ContactUs@aSuggestion.com" class="underline hover:text-brand-navy">ContactUs@aSuggestion.com</a></p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // Google Apps Script endpoint
+    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6lUGEPvT6yYUsJ2b6vjQdz6_-UGEn1hKgOnlv_V8nodvDs8B4IDlePLyOrT-ar0uhRQ/exec';
+
+    var form       = document.getElementById('contact-form');
+    var submitBtn  = document.getElementById('submit-btn');
+    var errorBox   = document.getElementById('error-box');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Hide any previous error
+      errorBox.style.display = 'none';
+
+      // Show loading state on button
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span>Sending...';
+
+      // Collect form data
+      var formData = new FormData(form);
+
+      // Send to Google Apps Script
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(response) {
+        // Apps Script returns 200 even on redirect — treat any response as success
+        window.location.href = 'thankyou.html';
+      })
+      .catch(function(error) {
+        // Network error — show error message
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit';
+        errorBox.style.display = 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>
