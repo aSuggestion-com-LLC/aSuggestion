@@ -48,7 +48,7 @@ Place files in `assets/images/` with the asset UUID in the filename (example: `a
 
 ```bash
 ./scripts/sync-figma-assets.sh 
-```
+``` 
 
 The script:
 - normalizes file names to `UUID.ext`
