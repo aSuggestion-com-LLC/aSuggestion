@@ -47,7 +47,7 @@ Default local server: `http://localhost:5173`
 Place files in `assets/images/` with the asset UUID in the filename (example: `a82a50da-00bb-491e-a426-5ceb06d215f2.png`) and run:
 
 ```bash
-./scripts/sync-figma-assets.sh
+./scripts/sync-figma-assets.sh 
 ```
 
 The script:
