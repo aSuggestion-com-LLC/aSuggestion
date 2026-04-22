@@ -1,4 +1,4 @@
-# aSuggestion Landing Page 
+# aSuggestion Landing Page
 
 Static project with multiple HTML pages.
 
