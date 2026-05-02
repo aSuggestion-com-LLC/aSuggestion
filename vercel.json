@@ -1,11 +1,10 @@
 {
   "buildCommand": "npm install && npm run build:css",
   "outputDirectory": ".",
-  "redirects": [
+  "rewrites": [
     {
       "source": "/brochure",
-      "destination": "https://big-pep-59858798.figma.site",
-      "permanent": false
+      "destination": "/brochure.html"
     }
   ]
 }
