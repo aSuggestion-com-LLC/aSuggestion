@@ -296,24 +296,11 @@
     { name:'Grace and Hope for Families', text:'Welcome to Grace & Hope for Families, where we are dedicated to creating a more supportive, inclusive and empowered world for underserved families. We are a compassionate and dynamic organization committed to supporting families impacted by chronic illnesses and/or disabilities.' },
     { name:'Connecting People & Places', text:'At CP&P, we support individuals with developmental disabilities in making connections with the people and places that bring meaning to their lives. We strive to eliminate barriers that hinder inclusion and ensure that every individual has the opportunity to participate fully and authentically in society.' },
     { name:'We Thrive Together', text:'We Thrive Together is an Ohio-based nonprofit organization dedicated to combating social isolation and loneliness by providing accessible opportunities for people to connect and make new friends. The organization hosts over 100 free virtual events each month, ranging from games and educational presentations to arts and crafts, that can be enjoyed by individuals or groups from home, schools, or day centers.' },
-    { name:'Equilibrium Consulting', text:'Whether you\'re just starting out, ready for growth, looking to restructure, looking for innovative ways to stay competitive, or troubleshooting industry related problems, I\'ve got you covered. I excel at learning your organization first and understanding how it functions so a true assessment can be made before taking action. My promise is that I will be there, as questions or issues arise, every step of the way with results-based evidence.' }
+    { name:'Equilibrium Consulting', text:'Whether you\'re just starting out, ready for growth, looking to restructure, looking for innovative ways to stay competitive, or troubleshooting industry related problems, I\'ve got you covered. I excel at learning your organization first and understanding how it functions so a true assessment can be made before taking action. My promise is that I will be there, as questions or issues arise, every step of the way with results-based evidence.' },
+    { name:'Potentia Public Policy', text:'The Potentia Public Policy Institute is an organization dedicated to advancing equitable, evidence-based public policies that strengthen support systems for people with disabilities. They focus on promoting person-centered, results-driven care through independent research, systems-change strategies, and specialized policy analysis. Additionally, they provide training, technical assistance, and proprietary rate-setting methodologies (such as the Brick Method) to public and private organizations delivering home- and community-based services. Ultimately, their work aims to optimize the health, well-being, and overall quality of life for diverse populations across the lifespan.' }
   ];
 
-  var logoFiles = [
-    'assets/images/partners/rolandcenter-logo.png',
-    'assets/images/partners/GoldStar & aSuggestion image vIII.jpg',
-    'assets/images/partners/JCIDDA.jpg',
-    'assets/images/partners/Re-Circuit Electronics.jpg',
-    'assets/images/partners/thearc-alabama.jpg',
-    'assets/images/partners/grace_and_hope_for_families.jpg',
-    'assets/images/partners/connecting_people_and_places.jpg',
-    'assets/images/partners/lillian_northviewhealth_whitebackground.jpg',
-    'assets/images/partners/399604448_835856118332026_3957939439104375314_n.jpg',
-    'assets/images/partners/WeThriveTogether.jpg',
-    'assets/images/partners/equilibrium_consulting.png'
-  ];
-
-  // Direct logo mapping — no fuzzy matching needed, just pair by index
+  // Direct logo mapping — partner name → logo path
   var directLogoMap = {
     'The Roland Center':        'assets/images/partners/rolandcenter-logo.png',
     'GoldStar Learning Options':'assets/images/partners/GoldStar & aSuggestion image vIII.jpg',
@@ -323,7 +310,8 @@
     'Grace and Hope for Families':'assets/images/partners/grace_and_hope_for_families.jpg',
     'Connecting People & Places':'assets/images/partners/connecting_people_and_places.jpg',
     'We Thrive Together':       'assets/images/partners/WeThriveTogether.jpg',
-    'Equilibrium Consulting':   'assets/images/partners/equilibrium_consulting.png'
+    'Equilibrium Consulting':   'assets/images/partners/equilibrium_consulting.png',
+    'Potentia Public Policy':   'assets/images/partners/Potentia_Logo_Rounded.png'
   };
 
   for (var i = 0; i < partners.length; i++) {
