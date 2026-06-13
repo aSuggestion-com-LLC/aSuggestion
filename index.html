@@ -318,6 +318,11 @@
     partners[i].logo = directLogoMap[partners[i].name] || '';
   }
 
+  // Preload all logos so the browser cache is warm before the carousel reaches them
+  partners.forEach(function(p) {
+    if (p.logo) { (new Image()).src = p.logo; }
+  });
+
   var pLogo = document.getElementById('partner-logo');
   var pName = document.getElementById('partner-name');
   var pText = document.getElementById('partner-text');
@@ -347,13 +352,24 @@
     pName.style.opacity = '0';
     pText.style.opacity = '0';
     setTimeout(function() {
+      var newSrc = p.logo || 'assets/images/aSuggestion_Logo.png';
       pName.textContent = p.name;
       pText.textContent = p.text;
-      pLogo.src = p.logo || 'assets/images/aSuggestion_Logo.png';
       pLogo.alt = p.logo ? p.name + ' logo' : 'aSuggestion logo';
-      pLogo.style.opacity = '1';
-      pName.style.opacity = '1';
-      pText.style.opacity = '1';
+
+      var revealed = false;
+      function revealAll() {
+        if (revealed) return;
+        revealed = true;
+        pLogo.style.opacity = '1';
+        pName.style.opacity = '1';
+        pText.style.opacity = '1';
+      }
+
+      pLogo.onload = revealAll;
+      pLogo.onerror = revealAll;
+      pLogo.src = newSrc;
+      if (pLogo.complete) revealAll();
     }, 260);
     for (var i = 0; i < dots.length; i++) {
       dots[i].style.background = (i === pIdx) ? 'rgb(0,153,204)' : 'rgba(0,0,0,0.2)';
