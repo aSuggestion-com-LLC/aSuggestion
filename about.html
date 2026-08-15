@@ -298,34 +298,37 @@
     // ── Platform Tour (tabbed showcase) ────────────────────────────────────
     var tourTabs = [
       { label: 'Social Rooms', track: 'For Individuals & Families', title: 'Vibrant, moderated social rooms',
-        desc: 'Themed spaces where people connect over shared hobbies and interests. Every conversation is reviewed by AI moderation, backed by trained human oversight.',
+        desc: 'Themed spaces where people connect over shared hobbies and interests, from career coaching to friendship advice. Every post and comment is reviewed by AI moderation, backed by trained human oversight, so a room stays a safe place to open up.',
         img: 'assets/images/showcase/showcase-social-rooms.png' },
       { label: 'Life Gamified', track: 'For Individuals & Families', title: 'Daily living skills, made motivating',
-        desc: 'Simple checklists turn everyday routines like hygiene, meals, and chores into small, trackable wins. You compete only against your own best, never anyone else.',
+        desc: 'Simple checklists turn everyday routines like hygiene, meals, and chores into small, trackable wins. Points, streaks, and a personal best keep the momentum going. You compete only against your own history, never anyone else.',
         img: 'assets/images/showcase/showcase-life-gamified.png' },
-      { label: 'AI Cooking', track: 'For Individuals & Families', title: 'Simple, safety-screened recipes on demand',
-        desc: 'Ask for a recipe idea and get something genuinely simple and safe to make. It is a fun, guided way to build real kitchen confidence.',
-        img: 'assets/images/showcase/showcase-ai-cooking.png' },
       { label: 'Activities', track: 'For Individuals & Families', title: 'A full library of activities and curated videos',
-        desc: 'Games, guided crafts, cooking, stress relief, and a curated video library shared by your organization and the wider community, all in one place.',
+        desc: 'Games, guided crafts, cooking, stress relief, and a curated video library shared by your organization and the wider community, all in one place. Built for Day Program hours as much as free time at home.',
         img: 'assets/images/showcase/showcase-activities.png' },
       { label: 'Guided Notes', track: 'For Organizations & Care Teams', title: 'Structured, audit-ready documentation',
-        desc: 'Built for how shift documentation actually happens, with structured fields for service type, presentation, and progress instead of a blank text box.',
+        desc: 'Built for how shift documentation actually happens, with structured fields for service type, presentation, and progress instead of a blank text box. Notes can link directly to a person’s active goals to support billing compliance.',
         img: 'assets/images/showcase/showcase-guided-notes.png' },
+      { label: 'Excursions', track: 'For Organizations & Care Teams', title: 'Community outings, logged as they happen',
+        desc: 'Staff start an excursion, pick a type like a library visit or grocery run, and log it in real time. Every outing rolls into the same activity history as everything else, no separate paperwork required.',
+        img: 'assets/images/showcase/showcase-excursions.png' },
       { label: 'Visit Trac', track: 'For Organizations & Care Teams', title: 'Audit-ready visit documentation',
-        desc: 'Captures the data elements required under the 21st Century Cures Act for a billable visit, without ever storing a home address or protected health information.',
+        desc: 'Captures the data elements required under the 21st Century Cures Act for a billable visit, service type through sign-off, without ever storing a home address or protected health information.',
         img: 'assets/images/showcase/showcase-visit-trac.png' },
+      { label: 'Check-In Chats', track: 'For Organizations & Care Teams', title: 'A live, secure video check-in when it matters',
+        desc: 'A peer-to-peer encrypted video call between a care professional and the person they support, started in a click. Nothing is recorded unless both people consent, so it stays a genuine check-in, not a surveillance tool.',
+        img: 'assets/images/showcase/showcase-checkin-chat.png' },
       { label: 'Wellbeing Dashboard', track: 'For Organizations & Care Teams', title: 'Real-time engagement and wellbeing insight',
-        desc: 'A live view into activity trends across everyone a care team supports, so a quiet drop-off in engagement never goes unnoticed.',
+        desc: 'A live view into activity trends across everyone a care team supports, sortable by most recent activity, so a quiet drop-off in engagement never goes unnoticed until it becomes a bigger problem.',
         img: 'assets/images/showcase/showcase-wellbeing-dashboard.png' },
       { label: 'To-Dos', track: 'For Organizations & Care Teams', title: 'Tasks and reminders, shared across the care team',
-        desc: 'Assign and track to-dos for a specific person, so nothing about their care depends on one staff member remembering it.',
+        desc: 'Assign and track to-dos and reminders for a specific person, with due dates and repeat schedules, so nothing about their care depends on one staff member remembering it.',
         img: 'assets/images/showcase/showcase-admin-todos.png' },
       { label: 'Person Centered Goals', track: 'For Organizations & Care Teams', title: 'Goals that actually get tracked',
-        desc: 'A curated 100-item goal library, checked off per person and grouped by category, with an attainment report showing real progress over time.',
+        desc: 'A curated 100-item goal library grouped into 8 categories, checked off per person, with an attainment report showing real progress over time instead of a goal that gets set once and forgotten.',
         img: 'assets/images/showcase/showcase-admin-goals.png' },
       { label: 'Data Export', track: 'For Organizations & Care Teams', title: 'Complete, de-identified activity exports',
-        desc: 'Export a full activity history for one person or an entire organization as a CSV, with real names replaced by permanent de-identified IDs.',
+        desc: 'Export a full activity history for one person or an entire organization as a CSV that opens in Excel, Numbers, or Google Sheets, with real names replaced by permanent de-identified IDs.',
         img: 'assets/images/showcase/showcase-admin-export.png' }
     ];
 
@@ -342,12 +345,15 @@
       btn.className = 'tour-tab';
       btn.setAttribute('role', 'tab');
       btn.textContent = tab.label;
-      btn.addEventListener('click', function() { showTourTab(idx); });
+      btn.addEventListener('click', function() { showTourTab(idx); resetTourTimer(); });
       tabsWrap.appendChild(btn);
       tabButtons.push(btn);
     });
 
+    var tourIdx = 0;
+
     function showTourTab(idx) {
+      tourIdx = idx;
       var tab = tourTabs[idx];
       tourImage.style.opacity = '0';
       titleText.style.opacity = '0';
@@ -364,6 +370,23 @@
         descText.style.opacity = '1';
       }, 200);
       tabButtons.forEach(function(b, i) { b.classList.toggle('active', i === idx); });
+    }
+
+    // Auto-advance through the tour, ~7s per screen (enough to read the caption).
+    // Pauses forever once a visitor takes control by clicking a tab, and never
+    // runs at all for anyone who has asked their OS/browser to reduce motion.
+    var tourAutoId = null;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function resetTourTimer() {
+      if (tourAutoId) clearInterval(tourAutoId);
+      tourAutoId = null;
+    }
+
+    if (!reduceMotion) {
+      tourAutoId = setInterval(function() {
+        showTourTab((tourIdx + 1) % tourTabs.length);
+      }, 7000);
     }
 
     showTourTab(0);
