@@ -43,19 +43,16 @@
 
     /* ── Platform tour (tabbed showcase) ─────────────────────────────────── */
     .tour-tabs {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      display: flex; flex-wrap: nowrap; gap: 0.5rem;
+      overflow-x: auto; padding-bottom: 0.6rem;
+      -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity;
+      scrollbar-width: thin;
     }
-    @media (max-width: 640px) {
-      .tour-tabs {
-        flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.5rem;
-        -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity;
-      }
-      .tour-tabs .tour-tab { flex-shrink: 0; scroll-snap-align: start; }
-    }
+    .tour-tabs .tour-tab { flex-shrink: 0; scroll-snap-align: start; }
     .tour-tab {
       display: flex; align-items: center; gap: 0.5rem;
-      padding: 0.6rem 1rem; border-radius: 9999px;
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.01em;
+      padding: 0.55rem 0.9rem; border-radius: 9999px;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.01em;
       border: 1.5px solid #e2e8f0; background: white; color: #475569;
       cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
     }
