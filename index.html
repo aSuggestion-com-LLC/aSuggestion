@@ -19,6 +19,8 @@
       transition: transform 0.5s ease, opacity 0.4s ease;
       position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
     }
+    /* Product screenshots crop toward the top-left (nav + page header), not the visual center */
+    .gallery-card img.gallery-img-top { object-position: left top; }
     /* Default: NO blue hue — just a natural dark gradient at the bottom for readability */
     .gallery-overlay {
       position: absolute; inset: 0;
@@ -85,7 +87,7 @@
           <li><a href="index.html" aria-current="page" class="underline underline-offset-4">HOME</a></li>
           <li><a href="about.html" class="hover:text-brand-orange transition-colors">ABOUT US</a></li>
           <li><a href="community.html" class="hover:text-brand-orange transition-colors">COMMUNITY</a></li>
-          <li><a href="payment.html" class="hover:text-brand-orange transition-colors">PAYMENT</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange transition-colors">REGISTER</a></li>
           <li><a href="contact.html" class="hover:text-brand-orange transition-colors">CONTACT US</a></li>
         </ul>
         <a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a>
@@ -95,7 +97,7 @@
           <li><a href="index.html" aria-current="page" class="underline underline-offset-4">HOME</a></li>
           <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
           <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
-          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">REGISTER</a></li>
           <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
         </ul>
       </div>
@@ -122,10 +124,11 @@
             <span class="block">navigate the world with confidence</span>
           </h1>
           <p class="mt-6 max-w-2xl text-base font-bold text-white md:text-lg" style="text-shadow:0 1px 6px rgba(0,0,0,0.8);">
-            A safe and supportive space for individuals, families, caregivers, and partner agencies to learn, connect, and grow.
+            A safe and supportive space for individuals, families, and caregivers to learn, connect, and grow — with the audit-ready tools care teams and agencies need, built right in.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
             <a href="community.html" class="rounded-full bg-white px-6 py-3 text-sm font-bold text-brand-navy hover:bg-slate-100 transition-colors">Explore Community</a>
+            <a href="#for-organizations" class="rounded-full bg-brand-orange px-6 py-3 text-sm font-bold text-white hover:bg-orange-600 transition-colors">For Organizations</a>
             <a href="about.html" class="rounded-full border border-white/70 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-colors">Learn More</a>
           </div>
         </div>
@@ -144,6 +147,61 @@
           <p>Behind the scenes, our AI and moderation tools work constantly to maintain a safe environment, providing gentle guidance and structure that helps everyone stay supported and engaged.</p>
         </div>
         <p class="mt-6 text-xl font-semibold text-brand-orange">aSuggestion is more than a platform. It is a community that helps people learn, connect, and grow together.</p>
+      </section>
+
+      <!-- For Organizations & Care Teams -->
+      <section id="for-organizations" class="px-6 py-16 lg:px-12" aria-label="For organizations and care teams">
+        <div class="mb-8">
+          <p class="text-sm font-bold uppercase tracking-[0.25em]" style="color:rgb(0,153,204);">For Organizations &amp; Care Teams</p>
+          <h2 class="mt-2 text-3xl font-extrabold text-brand-navy md:text-4xl">The audit-ready toolset your care team already needs</h2>
+          <p class="mt-4 max-w-3xl text-base leading-8 text-slate-600">aSuggestion isn't only a community for the people you support — it's a standalone set of field tools for the staff who support them, built alongside your existing systems, not in place of them.</p>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0">
+            <img class="gallery-img-top" src="assets/images/showcase/showcase-guided-notes.png" alt="Guided Notes" loading="lazy" />
+            <div class="gallery-overlay">
+              <p class="gallery-title">Guided Notes</p>
+              <p class="gallery-desc">Structured, audit-ready service documentation built for real shift workflows — not a blank text box.</p>
+            </div>
+          </div>
+
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0">
+            <img class="gallery-img-top" src="assets/images/showcase/showcase-visit-trac.png" alt="Visit Trac" loading="lazy" />
+            <div class="gallery-overlay">
+              <p class="gallery-title">Visit Trac</p>
+              <p class="gallery-desc">Audit-ready visit documentation capturing the data elements required under the 21st Century Cures Act — no addresses or PHI stored.</p>
+            </div>
+          </div>
+
+          <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0">
+            <img class="gallery-img-top" src="assets/images/showcase/showcase-wellbeing-dashboard.png" alt="Wellbeing Dashboard" loading="lazy" />
+            <div class="gallery-overlay">
+              <p class="gallery-title">Wellbeing Dashboard</p>
+              <p class="gallery-desc">A real-time view into engagement and wellbeing trends across everyone your team supports.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-[1.5rem] bg-white p-5 shadow-sm ring-1 ring-slate-100 lift-card">
+            <h3 class="text-base font-bold text-brand-navy">Person Centered Goals</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">A curated 100-item goal library with automated evidence-matching, so progress toward real goals is visible, not just assumed.</p>
+          </div>
+          <div class="rounded-[1.5rem] bg-white p-5 shadow-sm ring-1 ring-slate-100 lift-card">
+            <h3 class="text-base font-bold text-brand-navy">Excursion Tracking</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">Log community outings, calculate mileage automatically, and publish group photos with participant-level consent built in.</p>
+          </div>
+          <div class="rounded-[1.5rem] bg-white p-5 shadow-sm ring-1 ring-slate-100 lift-card">
+            <h3 class="text-base font-bold text-brand-navy">De-Identified Exports</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">CSV and PDF exports built around permanent, de-identified IDs — never real names — from day one.</p>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <a href="contact.html" class="inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-extrabold text-white transition hover:opacity-90" style="background:rgb(0,153,204);">Talk to Us About Your Agency</a>
+        </div>
       </section>
 
       <!-- Community Highlights -->
@@ -165,8 +223,8 @@
           <div class="gallery-card h-64 shadow-sm lift-card" tabindex="0">
             <img src="assets/images/49e19b56-7909-431d-bdd9-ebecd9a38a5a.jpeg" alt="Learning and Skill Building" loading="lazy" />
             <div class="gallery-overlay">
-              <p class="gallery-title">Learning and Skill Building</p>
-              <p class="gallery-desc">Access educational videos, activities, and guided lessons that promote independence, confidence, and everyday life skills.</p>
+              <p class="gallery-title">Interactive Learning, Not Just Videos</p>
+              <p class="gallery-desc">AI-guided cooking, storytelling, and coloring turn daily living skills into active, hands-on practice — not passive watching.</p>
             </div>
           </div>
 
@@ -215,7 +273,7 @@
               <div>
                 <p class="text-sm font-extrabold uppercase tracking-[0.25em]" style="color:#000;">Partner Agencies</p>
                 <h2 id="partner-agencies-title" class="mt-2 text-3xl font-extrabold md:text-4xl" style="color:#000;">Organizations building better support systems</h2>
-                <p class="mt-4 max-w-3xl text-sm font-bold leading-7 sm:text-base" style="color:#000;">Explore the agencies and organizations partnering with aSuggestion.</p>
+                <p class="mt-4 max-w-3xl text-sm font-bold leading-7 sm:text-base" style="color:#000;">The organizations already putting these tools to work, every day.</p>
               </div>
               <div class="flex flex-wrap gap-3">
                 <button type="button" id="partner-prev"

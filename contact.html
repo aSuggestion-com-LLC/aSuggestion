@@ -16,7 +16,7 @@
     .field-group.two-col { grid-template-columns: 1fr 1fr; }
     @media (max-width: 640px) { .field-group.two-col { grid-template-columns: 1fr; } }
     .field label { display: block; font-size: 0.875rem; font-weight: 600; color: #334155; margin-bottom: 0.375rem; }
-    .field input, .field textarea {
+    .field input, .field textarea, .field select {
       width: 100%; padding: 0.75rem 1rem; font-size: 1rem;
       border: 1.5px solid #cbd5e1; border-radius: 0.75rem;
       background: #f8fafc; color: #1e293b;
@@ -66,7 +66,7 @@
           <li><a href="index.html" class="hover:text-brand-orange transition-colors">HOME</a></li>
           <li><a href="about.html" class="hover:text-brand-orange transition-colors">ABOUT US</a></li>
           <li><a href="community.html" class="hover:text-brand-orange transition-colors">COMMUNITY</a></li>
-          <li><a href="payment.html" class="hover:text-brand-orange transition-colors">PAYMENT</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange transition-colors">REGISTER</a></li>
           <li><a href="contact.html" aria-current="page" class="underline underline-offset-4">CONTACT US</a></li>
         </ul>
         <a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a>
@@ -76,7 +76,7 @@
           <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
           <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
           <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
-          <li><a href="payment.html" class="hover:text-brand-orange">PAYMENT</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">REGISTER</a></li>
           <li><a href="contact.html" aria-current="page" class="underline underline-offset-4">CONTACT US</a></li>
         </ul>
       </div>
@@ -92,8 +92,14 @@
           <div class="field-group">
             <div class="field">
               <label for="topic">Topic To Discuss</label>
-              <input id="topic" type="text" name="topic" autocomplete="off"
-                     placeholder="e.g. Membership, Partnership, Support, General Inquiry" />
+              <select id="topic" name="topic">
+                <option value="">Select a topic...</option>
+                <option value="Partnership / Agency Inquiry">Partnership / Agency Inquiry</option>
+                <option value="Individual Membership">Individual Membership</option>
+                <option value="Support">Support</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
           </div>
 
