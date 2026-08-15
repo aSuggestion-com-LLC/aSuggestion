@@ -12,8 +12,46 @@
     .lift-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .lift-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
 
+    /* ── Mobile experience phone frames ──────────────────────────────────── */
+    .phone-frame {
+      background: #01384a;
+      border-radius: 2.5rem;
+      padding: 0.6rem;
+      box-shadow: 0 20px 40px rgba(1,56,74,0.25);
+      width: 260px;
+    }
+    .phone-frame .phone-screen {
+      border-radius: 1.9rem;
+      overflow: hidden;
+      background: white;
+      position: relative;
+    }
+    .phone-frame .phone-screen img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .phone-frame .phone-notch {
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 40%; height: 1.1rem;
+      background: #01384a;
+      border-bottom-left-radius: 0.9rem;
+      border-bottom-right-radius: 0.9rem;
+      z-index: 2;
+    }
+
     /* ── Platform tour (tabbed showcase) ─────────────────────────────────── */
-    .tour-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tour-tabs {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    @media (max-width: 640px) {
+      .tour-tabs {
+        flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity;
+      }
+      .tour-tabs .tour-tab { flex-shrink: 0; scroll-snap-align: start; }
+    }
     .tour-tab {
       display: flex; align-items: center; gap: 0.5rem;
       padding: 0.6rem 1rem; border-radius: 9999px;
@@ -131,7 +169,7 @@
             <p class="mt-8 text-xl font-semibold text-brand-orange">aSuggestion. Life Improved.</p>
           </article>
 
-          <div class="grid gap-6">
+          <div class="grid gap-6 lg:sticky lg:top-24 lg:self-start">
             <figure class="overflow-hidden rounded-[2rem] bg-white shadow-sm ring-1 ring-slate-100 lift-card">
               <img src="assets/images/08e70dcb-ae1a-4e71-b6fb-b0607dcb542b.jpeg"
                    alt="aSuggestion community support"
@@ -215,6 +253,29 @@
             <p id="tour-tab-label" class="text-xs font-extrabold uppercase tracking-[0.25em]" style="color:rgb(0,153,204);"></p>
             <h3 id="tour-title-text" class="mt-2 text-2xl font-extrabold text-brand-navy tour-caption"></h3>
             <p id="tour-desc" class="mt-3 text-base leading-8 text-slate-700 tour-caption"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mobile Experience -->
+      <section class="bg-slate-50 px-6 py-16 lg:px-12">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold uppercase tracking-[0.25em]" style="color:rgb(0,153,204);">On The Go</p>
+          <h2 class="mt-3 text-3xl font-extrabold text-brand-navy md:text-4xl">The same experience, right in your pocket</h2>
+          <p class="mt-4 text-base leading-8 text-slate-600">No separate app to install. The full experience, including Social Rooms and Life Gamified, works right in your phone's browser.</p>
+        </div>
+        <div class="mt-10 flex flex-wrap items-start justify-center gap-10">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <img src="assets/images/showcase/mobile-feed.png" alt="aSuggestion feed on mobile" loading="lazy" />
+            </div>
+          </div>
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <img src="assets/images/showcase/mobile-life-gamified.png" alt="Life Gamified on mobile" loading="lazy" />
+            </div>
           </div>
         </div>
       </section>
