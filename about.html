@@ -387,6 +387,20 @@
     }
 
     showTourTab(0);
+
+    // Re-jump to #tour after full page load (images finish loading above it and
+    // shift the layout, so the browser's initial native anchor-jump can land short
+    // of the "See It In Action" card by the time everything has settled).
+    if (window.location.hash === '#tour') {
+      var scrollToTour = function() {
+        var el = document.getElementById('tour');
+        if (el) el.scrollIntoView();
+      };
+      window.addEventListener('load', function() {
+        scrollToTour();
+        setTimeout(scrollToTour, 350);
+      });
+    }
   </script>
 </body>
 </html>
