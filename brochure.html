@@ -3,23 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>aSuggestion - Online Brochure</title>
+  <title>aSuggestion - Digital Health Overlay Brochure</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; overflow: hidden; }
-    iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: none;
+    html, body { height: 100%; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    body { display: flex; flex-direction: column; background: #f1f5f9; }
+    .bar {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 10px 16px; background: #0f2a4a; color: #fff;
     }
+    .bar a { color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .bar .dl {
+      border: 2px solid #fff; border-radius: 999px; padding: 6px 16px; white-space: nowrap;
+    }
+    .bar .dl:hover, .bar .dl:focus { background: #fff; color: #0f2a4a; }
+    .viewer { flex: 1; min-height: 0; overflow-y: auto; padding: 8px; text-align: center; }
+    .viewer canvas { display: block; margin: 0 auto 12px; box-shadow: 0 1px 6px rgba(0,0,0,.25); background: #fff; max-width: 100%; height: auto; }
+    .viewer iframe, .viewer object { display: block; width: 100%; height: 100%; border: none; }
+    .fallback { padding: 32px 16px; text-align: center; font-size: 16px; color: #0f2a4a; }
+    .fallback a { color: #0f2a4a; font-weight: 700; }
   </style>
 </head>
 <body>
-  <iframe
-    src="https://big-pep-59858798.figma.site"
-    title="aSuggestion Online Brochure"
-    allowfullscreen
-  ></iframe>
+  <div class="bar">
+    <a href="/">&larr; aSuggestion.com</a>
+    <a class="dl" href="/assets/brochure.pdf" download="aSuggestion-Digital-Health-Overlay-Brochure.pdf">&#11015; Download PDF</a>
+  </div>
+  <div class="viewer" id="viewer">
+    <p class="fallback" id="status">Loading the brochure&hellip;</p>
+  </div>
+  <noscript><p class="fallback"><a href="/assets/brochure.pdf" download="aSuggestion-Digital-Health-Overlay-Brochure.pdf">Download the PDF</a> to read the brochure.</p></noscript>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    (function () {
+      var viewer = document.getElementById('viewer');
+      var status = document.getElementById('status');
+      function fail() {
+        viewer.innerHTML = '<p class="fallback">We couldn\'t show the brochure here. ' +
+          '<a href="/assets/brochure.pdf" download="aSuggestion-Digital-Health-Overlay-Brochure.pdf">Download the PDF</a> to read it.</p>';
+      }
+      if (!window.pdfjsLib) { fail(); return; }
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      pdfjsLib.getDocument('/assets/brochure.pdf').promise.then(function (pdf) {
+        status.remove();
+        var chain = Promise.resolve();
+        for (var n = 1; n <= pdf.numPages; n++) {
+          (function (num) {
+            chain = chain.then(function () { return pdf.getPage(num); }).then(function (page) {
+              var width = Math.min(viewer.clientWidth - 16, 1000);
+              var base = page.getViewport({ scale: 1 });
+              var scale = width / base.width;
+              var vp = page.getViewport({ scale: scale * (window.devicePixelRatio || 1) });
+              var canvas = document.createElement('canvas');
+              canvas.width = vp.width; canvas.height = vp.height;
+              canvas.style.width = width + 'px';
+              canvas.setAttribute('role', 'img');
+              canvas.setAttribute('aria-label', 'Brochure page ' + num + ' of ' + pdf.numPages);
+              viewer.appendChild(canvas);
+              return page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+            });
+          })(n);
+        }
+        return chain;
+      }).catch(fail);
+    })();
+  </script>
 </body>
 </html>
