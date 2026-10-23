@@ -56,6 +56,12 @@
       border: 1.5px solid #e2e8f0; background: white; color: #475569;
       cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
     }
+    /* On wider screens the 11 pills wrap onto a second row instead of scrolling sideways. */
+    @media (min-width: 768px) {
+      .tour-tabs { flex-wrap: wrap; overflow-x: visible; padding-bottom: 0; gap: 0.45rem; }
+      .tour-tabs .tour-tab { flex-shrink: 1; }
+      .tour-tab { padding: 0.5rem 0.8rem; }
+    }
     .tour-tab:hover { border-color: rgb(0,153,204); color: rgb(0,153,204); }
     .tour-tab.active {
       background: rgb(0,153,204); border-color: rgb(0,153,204); color: white;
