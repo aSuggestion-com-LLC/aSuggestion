@@ -64,16 +64,18 @@
         </a>
         <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
           <li><a href="index.html" class="hover:text-brand-orange transition-colors">HOME</a></li>
+          <li><a href="index.html#agencies" class="hover:text-brand-orange transition-colors">FOR AGENCIES</a></li>
           <li><a href="about.html" class="hover:text-brand-orange transition-colors">ABOUT US</a></li>
           <li><a href="community.html" class="hover:text-brand-orange transition-colors">COMMUNITY</a></li>
           <li><a href="payment.html" class="hover:text-brand-orange transition-colors">REGISTER</a></li>
           <li><a href="contact.html" aria-current="page" class="underline underline-offset-4">CONTACT US</a></li>
         </ul>
-        <a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a>
+        <div class="flex items-center gap-2"><a href="contact.html?topic=agency" class="hidden rounded-full border-2 border-brand-orange px-4 py-2 text-sm font-semibold text-brand-orange hover:bg-orange-50 transition-colors sm:inline-block">Request a Demo</a><a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a></div>
       </nav>
       <div class="border-t border-slate-100 px-4 py-2 md:hidden">
         <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
           <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+          <li><a href="index.html#agencies" class="hover:text-brand-orange">FOR AGENCIES</a></li>
           <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
           <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
           <li><a href="payment.html" class="hover:text-brand-orange">REGISTER</a></li>
@@ -84,8 +86,8 @@
 
     <main id="main-content">
       <div class="form-section">
-        <h1 class="form-title">Contact Us</h1>
-        <p class="form-subtitle">We will be happy to assist you. Please fill in your contact information and let us know how we can help.</p>
+        <h1 class="form-title">Talk to Us</h1>
+        <p class="form-subtitle">Agencies: tell us about your program and we will set up a 30-minute walkthrough or a private pilot. Individuals and families are welcome too.</p>
 
         <form id="contact-form">
 
@@ -93,8 +95,7 @@
             <div class="field">
               <label for="topic">Topic To Discuss</label>
               <select id="topic" name="topic">
-                <option value="">Select a topic...</option>
-                <option value="Partnership / Agency Inquiry">Partnership / Agency Inquiry</option>
+                <option value="Partnership / Agency Inquiry" selected>Agency or Day Program: demo / pilot</option>
                 <option value="Individual Membership">Individual Membership</option>
                 <option value="Support">Support</option>
                 <option value="General Inquiry">General Inquiry</option>
@@ -128,6 +129,37 @@
           </div>
 
           <hr class="divider" />
+          <p class="section-label">About Your Organization (optional)</p>
+
+          <div class="field-group two-col">
+            <div class="field">
+              <label for="organization">Organization</label>
+              <input id="organization" type="text" name="organization" autocomplete="organization" placeholder="Agency or program name" />
+            </div>
+            <div class="field">
+              <label for="role">Your role</label>
+              <input id="role" type="text" name="role" autocomplete="organization-title" placeholder="e.g. Executive Director" />
+            </div>
+          </div>
+
+          <div class="field-group two-col">
+            <div class="field">
+              <label for="state">State</label>
+              <input id="state" type="text" name="state" autocomplete="address-level1" placeholder="e.g. Ohio" />
+            </div>
+            <div class="field">
+              <label for="people-served">People served</label>
+              <select id="people-served" name="people_served">
+                <option value="">Select a range...</option>
+                <option value="1-25">1-25</option>
+                <option value="26-100">26-100</option>
+                <option value="101-500">101-500</option>
+                <option value="500+">500+</option>
+              </select>
+            </div>
+          </div>
+
+          <hr class="divider" />
           <p class="section-label">Your Message</p>
 
           <div class="field-group">
@@ -141,7 +173,7 @@
           <!-- Error message box (hidden by default) -->
           <div id="error-box" class="error-box">
             Something went wrong sending your message. Please try again or email us directly at
-            <a href="mailto:ContactUs@aSuggestion.com">ContactUs@aSuggestion.com</a>.
+            <a href="mailto:goodideas@aSuggestion.com">goodideas@aSuggestion.com</a>.
           </div>
 
           <div class="btn-row">
@@ -159,7 +191,7 @@
         <span>|</span>
         <a href="termsofservice.html" class="underline hover:text-brand-navy transition-colors">Terms of Service</a>
       </p>
-      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:ContactUs@aSuggestion.com" class="underline hover:text-brand-navy">ContactUs@aSuggestion.com</a></p>
+      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | (860) 858-IDEA | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
     </footer>
 
   </div>
@@ -171,6 +203,11 @@
     // Google Apps Script endpoint
     var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6lUGEPvT6yYUsJ2b6vjQdz6_-UGEn1hKgOnlv_V8nodvDs8B4IDlePLyOrT-ar0uhRQ/exec';
     
+    // Pre-select the topic when linked as contact.html?topic=agency
+    if (new URLSearchParams(window.location.search).get('topic') === 'agency') {
+      document.getElementById('topic').value = 'Partnership / Agency Inquiry';
+    }
+
     var form       = document.getElementById('contact-form');
     var submitBtn  = document.getElementById('submit-btn');
     var errorBox   = document.getElementById('error-box');
@@ -187,6 +224,18 @@
 
       // Collect form data
       var formData = new FormData(form);
+
+      // The optional organization details travel inside the message text,
+      // so they reach the inbox whatever the form backend expects.
+      var details = [];
+      [['organization','Organization'],['role','Role'],['state','State'],['people_served','People served']].forEach(function(f) {
+        var v = (formData.get(f[0]) || '').toString().trim();
+        if (v) { details.push(f[1] + ': ' + v); }
+        formData.delete(f[0]);
+      });
+      if (details.length) {
+        formData.set('comment', formData.get('comment') + '\n\n--\n' + details.join('\n'));
+      }
 
       // Send to Google Apps Script
       fetch(SCRIPT_URL, {

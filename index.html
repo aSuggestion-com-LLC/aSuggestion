@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="aSuggestion supports individuals, families, caregivers, and agencies with a safe wellness community." />
+  <meta name="description" content="aSuggestion is the Digital Health Overlay for autism and I/DD agencies: audit-ready documentation, billable Day Program activities, and a safe, moderated community for the people you support." />
   <link rel="icon" type="image/png" href="/assets/images/favicon.png?v=4"> 
   <title>aSuggestion - Home</title>
   <link rel="stylesheet" href="/assets/css/tailwind.css">
@@ -85,16 +85,18 @@
         </a>
         <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
           <li><a href="index.html" aria-current="page" class="underline underline-offset-4">HOME</a></li>
+          <li><a href="index.html#agencies" class="hover:text-brand-orange transition-colors">FOR AGENCIES</a></li>
           <li><a href="about.html" class="hover:text-brand-orange transition-colors">ABOUT US</a></li>
           <li><a href="community.html" class="hover:text-brand-orange transition-colors">COMMUNITY</a></li>
           <li><a href="payment.html" class="hover:text-brand-orange transition-colors">REGISTER</a></li>
           <li><a href="contact.html" class="hover:text-brand-orange transition-colors">CONTACT US</a></li>
         </ul>
-        <a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a>
+        <div class="flex items-center gap-2"><a href="contact.html?topic=agency" class="hidden rounded-full border-2 border-brand-orange px-4 py-2 text-sm font-semibold text-brand-orange hover:bg-orange-50 transition-colors sm:inline-block">Request a Demo</a><a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a></div>
       </nav>
       <div class="border-t border-slate-100 px-4 py-2 md:hidden">
         <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
           <li><a href="index.html" aria-current="page" class="underline underline-offset-4">HOME</a></li>
+          <li><a href="index.html#agencies" class="hover:text-brand-orange">FOR AGENCIES</a></li>
           <li><a href="about.html" class="hover:text-brand-orange">ABOUT US</a></li>
           <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
           <li><a href="payment.html" class="hover:text-brand-orange">REGISTER</a></li>
@@ -114,47 +116,72 @@
              style="background:linear-gradient(to right,rgba(0,0,0,0.40) 0%,rgba(0,0,0,0.18) 45%,rgba(0,0,0,0.02) 100%);z-index:1;"></div>
         <div class="relative px-6 py-24 lg:px-12 lg:py-32" style="z-index:2;">
           <p id="hero-label" class="mb-4 font-bold tracking-[0.25em]"
-             style="font-size:1.25rem;color:rgb(255,140,50);text-shadow:0 1px 4px rgba(0,0,0,0.6);">aSuggestion</p>
+             style="font-size:1.25rem;color:rgb(255,140,50);text-shadow:0 1px 4px rgba(0,0,0,0.6);">For Autism &amp; I/DD Agencies</p>
           <h1 class="max-w-5xl text-4xl font-extrabold leading-[1.15] md:text-6xl"
               style="text-shadow:0 2px 8px rgba(0,0,0,0.7);">
-            <span class="block">Helping people with</span>
-            <span class="block min-h-[2.3em] sm:min-h-[1.15em] sm:whitespace-nowrap overflow-visible" style="padding-top:0.12em;">
-              <span id="condition-word" style="color:rgb(255,140,50);transition:opacity 0.25s ease;display:inline-block;">Autism Spectrum Disorder</span>
-            </span>
-            <span class="block">navigate the world with confidence</span>
+            The <span style="color:rgb(255,140,50);">Digital Health Overlay</span> for Autism and I/DD services
           </h1>
           <p class="mt-6 max-w-2xl text-base font-bold text-white md:text-lg" style="text-shadow:0 1px 6px rgba(0,0,0,0.8);">
-            A safe and supportive space for individuals, families, and caregivers to learn, connect, and grow, with the audit-ready tools care teams and agencies need, built right in.
+            Engage the people you support between visits. Equip your care team with a treasure chest of digital tools. Turn everyday engagement into billable events. Works alongside your EHR, and you pay only for engaged users.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
-            <a href="community.html" class="rounded-full bg-white px-6 py-3 text-sm font-bold text-brand-navy hover:bg-slate-100 transition-colors">Explore Community</a>
-            <a href="#for-organizations" class="rounded-full bg-brand-orange px-6 py-3 text-sm font-bold text-white hover:bg-orange-600 transition-colors">For Organizations</a>
-            <a href="about.html" class="rounded-full border border-white/70 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-colors">Learn More</a>
+            <a href="contact.html?topic=agency" class="rounded-full bg-brand-orange px-6 py-3 text-sm font-bold text-white hover:bg-orange-600 transition-colors">Book a 30-Minute Walkthrough</a>
+            <a href="#agencies" class="rounded-full bg-white px-6 py-3 text-sm font-bold text-brand-navy hover:bg-slate-100 transition-colors">See the Agency Tools</a>
+            <a href="payment.html" class="rounded-full border border-white/70 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-colors">Individual or family? Join here</a>
           </div>
         </div>
       </section>
 
       <!-- Welcome -->
       <section class="px-6 py-16 lg:px-12">
-        <h2 class="text-3xl font-extrabold text-brand-navy md:text-4xl">
+        <p class="text-sm font-bold uppercase tracking-[0.25em]" style="color:rgb(0,153,204);">The Challenge</p>
+        <h2 class="mt-2 text-3xl font-extrabold text-brand-navy md:text-4xl">
+          Your mission runs on people. Your people are stretched thin.
+        </h2>
+        <p class="mt-4 max-w-3xl text-lg leading-8 text-slate-700">Fewer hands, more documentation, and the people you support spending long stretches between visits with little structure or connection.</p>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2">
+          <div class="rounded-[1.5rem] bg-slate-50 p-6 ring-1 ring-slate-100">
+            <p class="text-5xl font-extrabold text-brand-orange">37.1%</p>
+            <p class="mt-2 text-base font-semibold text-slate-700">Annual turnover among Direct Support Professionals</p>
+          </div>
+          <div class="rounded-[1.5rem] bg-slate-50 p-6 ring-1 ring-slate-100">
+            <p class="text-5xl font-extrabold text-brand-orange">40.7%</p>
+            <p class="mt-2 text-base font-semibold text-slate-700">Of DSPs who leave do so within their first six months</p>
+          </div>
+        </div>
+        <p class="mt-3 text-xs text-slate-500">Source: National Core Indicators (NCI-IDD), State of the Workforce Survey, 2024</p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-[1.25rem] p-5 ring-1 ring-slate-100"><h3 class="text-base font-bold text-brand-navy">Gaps between visits</h3><p class="mt-2 text-sm leading-6 text-slate-600">Engagement, routine and connection drop off when staff are not in the room.</p></div>
+          <div class="rounded-[1.25rem] p-5 ring-1 ring-slate-100"><h3 class="text-base font-bold text-brand-navy">Operational distractions</h3><p class="mt-2 text-sm leading-6 text-slate-600">Notes, goal evidence and visit verification take time away from direct support.</p></div>
+          <div class="rounded-[1.25rem] p-5 ring-1 ring-slate-100"><h3 class="text-base font-bold text-brand-navy">Disconnected tools</h3><p class="mt-2 text-sm leading-6 text-slate-600">Your EHR holds the record, but not the day-to-day engagement that proves progress.</p></div>
+          <div class="rounded-[1.25rem] p-5 ring-1 ring-slate-100"><h3 class="text-base font-bold text-brand-navy">Audit exposure</h3><p class="mt-2 text-sm leading-6 text-slate-600">Billable events that are not captured cleanly are revenue at risk.</p></div>
+        </div>
+
+        <h2 class="mt-16 text-3xl font-extrabold text-brand-navy md:text-4xl">
           Welcome to <span class="text-brand-orange">a</span><span class="text-brand-blue">Suggestion</span> for Wellness &amp; Care
         </h2>
-        <p class="mt-4 text-lg font-semibold text-slate-500 italic">A Digital Health Overlay where connection, growth, and support come together.</p>
+        <p class="mt-4 text-lg font-semibold text-slate-500 italic">Most agencies don't need another system to replace. They need a layer that makes the systems they already have more effective.</p>
         <div class="mt-6 grid gap-6 text-base leading-8 text-slate-700 lg:grid-cols-2 lg:text-lg">
-          <p>At aSuggestion, we believe that everyone deserves access to meaningful connection, personal development, and emotional support. If you're an individual with autism, an intellectual or developmental disability, a mental or behavioral health challenge, or another form of neurodiversity, this is your space to connect, share, explore interests, and grow, safely and without judgment. Families get the same welcoming environment, plus tools to stay informed and involved in what matters most.</p>
-          <p>This is more than just another social media platform. aSuggestion is a Digital Health Overlay that blends real social engagement with structured learning and practical resources, built alongside the systems agencies already use, not in place of them. For caregivers and care teams, that means practical, audit-ready tools for the realities of daily care. For agency leadership, it means real visibility into engagement and outcomes across everyone you support.</p>
-          <p>For those seeking personal growth, the platform offers interactive activities and guides focused on building essential life skills such as communication, job readiness, emotional regulation, and daily living. Families, caregivers, and agencies can access educational materials, community discussions, structured documentation tools, and de-identified reporting built for the way care actually happens.</p>
-          <p>Behind the scenes, our AI and moderation tools work constantly to maintain a safe environment, providing gentle guidance and structure that helps everyone stay supported and engaged.</p>
+          <p>aSuggestion is a Digital Health Overlay: it sits on top of your existing operations, with nothing to rip out and nothing to migrate. It combines a private, moderated community for the people you support with the documentation, goal-tracking and reporting tools your staff need, built for Medicaid waiver and HCBS programs.</p>
+          <p>Every tool connects back to the two things that matter most: each person's goals and your billable events. Staff spend less time on paperwork and more time with the people they support, and leaders get real visibility into engagement and outcomes.</p>
+          <p>For the people you support, it's a safe place to connect, explore interests and build everyday skills such as communication, job readiness, emotional regulation and daily living. Families and caregivers are welcome too, with the same welcoming environment and tools to stay involved.</p>
+          <p>Behind the scenes, AI moderation reviews every post, comment and message, and alerts your care team the moment something needs a human look.</p>
         </div>
-        <p class="mt-6 text-xl font-semibold text-brand-orange">aSuggestion is more than a platform. It is a community that helps people learn, connect, and grow together.</p>
+        <p class="mt-6 text-xl font-semibold text-brand-orange">One overlay. Three layers of value: Engage, Equip, Document.</p>
+        <div class="mt-6 grid gap-5 lg:grid-cols-3">
+          <div class="rounded-[1.5rem] bg-slate-50 p-6 ring-1 ring-slate-100"><p class="text-xs font-extrabold uppercase tracking-[0.25em] text-brand-orange">Engage &middot; Participant layer</p><p class="mt-3 text-sm leading-7 text-slate-700">Moderated Social Rooms, games and activities, and live Check-In Chats that give people a reason to log in every day.</p></div>
+          <div class="rounded-[1.5rem] bg-slate-50 p-6 ring-1 ring-slate-100"><p class="text-xs font-extrabold uppercase tracking-[0.25em] text-brand-orange">Equip &middot; Care team layer</p><p class="mt-3 text-sm leading-7 text-slate-700">A treasure chest of tools to plan, run and track programs, all tied to Person Centered Goals.</p></div>
+          <div class="rounded-[1.5rem] bg-slate-50 p-6 ring-1 ring-slate-100"><p class="text-xs font-extrabold uppercase tracking-[0.25em] text-brand-orange">Document &middot; Compliance layer</p><p class="mt-3 text-sm leading-7 text-slate-700">Every session, outing and interaction becomes timestamped, exportable evidence linked to billable events.</p></div>
+        </div>
       </section>
 
       <!-- For Organizations & Care Teams -->
-      <section id="for-organizations" class="px-6 py-16 lg:px-12" aria-label="For organizations and care teams">
+      <section id="agencies" class="px-6 py-16 lg:px-12" aria-label="For agencies and care teams">
+        <span id="for-organizations"></span>
         <div class="mb-8">
-          <p class="text-sm font-bold uppercase tracking-[0.25em]" style="color:rgb(0,153,204);">For Organizations &amp; Care Teams</p>
-          <h2 class="mt-2 text-3xl font-extrabold text-brand-navy md:text-4xl">The audit-ready toolset your care team already needs</h2>
-          <p class="mt-4 max-w-3xl text-base leading-8 text-slate-600">aSuggestion isn't only a community for the people you support. It's also a standalone set of field tools for the staff who support them, built alongside your existing systems, not in place of them.</p>
+          <p class="text-sm font-bold uppercase tracking-[0.25em]" style="color:rgb(0,153,204);">For Agencies &amp; Care Teams</p>
+          <h2 class="mt-2 text-3xl font-extrabold text-brand-navy md:text-4xl">Everything your team needs to document, bill, and show outcomes</h2>
+          <p class="mt-4 max-w-3xl text-base leading-8 text-slate-600">Ready-to-use tools that help your staff facilitate and track programs, built alongside your existing systems, not in place of them. Every one ties back to Person Centered Goals and your agency's billable events.</p>
         </div>
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
@@ -162,7 +189,7 @@
             <img class="gallery-img-top" src="assets/images/showcase/showcase-guided-notes.png" alt="Guided Notes" loading="lazy" />
             <div class="gallery-overlay">
               <p class="gallery-title">Guided Notes</p>
-              <p class="gallery-desc">Structured, audit-ready service documentation built for real shift workflows, not a blank text box.</p>
+              <p class="gallery-desc">Structured, audit-ready service documentation built for real shift workflows, so notes capture what happened and why it matters to the plan.</p>
             </div>
           </div>
 
@@ -170,7 +197,7 @@
             <img class="gallery-img-top" src="assets/images/showcase/showcase-admin-export.png" alt="Data Export" loading="lazy" />
             <div class="gallery-overlay">
               <p class="gallery-title">De-Identified Exports</p>
-              <p class="gallery-desc">CSV exports built around permanent, de-identified IDs instead of real names, from day one.</p>
+              <p class="gallery-desc">Pull complete activity histories into Excel or Google Sheets, with staff and organization exports built around permanent de-identified IDs instead of names.</p>
             </div>
           </div>
 
@@ -178,7 +205,7 @@
             <img class="gallery-img-top" src="assets/images/showcase/showcase-activities.png" alt="Activities for Day Programs" loading="lazy" />
             <div class="gallery-overlay">
               <p class="gallery-title">Built-In Day Program Content</p>
-              <p class="gallery-desc">A ready-made library of games, guided crafts, cooking, and curated videos. Staff start a session to track any activity toward billable Day Program time.</p>
+              <p class="gallery-desc">A ready-made library of games, guided crafts, cooking, and curated videos. Start a session on any activity and the time is captured toward billable Day Program hours, with no separate timesheet.</p>
             </div>
           </div>
 
@@ -186,7 +213,7 @@
             <img class="gallery-img-top" src="assets/images/showcase/showcase-admin-goals.png" alt="Person Centered Goals" loading="lazy" />
             <div class="gallery-overlay">
               <p class="gallery-title">Person Centered Goals</p>
-              <p class="gallery-desc">A curated 100-item goal library with an attainment report, so progress toward real goals is visible, not just assumed.</p>
+              <p class="gallery-desc">Choose goals from a curated 100-item library and let evidence surface automatically from real activity, so progress is visible, not just assumed.</p>
             </div>
           </div>
 
@@ -194,7 +221,7 @@
             <img class="gallery-img-top" src="assets/images/showcase/showcase-visit-trac.png" alt="Visit Trac" loading="lazy" />
             <div class="gallery-overlay">
               <p class="gallery-title">Visit Trac</p>
-              <p class="gallery-desc">Audit-ready visit documentation capturing the data elements required under the 21st Century Cures Act, with no addresses or PHI stored.</p>
+              <p class="gallery-desc">Confirms arrival and departure with the time and a location type, never an address. An audit-ready internal record that works alongside your state's EVV system.</p>
             </div>
           </div>
 
@@ -202,7 +229,7 @@
             <img class="gallery-img-top" src="assets/images/showcase/showcase-admin-todos.png" alt="Shared Tasks and Reminders" loading="lazy" />
             <div class="gallery-overlay">
               <p class="gallery-title">Shared Tasks and Reminders</p>
-              <p class="gallery-desc">Assign and track tasks for a specific person, so nothing about their care depends on one staff member remembering it.</p>
+              <p class="gallery-desc">Assign and track tasks and reminders for a specific person, so nothing about their care depends on one staff member remembering it.</p>
             </div>
           </div>
 
@@ -212,33 +239,54 @@
         <div class="mt-3 rounded-[1.5rem] bg-white p-6 shadow-sm ring-1 ring-slate-100 lift-card">
           <div class="grid gap-x-8 gap-y-7 sm:grid-cols-2">
             <div class="sm:pr-5">
-              <h3 class="text-base font-bold text-brand-navy">Community Instruction Tracking</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">Log community instruction outings, calculate mileage automatically, and publish group photos with consent built in.</p>
+              <h3 class="text-base font-bold text-brand-navy">Community Instruction</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Plan and document community outings, from grocery runs to library visits. Mileage is estimated automatically, and group photos are shared with consent built in.</p>
             </div>
             <div class="sm:border-l sm:border-slate-100 sm:pl-6">
-              <h3 class="text-base font-bold text-brand-navy">Live Interactive Sessions and Video Content Library</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">A curated library of videos and live content, shared by your organization and the wider community.</p>
+              <h3 class="text-base font-bold text-brand-navy">Video Library and Live Events</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">A curated library of videos and live events, shared by your organization and the wider community.</p>
             </div>
             <div class="border-t border-slate-100 pt-5 sm:pr-5">
               <h3 class="text-base font-bold text-brand-navy">Multilanguage &amp; Accessibility</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">Support for over 70 languages via AI content translation, plus dark mode and keyboard-accessible interactions throughout.</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Posts and comments translate into 75+ languages, the interface is available in English and Spanish, and dark mode and keyboard-accessible controls are built in.</p>
             </div>
             <div class="border-t border-slate-100 pt-5 sm:border-l sm:pl-6">
               <h3 class="text-base font-bold text-brand-navy">Check-In Chats</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">A live, secure video check-in between a team member and the person they support, started in a click.</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">A live, secure video check-in between a team member and the person they support, started in a click. Sessions are transcribed for your care team.</p>
             </div>
           </div>
         </div>
 
+        <div class="mt-4 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-[1.25rem] p-5 ring-1 ring-slate-100"><h3 class="text-base font-bold text-brand-navy">Wellbeing Dashboard</h3><p class="mt-2 text-sm leading-6 text-slate-600">Trends in mood, participation and activity at a glance, so a quiet drop-off never goes unnoticed.</p></div>
+          <div class="rounded-[1.25rem] p-5 ring-1 ring-slate-100"><h3 class="text-base font-bold text-brand-navy">Engagement Levels</h3><p class="mt-2 text-sm leading-6 text-slate-600">See who is participating, who is drifting and where to follow up.</p></div>
+          <div class="rounded-[1.25rem] p-5 ring-1 ring-slate-100"><h3 class="text-base font-bold text-brand-navy">Skill-Building Games</h3><p class="mt-2 text-sm leading-6 text-slate-600">Emotion Matching, Routine Sequencing, Weather Wardrobe, Money Management and more, each building a real-life skill.</p></div>
+        </div>
+
+        <div class="mt-8 rounded-[1.5rem] p-6 ring-1 ring-slate-100">
+          <p class="text-xs font-extrabold uppercase tracking-[0.25em] text-brand-orange">From touchpoint to record</p>
+          <div class="mt-3 grid gap-4 sm:grid-cols-4 text-sm leading-6 text-slate-700">
+            <p><strong class="text-brand-navy">1. It happens.</strong> Any touchpoint across the system in any setting.</p>
+            <p><strong class="text-brand-navy">2. It's verified.</strong> Visit Trac confirms arrival and departure with the time and a location type.</p>
+            <p><strong class="text-brand-navy">3. It's documented.</strong> Notes, summaries and goal evidence attach to the person.</p>
+            <p><strong class="text-brand-navy">4. It's ready.</strong> Export to Excel, Google Sheets or PDF, ready for your EHR.</p>
+          </div>
+        </div>
+
+        <div class="mt-8 rounded-[1.5rem] bg-slate-50 p-6 ring-1 ring-slate-100">
+          <p class="text-xs font-extrabold uppercase tracking-[0.25em] text-brand-orange">Pay only for engaged users</p>
+          <p class="mt-2 text-base leading-7 text-slate-700">You are billed monthly for the people who actively use the platform, not for seats that sit idle. Start with a private pilot sandbox: explore everything with your own team, then go live without re-entering anything.</p>
+        </div>
+
         <div class="mt-8">
-          <a href="contact.html" class="inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-extrabold text-white transition hover:opacity-90" style="background:rgb(0,153,204);">Talk to Us About Your Agency</a>
+          <a href="contact.html?topic=agency" class="inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-extrabold text-white transition hover:opacity-90" style="background:rgb(0,153,204);">Book a 30-Minute Walkthrough</a>
         </div>
       </section>
 
       <!-- Community Highlights -->
       <section class="bg-slate-50 px-6 py-16 lg:px-12" aria-label="Community gallery">
         <div class="mb-8 flex items-end justify-between gap-4">
-          <h2 class="text-3xl font-extrabold text-brand-navy md:text-4xl">Community Highlights</h2>
+          <h2 class="text-3xl font-extrabold text-brand-navy md:text-4xl">A place people actually want to be</h2>
           <a href="community.html" class="text-sm font-semibold text-brand-teal hover:text-brand-orange transition-colors">View all</a>
         </div>
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -247,7 +295,7 @@
             <img src="assets/images/bf3bb32a-047d-4b6f-9972-0f2189225a9b.jpeg" alt="Safe and Supportive" loading="lazy" />
             <div class="gallery-overlay">
               <p class="gallery-title">Safe and Supportive</p>
-              <p class="gallery-desc">A secure, moderated environment where individuals, families, and caregivers can connect, share, and grow together.</p>
+              <p class="gallery-desc">A private, invitation-only, moderated space where the people you support can connect, share, and grow together, with your care team alongside.</p>
             </div>
           </div>
 
@@ -263,7 +311,7 @@
             <img src="assets/images/927c90d0-3e05-4c02-b75e-1bbd2793c9f6.jpeg" alt="Community Events and Interactions" loading="lazy" />
             <div class="gallery-overlay">
               <p class="gallery-title">Community Events and Interactions</p>
-              <p class="gallery-desc">Enjoy fun, friendly, and inclusive interactions through AI-supported rooms that encourage communication and belonging.</p>
+              <p class="gallery-desc">Topic-based Social Rooms, from arts and hobbies to career coaching and healthy living, that encourage communication and belonging.</p>
             </div>
           </div>
 
@@ -271,7 +319,7 @@
             <img src="assets/images/a38e3f06-31a1-4eef-a738-c3298de9e06d.jpeg" alt="Assistive Technology and Remote Support" loading="lazy" />
             <div class="gallery-overlay">
               <p class="gallery-title">Assistive Technology and Remote Support</p>
-              <p class="gallery-desc">Extend care beyond traditional settings with digital tools that support state, community, and individualized goals.</p>
+              <p class="gallery-desc">Extend support between visits with digital tools that tie everyday activity to each person's goals, the evidence your service plans ask for.</p>
             </div>
           </div>
 
@@ -279,7 +327,7 @@
             <img src="assets/images/supporting-parents-caregivers.jpg" alt="Parent and Caregiver Resources" loading="lazy" />
             <div class="gallery-overlay">
               <p class="gallery-title">Parent and Caregiver Resources</p>
-              <p class="gallery-desc">Discover tools, discussions, and supports created to help families and caregivers provide thoughtful, effective, and compassionate care.</p>
+              <p class="gallery-desc">Families and caregivers are welcome too, with tools, discussions, and supports to help them stay informed and involved.</p>
             </div>
           </div>
 
@@ -287,7 +335,7 @@
             <img src="assets/images/d9a8bdcd-6288-4f83-84fa-a96bc03f45ae.jpeg" alt="Real-Time Insight and Collaboration" loading="lazy" />
             <div class="gallery-overlay">
               <p class="gallery-title">Real-Time Insight and Collaboration</p>
-              <p class="gallery-desc">Empower care teams with notifications and summaries that can integrate with Electronic Health Records to improve coordination and outcomes.</p>
+              <p class="gallery-desc">Give care teams alerts, summaries, and exports that drop straight into the records system they already use.</p>
             </div>
           </div>
 
@@ -303,7 +351,7 @@
             <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div>
                 <p class="text-sm font-extrabold uppercase tracking-[0.25em]" style="color:#000;">Partner Agencies</p>
-                <h2 id="partner-agencies-title" class="mt-2 text-3xl font-extrabold md:text-4xl" style="color:#000;">Organizations building better support systems</h2>
+                <h2 id="partner-agencies-title" class="mt-2 text-3xl font-extrabold md:text-4xl" style="color:#000;">Agencies already using aSuggestion every day</h2>
                 <p class="mt-4 max-w-3xl text-sm font-bold leading-7 sm:text-base" style="color:#000;">The organizations already putting these tools to work, every day.</p>
               </div>
               <div class="flex flex-wrap gap-3">
@@ -345,7 +393,7 @@
         <span>|</span>
         <a href="termsofservice.html" class="underline hover:text-brand-navy transition-colors">Terms of Service</a>
       </p>
-      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
+      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | (860) 858-IDEA | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
     </footer>
 
   </div>
