@@ -27,12 +27,12 @@
 <body>
   <div class="bar">
     <a href="/">&larr; aSuggestion.com</a>
-    <a class="dl" href="/assets/brochure.pdf" download="aSuggestion-Digital-Health-Overlay-Brochure.pdf">&#11015; Download PDF</a>
+    <a class="dl" href="/assets/brochure.pdf?v=20261024" download="aSuggestion-Digital-Health-Overlay-Brochure.pdf">&#11015; Download PDF</a>
   </div>
   <div class="viewer" id="viewer">
     <p class="fallback" id="status">Loading the brochure&hellip;</p>
   </div>
-  <noscript><p class="fallback"><a href="/assets/brochure.pdf" download="aSuggestion-Digital-Health-Overlay-Brochure.pdf">Download the PDF</a> to read the brochure.</p></noscript>
+  <noscript><p class="fallback"><a href="/assets/brochure.pdf?v=20261024" download="aSuggestion-Digital-Health-Overlay-Brochure.pdf">Download the PDF</a> to read the brochure.</p></noscript>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
     (function () {
@@ -40,11 +40,11 @@
       var status = document.getElementById('status');
       function fail() {
         viewer.innerHTML = '<p class="fallback">We couldn\'t show the brochure here. ' +
-          '<a href="/assets/brochure.pdf" download="aSuggestion-Digital-Health-Overlay-Brochure.pdf">Download the PDF</a> to read it.</p>';
+          '<a href="/assets/brochure.pdf?v=20261024" download="aSuggestion-Digital-Health-Overlay-Brochure.pdf">Download the PDF</a> to read it.</p>';
       }
       if (!window.pdfjsLib) { fail(); return; }
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-      pdfjsLib.getDocument('/assets/brochure.pdf').promise.then(function (pdf) {
+      pdfjsLib.getDocument('/assets/brochure.pdf?v=20261024').promise.then(function (pdf) {
         status.remove();
         var chain = Promise.resolve();
         for (var n = 1; n <= pdf.numPages; n++) {
