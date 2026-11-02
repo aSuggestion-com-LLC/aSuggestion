@@ -94,6 +94,7 @@
               <label for="topic">Topic To Discuss</label>
               <select id="topic" name="topic">
                 <option value="Partnership / Agency Inquiry" selected>Agency or Day Program: demo / pilot</option>
+                <option value="Family Plan Waitlist">Family Plan waitlist (coming soon)</option>
                 <option value="Individual Membership">Individual Membership</option>
                 <option value="Support">Support</option>
                 <option value="General Inquiry">General Inquiry</option>
@@ -201,9 +202,12 @@
     // Google Apps Script endpoint
     var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6lUGEPvT6yYUsJ2b6vjQdz6_-UGEn1hKgOnlv_V8nodvDs8B4IDlePLyOrT-ar0uhRQ/exec';
     
-    // Pre-select the topic when linked as contact.html?topic=agency
-    if (new URLSearchParams(window.location.search).get('topic') === 'agency') {
+    // Pre-select the topic when linked as contact.html?topic=agency or ?topic=family-plan
+    var topicParam = new URLSearchParams(window.location.search).get('topic');
+    if (topicParam === 'agency') {
       document.getElementById('topic').value = 'Partnership / Agency Inquiry';
+    } else if (topicParam === 'family-plan') {
+      document.getElementById('topic').value = 'Family Plan Waitlist';
     }
 
     var form       = document.getElementById('contact-form');
