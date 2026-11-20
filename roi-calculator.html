@@ -42,6 +42,16 @@
   input[type=number]{width:100%;padding:9px 12px;border:1px solid #b9c9d1;border-radius:.75rem;font-size:1rem;font-family:inherit;background:#fff;color:var(--text);text-align:right}
   input[type=number]:focus{outline:3px solid rgba(0,153,204,.35);outline-offset:1px;border-color:var(--blue)}
   input[type=checkbox]{accent-color:var(--orange)}
+  input[type=text],input[type=email]{width:100%;padding:9px 12px;border:1px solid #b9c9d1;border-radius:.75rem;font-size:1rem;font-family:inherit;background:#fff;color:var(--text)}
+  input[type=text]:focus,input[type=email]:focus{outline:3px solid rgba(0,153,204,.35);outline-offset:1px;border-color:var(--blue)}
+  .field.stack{grid-template-columns:1fr;gap:4px}
+  .req{color:var(--orange-dark);font-weight:700}
+  .bad{border-color:#b3261e !important}
+  .errtext{color:#b3261e;font-size:.82rem;margin:0}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .status{font-size:.9rem;margin:10px 0 0;font-weight:700}
+  .status.ok{color:var(--green)} .status.err{color:#b3261e}
+  .btn[disabled]{opacity:.6;cursor:wait}
   .toggle{display:flex;gap:10px;align-items:center;margin:8px 0 6px;font-weight:700;color:var(--navy)}
   .toggle input{width:18px;height:18px;flex:none}
   .off{opacity:.45}
@@ -118,6 +128,14 @@
 <main id="main-content">
 <div class="grid">
 <div>
+
+  <section class="card" id="sec-you">
+    <h2>About you</h2>
+    <p class="hint">Both fields are required. We use them only to follow up on your feedback.</p>
+    <div class="field stack"><label for="yourname">Your name <span class="req" aria-hidden="true">*</span></label><input type="text" id="yourname" name="name" autocomplete="name" maxlength="120" required aria-required="true"><p class="errtext" id="err-name" hidden>Please enter your name.</p></div>
+    <div class="field stack"><label for="youremail">Your email address <span class="req" aria-hidden="true">*</span></label><input type="email" id="youremail" name="email" autocomplete="email" maxlength="254" required aria-required="true"><p class="errtext" id="err-email" hidden>Please enter a valid email address.</p></div>
+    <div class="hp" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+  </section>
 
   <section class="card">
     <h2>1. Your agency</h2>
@@ -231,9 +249,11 @@
     <div class="k"><span>New revenue alone covers the cost</span><strong id="revcover">n/a</strong></div>
 
     <div class="btns no-print">
-      <a class="btn primary" id="talk" href="contact.html?topic=agency">Talk to us about these numbers</a>
+      <button class="btn primary" id="send" type="button">Send my results</button>
+      <a class="btn ghost" id="talk" href="contact.html?topic=agency">Talk to us about these numbers</a>
       <button class="btn ghost" type="button" onclick="window.print()">Save or print</button>
     </div>
+    <p class="status no-print" id="send-status" role="status" aria-live="polite"></p>
 
     <p class="fine">This is an estimate based on the numbers you entered, not a guarantee of results. Waiver enrollment depends on your state's funding decisions, and people always choose their own provider. aSuggestion does not bill Medicaid or replace your EHR; it records activity and goal evidence your staff can use in your own documentation. The DSP Pipeline training fee is charged by our partner Potentia, which also helps agencies look for grant funding that may offset it. National figures come from the <a href="https://idd.nationalcoreindicators.org/wp-content/uploads/2025/12/2024-NCI-IDD-SoTW_Final-Tagged.pdf" target="_blank" rel="noopener">2024 NCI-IDD State of the Workforce survey</a>, <a href="https://www.kff.org/medicaid/a-look-at-waiting-lists-for-medicaid-home-and-community-based-services-from-2016-to-2026/" target="_blank" rel="noopener">KFF (2026)</a>, the <a href="https://nadsp.org/wp-content/uploads/2018/02/PCPID-2017_-Americas-Direct-Support-Workforce-Crisis-low-res.pdf" target="_blank" rel="noopener">President's Committee for People with Intellectual Disabilities (2017)</a> and <a href="https://publications.ici.umn.edu/risp/data-bytes/expenditures-per-person-by-age-in-2021" target="_blank" rel="noopener">ICI RISP (FY2021)</a>.</p>
   </div>
@@ -325,6 +345,56 @@
   });
   syncSections(); calc();
 })();
+
+  // Send my results: name and email are required; the numbers and results go to aSuggestion by email.
+  (function(){
+    var ENDPOINT = "https://app.asuggestion.com/roi_requests";
+    var send = document.getElementById("send"), status = document.getElementById("send-status");
+    var nameEl = document.getElementById("yourname"), emailEl = document.getElementById("youremail");
+    function label(el){
+      var l = el.closest(".field") ? el.closest(".field").querySelector("label") : el.closest(".toggle");
+      var c = l.cloneNode(true); var sm = c.querySelector("small"); if (sm) sm.remove();
+      var inp = c.querySelector("input"); if (inp) inp.remove();
+      return c.textContent.replace(/\s+/g, " ").trim();
+    }
+    function resultsText(){
+      var out = ["YOUR NUMBERS"];
+      document.querySelectorAll("main input[type=number], main input[type=checkbox]").forEach(function(el){
+        var v = el.type === "checkbox" ? (el.checked ? "Yes" : "No") : el.value;
+        out.push("- " + label(el) + ": " + v);
+      });
+      out.push("", "RESULTS");
+      out.push(document.querySelector("#netbox .label").textContent + ": " + document.getElementById("net").textContent);
+      out.push(document.getElementById("roi").textContent);
+      document.querySelectorAll(".results h3, .results tr, .results .k").forEach(function(el){
+        if (el.tagName === "H3") { out.push("", el.textContent.toUpperCase()); return; }
+        var parts = Array.prototype.map.call(el.children, function(c){ return c.textContent.replace(/\s+/g, " ").trim(); });
+        out.push(parts.join(": "));
+      });
+      return out.join("\n");
+    }
+    function show(msg, cls){ status.textContent = msg; status.className = "status no-print " + cls; }
+    function check(){
+      var okName = nameEl.value.trim().length > 0;
+      var okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim());
+      document.getElementById("err-name").hidden = okName; nameEl.classList.toggle("bad", !okName);
+      document.getElementById("err-email").hidden = okEmail; emailEl.classList.toggle("bad", !okEmail);
+      if (!okName) { nameEl.focus(); } else if (!okEmail) { emailEl.focus(); }
+      return okName && okEmail;
+    }
+    send.addEventListener("click", function(){
+      if (!check()) { show("Please fill in your name and email address first.", "err"); return; }
+      send.disabled = true; show("Sending...", "");
+      var body = new URLSearchParams();
+      body.set("name", nameEl.value.trim()); body.set("email", emailEl.value.trim());
+      body.set("website", document.getElementById("website").value); body.set("results", resultsText());
+      fetch(ENDPOINT, { method: "POST", body: body })
+        .then(function(r){ if (!r.ok) { throw new Error("bad status " + r.status); } return r.json(); })
+        .then(function(){ show("Thank you. Your results were sent to the aSuggestion team, and we will be in touch.", "ok"); send.disabled = false; })
+        .catch(function(){ show("Sorry, that did not send. Please try again in a minute, or use \"Talk to us about these numbers\".", "err"); send.disabled = false; });
+    });
+    [nameEl, emailEl].forEach(function(el){ el.addEventListener("input", function(){ el.classList.remove("bad"); document.getElementById(el === nameEl ? "err-name" : "err-email").hidden = true; }); });
+  })();
 </script>
 </body>
 </html>
