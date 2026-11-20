@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Agency ROI Calculator | aSuggestion</title>
+<meta name="description" content="Estimate the new revenue and savings aSuggestion and the DSP Pipeline could bring your agency, using your own numbers.">
+<link rel="icon" type="image/png" href="/assets/images/favicon.png?v=4">
+<link rel="stylesheet" href="/assets/css/tailwind.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&family=Noto+Sans:wght@400;500;700&family=Outfit:wght@400;700;800&display=swap">
+<style>
+  :root{
+    --navy:#01384a; --teal:#00435d; --blue:#0099CC; --orange:#ef8110; --orange-dark:#b85f00; --green:#1b6b4a;
+    --bg:#f8fafc; --card:#ffffff; --text:#012838; --muted:#4d6670; --line:#d5e0e6;
+    --soft-blue:#e8f4f9; --soft-green:#e9f4ee;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"Karla","Noto Sans",sans-serif;font-size:1.05rem;line-height:1.55}
+  h1,h2,h3{font-family:"Outfit","Karla",sans-serif}
+  .page{max-width:1440px;margin:0 auto;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+  .hero{margin:16px 16px 0;border-radius:1.5rem;background:linear-gradient(135deg,#01384a 0%,#00435d 100%);color:#fff;padding:44px 24px}
+  @media (min-width:1024px){ .hero{margin:16px 32px 0;padding:56px 48px} }
+  .hero .wrap{max-width:1080px;margin:0 auto}
+  .hero .kicker{margin:0 0 12px;font-size:.8rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:#ff8c32}
+  .hero h1{margin:0 0 10px;font-size:2.1rem;line-height:1.15;font-weight:800}
+  .hero p{margin:0;opacity:.95;max-width:760px}
+  main{max-width:1080px;margin:0 auto;padding:28px 16px 48px}
+  .grid{display:grid;grid-template-columns:1fr;gap:20px}
+  @media (min-width:900px){ .grid{grid-template-columns:1.25fr 1fr} .results{position:sticky;top:96px;align-self:start} }
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:1.25rem;padding:20px 20px 10px;margin-bottom:16px;box-shadow:0 1px 3px rgba(1,56,74,.06)}
+  section.card h2{margin:0 0 4px;font-size:1.15rem;font-weight:800;color:var(--navy);border-bottom:2px solid var(--orange);padding-bottom:8px}
+  section.card h2 .tag{float:right;font-family:"Karla",sans-serif;font-size:.72rem;font-weight:700;border-radius:999px;padding:2px 10px;margin-top:2px}
+  .tag.rev{background:var(--soft-green);color:var(--green)}
+  .tag.save{background:var(--soft-blue);color:var(--teal)}
+  .hint{color:var(--muted);font-size:.9rem;margin:8px 0 12px}
+  .field{display:grid;grid-template-columns:1fr 150px;gap:10px;align-items:center;margin:12px 0}
+  .field label{font-size:.97rem}
+  .field small{display:block;color:var(--muted);font-size:.82rem}
+  input[type=number]{width:100%;padding:9px 12px;border:1px solid #b9c9d1;border-radius:.75rem;font-size:1rem;font-family:inherit;background:#fff;color:var(--text);text-align:right}
+  input[type=number]:focus{outline:3px solid rgba(0,153,204,.35);outline-offset:1px;border-color:var(--blue)}
+  input[type=checkbox]{accent-color:var(--orange)}
+  .toggle{display:flex;gap:10px;align-items:center;margin:8px 0 6px;font-weight:700;color:var(--navy)}
+  .toggle input{width:18px;height:18px;flex:none}
+  .off{opacity:.45}
+  .results .card{background:var(--card);border:1px solid var(--line);border-radius:1.25rem;padding:20px;box-shadow:0 4px 14px rgba(1,56,74,.08)}
+  .big{background:var(--soft-green);border-radius:1rem;padding:16px;margin:10px 0;text-align:center}
+  .big .label{font-size:.88rem;color:var(--muted)}
+  .big .value{font-family:"Outfit",sans-serif;font-size:2.2rem;font-weight:800;color:var(--green)}
+  .big.neg .value{color:var(--orange-dark)}
+  table{width:100%;border-collapse:collapse;font-size:.95rem}
+  td{padding:7px 0;border-bottom:1px solid var(--line)}
+  td.num{text-align:right;white-space:nowrap;padding-left:8px}
+  tr.sub td{font-weight:700;color:var(--navy)}
+  tr.total td{font-weight:700;border-bottom:2px solid var(--navy)}
+  .k{display:flex;justify-content:space-between;gap:8px;font-size:.95rem;margin:6px 0}
+  .pill{display:inline-block;background:var(--soft-blue);color:var(--teal);border-radius:999px;padding:2px 10px;font-size:.8rem;font-weight:700}
+  .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .btn{display:inline-block;border:2px solid transparent;border-radius:999px;padding:10px 20px;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;font-family:inherit;transition:background .15s,color .15s}
+  .btn.primary{background:var(--orange);color:#fff;border-color:var(--orange)}
+  .btn.primary:hover{background:var(--orange-dark);border-color:var(--orange-dark)}
+  .btn.ghost{background:transparent;color:var(--orange-dark);border-color:var(--orange)}
+  .btn.ghost:hover{background:#fff4e6}
+  .btn:focus-visible{outline:3px solid rgba(0,153,204,.5);outline-offset:2px}
+  .fine{font-size:.8rem;color:var(--muted);margin-top:14px}
+  .fine a{color:var(--teal)}
+  h3{font-size:1rem;font-weight:700;color:var(--navy);margin:16px 0 6px}
+  @media (max-width:520px){ .field{grid-template-columns:1fr 112px} .hero h1{font-size:1.6rem} section.card h2 .tag{float:none;display:inline-block;margin-left:6px} }
+  @media print{
+    .site-header,.site-footer{display:none}
+    .hero{background:#fff;color:#01384a;border-bottom:2px solid #ef8110;border-radius:0;margin:0;padding:12px 0}
+    .hero .kicker{color:#b85f00}
+    .btns,.no-print{display:none}
+    body,.page{background:#fff;box-shadow:none}
+    .grid{grid-template-columns:1fr}
+    section.card,.results .card{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-navy focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
+<div class="page">
+<header class="site-header sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
+      <nav class="mx-auto flex w-full items-center justify-between gap-4 px-4 py-3 lg:px-8" aria-label="Primary navigation">
+        <a href="index.html" class="shrink-0">
+          <img src="assets/images/aSuggestion_Logo.png" alt="aSuggestion Logo" style="height:3rem;width:auto;border-radius:0.5rem;" />
+        </a>
+        <ul class="hidden items-center gap-6 text-sm font-semibold tracking-wide text-brand-navy md:flex">
+          <li><a href="index.html" class="hover:text-brand-orange transition-colors">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange transition-colors">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange transition-colors">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange transition-colors">REGISTER</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange transition-colors">CONTACT US</a></li>
+        </ul>
+        <div class="flex items-center gap-2"><a href="contact.html?topic=agency" class="hidden rounded-full border-2 border-brand-orange px-4 py-2 text-sm font-semibold text-brand-orange hover:bg-orange-50 transition-colors sm:inline-block">Request a Demo</a><a href="https://app.aSuggestion.com" class="rounded-full bg-brand-orange px-5 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">Login</a></div>
+      </nav>
+      <div class="border-t border-slate-100 px-4 py-2 md:hidden">
+        <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold tracking-wide text-brand-navy">
+          <li><a href="index.html" class="hover:text-brand-orange">HOME</a></li>
+          <li><a href="about.html" class="hover:text-brand-orange transition-colors">ABOUT US</a></li>
+          <li><a href="community.html" class="hover:text-brand-orange">COMMUNITY</a></li>
+          <li><a href="payment.html" class="hover:text-brand-orange">REGISTER</a></li>
+          <li><a href="contact.html" class="hover:text-brand-orange">CONTACT US</a></li>
+        </ul>
+      </div>
+    </header>
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">Agency ROI Calculator</p>
+    <h1>What could aSuggestion return to your agency?</h1>
+    <p>Enter your own numbers. We count only 70% of the estimated new revenue and savings, then subtract the full cost of the platform and the DSP Pipeline training fee, so the result stays on the conservative side.</p>
+  </div>
+</section>
+
+
+<main id="main-content">
+<div class="grid">
+<div>
+
+  <section class="card">
+    <h2>1. Your agency</h2>
+    <p class="hint">aSuggestion is billed only for people who actively use the platform in a given month. A month with no use costs nothing.</p>
+    <div class="field"><label for="people">People you serve today</label><input type="number" id="people" min="0" step="1" value="50"></div>
+    <div class="field"><label for="engaged">Share who would actively use aSuggestion (%)<small>Most agencies start between 40% and 70%</small></label><input type="number" id="engaged" min="0" max="100" step="1" value="60"></div>
+    <div class="field"><label for="wage">Average DSP hourly wage ($)<small>National median in 2024: $18.39</small></label><input type="number" id="wage" min="0" step="0.01" value="18.39"></div>
+  </section>
+
+  <section class="card" id="sec-wait">
+    <h2>2. Your waitlist <span class="tag rev">New revenue</span></h2>
+    <label class="toggle"><input type="checkbox" id="on-wait" checked> Include people waiting for services</label>
+    <div class="body">
+      <p class="hint">People waiting for waiver funding average 38 months on a list nationally. Engage them on aSuggestion now, build their goals and a record of their needs, and be the agency they already know when funding opens. Many are also eligible today for services that don't need a waiver slot, such as state plan or 1915(i) supports, Vocational Rehabilitation transition services, or family-paid programs.</p>
+      <div class="field"><label for="waitn">Waitlisted or interested people you would invite to aSuggestion</label><input type="number" id="waitn" min="0" step="1" value="20"></div>
+      <div class="field"><label for="nonwaiver">Share who start a service you can bill today without a waiver slot (%)</label><input type="number" id="nonwaiver" min="0" max="100" step="1" value="15"></div>
+      <div class="field"><label for="nonwaiverrev">Annual revenue per person for that service ($)<small>For example, Vocational Rehabilitation transition services, state plan supports, or private pay</small></label><input type="number" id="nonwaiverrev" min="0" step="250" value="5000"></div>
+      <div class="field"><label for="funded">Share expected to receive waiver funding this year (%)</label><input type="number" id="funded" min="0" max="100" step="1" value="10"></div>
+      <div class="field"><label for="choose">Share of those who choose your agency because they already know you (%)<small>People choose their provider when funding opens</small></label><input type="number" id="choose" min="0" max="100" step="1" value="50"></div>
+      <div class="field"><label for="waiverrev">Annual revenue per person once enrolled ($)</label><input type="number" id="waiverrev" min="0" step="500" value="40000"></div>
+      <div class="field"><label for="months">Months of service in the first year</label><input type="number" id="months" min="0" max="12" step="1" value="6"></div>
+    </div>
+  </section>
+
+  <section class="card" id="sec-ref">
+    <h2>3. People you turn away for lack of staff <span class="tag rev">New revenue</span></h2>
+    <label class="toggle"><input type="checkbox" id="on-ref" checked> Include referrals turned away</label>
+    <div class="body">
+      <div class="field"><label for="turnedaway">Funded referrals turned away last year because of staffing</label><input type="number" id="turnedaway" min="0" step="1" value="2"></div>
+      <div class="field"><label for="revperson">Annual revenue for each person you serve ($)<small>Use your own average. National average Medicaid waiver spending per adult with IDD was about $63,000 (FY2021), across all of that person's providers</small></label><input type="number" id="revperson" min="0" step="500" value="40000"></div>
+      <div class="field"><label for="dspperperson">New DSPs needed to take on one more person<small>Higher for 24 hour residential, lower for day services</small></label><input type="number" id="dspperperson" min="0.5" step="0.5" value="2"></div>
+      <p class="hint">Uses the DSP Pipeline hires you enter in section 4.</p>
+    </div>
+  </section>
+
+  <section class="card" id="sec-pipe">
+    <h2>4. DSP Pipeline hires <span class="tag save">Savings</span></h2>
+    <label class="toggle"><input type="checkbox" id="on-pipe" checked> Include DSP Pipeline hires</label>
+    <div class="body">
+      <p class="hint">Pipeline interns arrive vetted, trained and already experienced with the people you support, so we assume they stay longer than a typical new hire. Nationally, 64% of DSPs who left in 2024 did so within their first year.</p>
+      <div class="field"><label for="cohorts">Intern cohorts per year<small>$3,000 training fee per cohort, however many interns are placed</small></label><input type="number" id="cohorts" min="0" step="1" value="1"></div>
+      <div class="field"><label for="hires">Interns you expect to hire per cohort</label><input type="number" id="hires" min="0" step="1" value="2"></div>
+      <div class="field"><label for="tenure">How long a typical new hire stays (months)<small>About 8 months is the median for DSPs who left in 2024</small></label><input type="number" id="tenure" min="1" step="1" value="8"></div>
+      <div class="field"><label for="tenureup">How much longer Pipeline hires stay (%)<small>50% means 8 months becomes 12</small></label><input type="number" id="tenureup" min="0" step="5" value="50"></div>
+      <div class="field"><label for="hirecost">What it costs you to replace one DSP ($)<small>Recruiting, screening, training and overtime while the seat is empty. Published estimates: $2,400 to $5,200, in older dollars</small></label><input type="number" id="hirecost" min="0" step="50" value="4000"></div>
+      <div class="field"><label for="openpos">Full-time DSP positions open right now</label><input type="number" id="openpos" min="0" step="1" value="3"></div>
+      <div class="field"><label for="otshare">Share of those empty hours covered by overtime (%)</label><input type="number" id="otshare" min="0" max="100" step="1" value="50"></div>
+    </div>
+  </section>
+
+  <section class="card" id="sec-admin">
+    <h2>5. Documentation and admin time <span class="tag save">Savings</span></h2>
+    <label class="toggle"><input type="checkbox" id="on-admin" checked> Include admin time saved</label>
+    <div class="body">
+      <p class="hint">Time staff spend gathering observations, matching them to each person's goals and preparing documentation for billing. aSuggestion collects activity and goal evidence as it happens, ready for staff to use in your own EHR.</p>
+      <div class="field"><label for="adminhrs">Staff hours per person per month on this work</label><input type="number" id="adminhrs" min="0" step="0.5" value="3"></div>
+      <div class="field"><label for="admincost">Hourly cost of the staff who do it ($)</label><input type="number" id="admincost" min="0" step="1" value="25"></div>
+      <div class="field"><label for="adminred">Share of that time saved (%)</label><input type="number" id="adminred" min="0" max="100" step="1" value="30"></div>
+    </div>
+  </section>
+
+  <section class="card" id="sec-bill">
+    <h2>6. Services delivered but not captured <span class="tag rev">Recovered revenue</span></h2>
+    <label class="toggle"><input type="checkbox" id="on-bill"> I believe some services we deliver are not fully documented or billed</label>
+    <div class="body off">
+      <div class="field"><label for="billrev">Annual billed revenue for services aSuggestion would touch ($)<small>For example, community-based and day services</small></label><input type="number" id="billrev" min="0" step="1000" value="1000000"></div>
+      <div class="field"><label for="leak">Share you believe goes undocumented or unbilled (%)</label><input type="number" id="leak" min="0" max="100" step="0.5" value="2"></div>
+      <div class="field"><label for="recover">Share of that gap better evidence could help recover (%)</label><input type="number" id="recover" min="0" max="100" step="1" value="50"></div>
+    </div>
+  </section>
+
+</div>
+
+<aside class="results">
+  <div class="card">
+    <span class="pill">Conservative estimate: 70% counted</span>
+    <div class="big" id="netbox">
+      <div class="label">Estimated net annual value to your agency</div>
+      <div class="value" id="net">$0</div>
+      <div class="label" id="roi"></div>
+    </div>
+
+    <h3>New revenue</h3>
+    <table>
+      <tr><td>Waitlist: services billable today</td><td class="num" id="r-nonwaiver">$0</td></tr>
+      <tr><td>Waitlist: people who choose you when funded</td><td class="num" id="r-waiver">$0</td></tr>
+      <tr><td>People you no longer turn away</td><td class="num" id="r-ref">$0</td></tr>
+      <tr><td>Services captured</td><td class="num" id="r-bill">$0</td></tr>
+      <tr class="sub"><td>New revenue subtotal</td><td class="num" id="r-sub">$0</td></tr>
+    </table>
+
+    <h3>Savings</h3>
+    <table>
+      <tr><td>Fewer replacements (Pipeline hires stay longer)</td><td class="num" id="s-tenure">$0</td></tr>
+      <tr><td>Overtime avoided on filled positions</td><td class="num" id="s-ot">$0</td></tr>
+      <tr><td>Documentation and admin time</td><td class="num" id="s-admin">$0</td></tr>
+      <tr class="sub"><td>Savings subtotal</td><td class="num" id="s-sub">$0</td></tr>
+    </table>
+
+    <h3>Bottom line</h3>
+    <table>
+      <tr><td>Total estimated benefit</td><td class="num" id="b-gross">$0</td></tr>
+      <tr><td>Less 30% to stay conservative</td><td class="num" id="b-haircut">$0</td></tr>
+      <tr class="total"><td>Benefit counted</td><td class="num" id="b-counted">$0</td></tr>
+      <tr><td id="c-plat-label">aSuggestion platform</td><td class="num" id="c-plat">$0</td></tr>
+      <tr><td id="c-pot-label">DSP Pipeline training fee</td><td class="num" id="c-pot">$0</td></tr>
+      <tr class="total"><td>Total annual cost</td><td class="num" id="c-total">$0</td></tr>
+    </table>
+
+    <div class="k"><span>Months to cover the annual cost</span><strong id="payback">n/a</strong></div>
+    <div class="k"><span>New revenue alone covers the cost</span><strong id="revcover">n/a</strong></div>
+
+    <div class="btns no-print">
+      <a class="btn primary" id="talk" href="contact.html?topic=agency">Talk to us about these numbers</a>
+      <button class="btn ghost" type="button" onclick="window.print()">Save or print</button>
+    </div>
+
+    <p class="fine">This is an estimate based on the numbers you entered, not a guarantee of results. Waiver enrollment depends on your state's funding decisions, and people always choose their own provider. aSuggestion does not bill Medicaid or replace your EHR; it records activity and goal evidence your staff can use in your own documentation. The DSP Pipeline training fee is charged by our partner Potentia, which also helps agencies look for grant funding that may offset it. National figures come from the <a href="https://idd.nationalcoreindicators.org/wp-content/uploads/2025/12/2024-NCI-IDD-SoTW_Final-Tagged.pdf" target="_blank" rel="noopener">2024 NCI-IDD State of the Workforce survey</a>, <a href="https://www.kff.org/medicaid/a-look-at-waiting-lists-for-medicaid-home-and-community-based-services-from-2016-to-2026/" target="_blank" rel="noopener">KFF (2026)</a>, the <a href="https://nadsp.org/wp-content/uploads/2018/02/PCPID-2017_-Americas-Direct-Support-Workforce-Crisis-low-res.pdf" target="_blank" rel="noopener">President's Committee for People with Intellectual Disabilities (2017)</a> and <a href="https://publications.ici.umn.edu/risp/data-bytes/expenditures-per-person-by-age-in-2021" target="_blank" rel="noopener">ICI RISP (FY2021)</a>.</p>
+  </div>
+</aside>
+</div>
+</main>
+
+<footer class="site-footer border-t border-slate-100 px-6 py-8 text-center text-sm text-slate-600 lg:px-12">
+      <p class="flex flex-wrap justify-center gap-3">
+        <a href="privacypolicy.html" class="underline hover:text-brand-navy transition-colors">Privacy Policy</a>
+        <span>|</span>
+        <a href="termsofservice.html" class="underline hover:text-brand-navy transition-colors">Terms of Service</a>
+      </p>
+      <p class="mt-3">&copy; <span id="footer-year"></span> aSuggestion LLC. | <a href="contact.html" class="underline hover:text-brand-navy">Contact Us</a> | (860) 858-IDEA | <a href="mailto:goodideas@aSuggestion.com" class="underline hover:text-brand-navy">goodideas@aSuggestion.com</a></p>
+      <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+    </footer>
+</div>
+
+<script>
+(function(){
+  var PUPM = 15, COHORT_FEE = 3000, KEEP = 0.70, FT_HOURS = 2080, OT_PREMIUM = 0.5;
+  var sections = {wait:"on-wait", ref:"on-ref", pipe:"on-pipe", admin:"on-admin", bill:"on-bill"};
+
+  function num(id){ var v = parseFloat(document.getElementById(id).value); return isFinite(v) && v > 0 ? v : 0; }
+  function pct(id){ return Math.min(num(id), 100) / 100; }
+  function on(key){ return document.getElementById(sections[key]).checked; }
+  function money(v){ return (v < 0 ? "-" : "") + "$" + Math.round(Math.abs(v)).toLocaleString("en-US"); }
+  function set(id, text){ document.getElementById(id).textContent = text; }
+
+  function calc(){
+    var people = num("people"), wage = num("wage");
+    var pipeOn = on("pipe");
+    var cohorts = pipeOn ? num("cohorts") : 0;
+    var hires = cohorts * num("hires");
+
+    // 2. Waitlist
+    var waitOn = on("wait"), waitn = waitOn ? num("waitn") : 0;
+    var rNonwaiver = waitn * pct("nonwaiver") * num("nonwaiverrev");
+    var rWaiver = waitn * pct("funded") * pct("choose") * num("waiverrev") * (Math.min(num("months"), 12) / 12);
+
+    // 3. Referrals accepted thanks to Pipeline hires
+    var accepted = Math.min(num("turnedaway"), hires / Math.max(num("dspperperson"), 0.5));
+    var rRef = on("ref") ? accepted * num("revperson") : 0;
+
+    // 6. Services captured
+    var rBill = on("bill") ? num("billrev") * pct("leak") * pct("recover") : 0;
+
+    // 4. Pipeline tenure: replacements per seat per year fall from 12/T to 12/(T x (1 + uplift))
+    var T = Math.max(num("tenure"), 1), T2 = T * (1 + num("tenureup") / 100);
+    var sTenure = hires * (12 / T - 12 / T2) * num("hirecost");
+    var sOT = Math.min(hires, num("openpos")) * FT_HOURS * wage * OT_PREMIUM * pct("otshare");
+
+    // 5. Admin time
+    var sAdmin = on("admin") ? people * num("adminhrs") * 12 * num("admincost") * pct("adminred") : 0;
+
+    var rSub = rNonwaiver + rWaiver + rRef + rBill;
+    var sSub = sTenure + sOT + sAdmin;
+    var gross = rSub + sSub, counted = gross * KEEP;
+
+    var active = Math.round(people * pct("engaged")) + Math.round(waitn);
+    var cPlat = active * PUPM * 12, cPot = cohorts * COHORT_FEE, cost = cPlat + cPot;
+    var net = counted - cost;
+
+    set("r-nonwaiver", money(rNonwaiver)); set("r-waiver", money(rWaiver)); set("r-ref", money(rRef)); set("r-bill", money(rBill)); set("r-sub", money(rSub));
+    set("s-tenure", money(sTenure)); set("s-ot", money(sOT)); set("s-admin", money(sAdmin)); set("s-sub", money(sSub));
+    set("b-gross", money(gross)); set("b-haircut", "-" + money(gross - counted)); set("b-counted", money(counted));
+    set("c-plat-label", "aSuggestion platform (" + active + " active people x $15 x 12)");
+    set("c-pot-label", "DSP Pipeline training fee (" + cohorts + (cohorts === 1 ? " cohort" : " cohorts") + " x $3,000)");
+    set("c-plat", money(cPlat)); set("c-pot", money(cPot)); set("c-total", money(cost));
+    set("net", money(net));
+    document.getElementById("netbox").classList.toggle("neg", net < 0);
+    set("roi", cost > 0 ? "About " + (counted / cost).toFixed(1) + " dollars of counted benefit for every dollar spent" : "");
+    set("payback", (cost > 0 && counted > 0) ? (cost / (counted / 12)).toFixed(1) + " months" : "n/a");
+    set("revcover", cost > 0 ? (rSub * KEEP >= cost ? "Yes, " + (rSub * KEEP / cost).toFixed(1) + "x" : "Not on its own") : "n/a");
+
+    document.getElementById("talk").href = "contact.html?topic=agency&source=roi&people=" + people + "&net=" + Math.round(net);
+  }
+
+  function syncSections(){
+    Object.keys(sections).forEach(function(k){
+      var body = document.querySelector("#sec-" + k + " .body");
+      if (body) body.classList.toggle("off", !on(k));
+    });
+  }
+
+  document.querySelectorAll("input[type=number]").forEach(function(el){ el.addEventListener("input", calc); });
+  Object.keys(sections).forEach(function(k){
+    document.getElementById(sections[k]).addEventListener("change", function(){ syncSections(); calc(); });
+  });
+  syncSections(); calc();
+})();
+</script>
+</body>
+</html>
