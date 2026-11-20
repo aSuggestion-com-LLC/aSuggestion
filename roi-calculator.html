@@ -48,6 +48,8 @@
   .req{color:var(--orange-dark);font-weight:700}
   .bad{border-color:#b3261e !important}
   .errtext{color:#b3261e;font-size:.82rem;margin:0}
+  .locked-note{margin:0 0 12px;padding:10px 14px;border-radius:.75rem;background:#fff4e6;border:1px solid var(--orange);color:var(--navy);font-weight:700}
+  .grid.locked section.card:not(#sec-you), .grid.locked .results{opacity:.45;pointer-events:none;user-select:none}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
   .status{font-size:.9rem;margin:10px 0 0;font-weight:700}
   .status.ok{color:var(--green)} .status.err{color:#b3261e}
@@ -131,9 +133,10 @@
 
   <section class="card" id="sec-you">
     <h2>About you</h2>
-    <p class="hint">Both fields are required. We use them only to follow up on your feedback.</p>
+    <p class="hint">Both fields are required. We use them to follow up on your feedback, and we email you a copy of your results when you press Send my results.</p>
     <div class="field stack"><label for="yourname">Your name <span class="req" aria-hidden="true">*</span></label><input type="text" id="yourname" name="name" autocomplete="name" maxlength="120" required aria-required="true"><p class="errtext" id="err-name" hidden>Please enter your name.</p></div>
     <div class="field stack"><label for="youremail">Your email address <span class="req" aria-hidden="true">*</span></label><input type="email" id="youremail" name="email" autocomplete="email" maxlength="254" required aria-required="true"><p class="errtext" id="err-email" hidden>Please enter a valid email address.</p></div>
+    <p class="locked-note" id="locked-note" role="status">Enter your name and email address above to unlock the calculator.</p>
     <div class="hp" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
   </section>
 
@@ -382,6 +385,24 @@
       if (!okName) { nameEl.focus(); } else if (!okEmail) { emailEl.focus(); }
       return okName && okEmail;
     }
+    // The calculator stays locked (inputs greyed out and disabled) until a name and a valid email are entered.
+    var grid = document.querySelector(".grid"), note = document.getElementById("locked-note");
+    var youCard = document.getElementById("sec-you");
+    function detailsOk(){
+      return nameEl.value.trim().length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim());
+    }
+    function applyLock(){
+      var ok = detailsOk();
+      document.querySelectorAll("main input, main button").forEach(function(el){
+        if (youCard.contains(el)) { return; }
+        if (ok) { if (el.dataset.lockedByDetails) { el.disabled = false; delete el.dataset.lockedByDetails; } }
+        else if (!el.disabled) { el.disabled = true; el.dataset.lockedByDetails = "1"; }
+      });
+      grid.classList.toggle("locked", !ok);
+      note.hidden = ok;
+    }
+    ["input", "change", "keyup", "blur"].forEach(function(ev){ nameEl.addEventListener(ev, applyLock); emailEl.addEventListener(ev, applyLock); });
+    applyLock();
     send.addEventListener("click", function(){
       if (!check()) { show("Please fill in your name and email address first.", "err"); return; }
       send.disabled = true; show("Sending...", "");
@@ -390,7 +411,7 @@
       body.set("website", document.getElementById("website").value); body.set("results", resultsText());
       fetch(ENDPOINT, { method: "POST", body: body })
         .then(function(r){ if (!r.ok) { throw new Error("bad status " + r.status); } return r.json(); })
-        .then(function(){ show("Thank you. Your results were sent to the aSuggestion team, and we will be in touch.", "ok"); send.disabled = false; })
+        .then(function(){ show("Thank you. Your results were sent to the aSuggestion team, and a copy is on its way to your email address.", "ok"); send.disabled = false; })
         .catch(function(){ show("Sorry, that did not send. Please try again in a minute, or use \"Talk to us about these numbers\".", "err"); send.disabled = false; });
     });
     [nameEl, emailEl].forEach(function(el){ el.addEventListener("input", function(){ el.classList.remove("bad"); document.getElementById(el === nameEl ? "err-name" : "err-email").hidden = true; }); });
