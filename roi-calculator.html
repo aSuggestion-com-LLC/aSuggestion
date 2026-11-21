@@ -50,6 +50,7 @@
   .errtext{color:#b3261e;font-size:.82rem;margin:0}
   .locked-note{margin:0 0 12px;padding:10px 14px;border-radius:.75rem;background:#fff4e6;border:1px solid var(--orange);color:var(--navy);font-weight:700}
   .grid.locked section.card:not(#sec-you), .grid.locked .results{opacity:.45;pointer-events:none;user-select:none}
+  #scen{table-layout:fixed;width:100%} #scen td{font-size:.85rem;padding:6px 4px;overflow-wrap:anywhere}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
   .status{font-size:.9rem;margin:10px 0 0;font-weight:700}
   .status.ok{color:var(--green)} .status.err{color:#b3261e}
@@ -122,7 +123,7 @@
   <div class="wrap">
     <p class="kicker">Agency ROI Calculator</p>
     <h1>What could aSuggestion return to your agency?</h1>
-    <p>Enter your own numbers. We count only 70% of the estimated new revenue and savings, then subtract the full cost of the platform and the DSP Pipeline training fee, so the result stays on the conservative side.</p>
+    <p>Enter your own numbers. We count only part of the estimated new revenue and savings (70% to start, and you can change that below), then subtract the full cost of the platform and the DSP Pipeline training fee, so the result stays on the conservative side.</p>
   </div>
 </section>
 
@@ -138,6 +139,18 @@
     <div class="field stack"><label for="youremail">Your email address <span class="req" aria-hidden="true">*</span></label><input type="email" id="youremail" name="email" autocomplete="email" maxlength="254" required aria-required="true"><p class="errtext" id="err-email" hidden>Please enter a valid email address.</p></div>
     <p class="locked-note" id="locked-note" role="status">Enter your name and email address above to unlock the calculator.</p>
     <div class="hp" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+  </section>
+
+  <section class="card" id="sec-acc">
+    <h2>How cautious do you want to be?</h2>
+    <p class="hint">Let's assume our estimates are not 100% accurate. What if they were only 75%, 50% or 25% accurate? Pick a level or type your own, and the results update. The table under the results shows all of them side by side.</p>
+    <div class="field"><label for="accuracy">How accurate are our estimates (%)<small>We start at 70%. Lower means more cautious</small></label><input type="number" id="accuracy" min="0" max="100" step="1" value="70"></div>
+    <div class="btns no-print" style="margin:0 0 14px">
+      <button class="btn ghost acc-btn" type="button" data-acc="100">100%</button>
+      <button class="btn ghost acc-btn" type="button" data-acc="75">75%</button>
+      <button class="btn ghost acc-btn" type="button" data-acc="50">50%</button>
+      <button class="btn ghost acc-btn" type="button" data-acc="25">25%</button>
+    </div>
   </section>
 
   <section class="card">
@@ -214,7 +227,7 @@
 
 <aside class="results">
   <div class="card">
-    <span class="pill">Conservative estimate: 70% counted</span>
+    <span class="pill" id="pill">Conservative estimate: 70% counted</span>
     <div class="big" id="netbox">
       <div class="label">Estimated net annual value to your agency</div>
       <div class="value" id="net">$0</div>
@@ -241,7 +254,7 @@
     <h3>Bottom line</h3>
     <table>
       <tr><td>Total estimated benefit</td><td class="num" id="b-gross">$0</td></tr>
-      <tr><td>Less 30% to stay conservative</td><td class="num" id="b-haircut">$0</td></tr>
+      <tr><td id="b-haircut-label">Less 30% to stay conservative</td><td class="num" id="b-haircut">$0</td></tr>
       <tr class="total"><td>Benefit counted</td><td class="num" id="b-counted">$0</td></tr>
       <tr><td id="c-plat-label">aSuggestion platform</td><td class="num" id="c-plat">$0</td></tr>
       <tr><td id="c-pot-label">DSP Pipeline training fee</td><td class="num" id="c-pot">$0</td></tr>
@@ -250,6 +263,15 @@
 
     <div class="k"><span>Months to cover the annual cost</span><strong id="payback">n/a</strong></div>
     <div class="k"><span>New revenue alone covers the cost</span><strong id="revcover">n/a</strong></div>
+
+    <h3>What if our estimates are off?</h3>
+    <table id="scen">
+      <tr><td><strong>Accuracy</strong></td><td class="num"><strong>Counted</strong></td><td class="num"><strong>Net value</strong></td><td class="num"><strong>Payback</strong></td></tr>
+      <tr><td>100% accurate</td><td class="num" id="sc100-b">$0</td><td class="num" id="sc100-n">$0</td><td class="num" id="sc100-p">n/a</td></tr>
+      <tr><td>75% accurate</td><td class="num" id="sc75-b">$0</td><td class="num" id="sc75-n">$0</td><td class="num" id="sc75-p">n/a</td></tr>
+      <tr><td>50% accurate</td><td class="num" id="sc50-b">$0</td><td class="num" id="sc50-n">$0</td><td class="num" id="sc50-p">n/a</td></tr>
+      <tr><td>25% accurate</td><td class="num" id="sc25-b">$0</td><td class="num" id="sc25-n">$0</td><td class="num" id="sc25-p">n/a</td></tr>
+    </table>
 
     <div class="btns no-print">
       <button class="btn primary" id="send" type="button">Send my results</button>
@@ -277,7 +299,7 @@
 
 <script>
 (function(){
-  var PUPM = 15, COHORT_FEE = 3000, KEEP = 0.70, FT_HOURS = 2080, OT_PREMIUM = 0.5;
+  var PUPM = 15, COHORT_FEE = 3000, FT_HOURS = 2080, OT_PREMIUM = 0.5;
   var sections = {wait:"on-wait", ref:"on-ref", pipe:"on-pipe", admin:"on-admin", bill:"on-bill"};
 
   function num(id){ var v = parseFloat(document.getElementById(id).value); return isFinite(v) && v > 0 ? v : 0; }
@@ -314,6 +336,7 @@
 
     var rSub = rNonwaiver + rWaiver + rRef + rBill;
     var sSub = sTenure + sOT + sAdmin;
+    var KEEP = pct("accuracy"), keepPct = Math.round(KEEP * 100);
     var gross = rSub + sSub, counted = gross * KEEP;
 
     var active = Math.round(people * pct("engaged")) + Math.round(waitn);
@@ -327,6 +350,13 @@
     set("c-pot-label", "DSP Pipeline training fee (" + cohorts + (cohorts === 1 ? " cohort" : " cohorts") + " x $3,000)");
     set("c-plat", money(cPlat)); set("c-pot", money(cPot)); set("c-total", money(cost));
     set("net", money(net));
+    set("pill", "Conservative estimate: " + keepPct + "% counted");
+    set("b-haircut-label", "Less " + (100 - keepPct) + "% to stay conservative");
+    [100, 75, 50, 25].forEach(function(a){
+      var c = gross * a / 100;
+      set("sc" + a + "-b", money(c)); set("sc" + a + "-n", money(c - cost));
+      set("sc" + a + "-p", (cost > 0 && c > 0) ? (cost / (c / 12)).toFixed(1) + " months" : "n/a");
+    });
     document.getElementById("netbox").classList.toggle("neg", net < 0);
     set("roi", cost > 0 ? "About " + (counted / cost).toFixed(1) + " dollars of counted benefit for every dollar spent" : "");
     set("payback", (cost > 0 && counted > 0) ? (cost / (counted / 12)).toFixed(1) + " months" : "n/a");
@@ -343,6 +373,7 @@
   }
 
   document.querySelectorAll("input[type=number]").forEach(function(el){ el.addEventListener("input", calc); });
+  document.querySelectorAll(".acc-btn").forEach(function(b){ b.addEventListener("click", function(){ document.getElementById("accuracy").value = b.getAttribute("data-acc"); calc(); }); });
   Object.keys(sections).forEach(function(k){
     document.getElementById(sections[k]).addEventListener("change", function(){ syncSections(); calc(); });
   });
