@@ -141,18 +141,6 @@
     <div class="hp" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
   </section>
 
-  <section class="card" id="sec-acc">
-    <h2>How cautious do you want to be?</h2>
-    <p class="hint">Let's assume our estimates are not 100% accurate. What if they were only 75%, 50% or 25% accurate? Pick a level or type your own, and the results update. The table under the results shows all of them side by side.</p>
-    <div class="field"><label for="accuracy">How accurate are our estimates (%)<small>We start at 70%. Lower means more cautious</small></label><input type="number" id="accuracy" min="0" max="100" step="1" value="70"></div>
-    <div class="btns no-print" style="margin:0 0 14px">
-      <button class="btn ghost acc-btn" type="button" data-acc="100">100%</button>
-      <button class="btn ghost acc-btn" type="button" data-acc="75">75%</button>
-      <button class="btn ghost acc-btn" type="button" data-acc="50">50%</button>
-      <button class="btn ghost acc-btn" type="button" data-acc="25">25%</button>
-    </div>
-  </section>
-
   <section class="card">
     <h2>1. Your agency</h2>
     <p class="hint">aSuggestion is billed only for people who actively use the platform in a given month. A month with no use costs nothing.</p>
@@ -226,6 +214,18 @@
 </div>
 
 <aside class="results">
+  <section class="card" id="sec-acc" style="margin-bottom:16px">
+    <h2>How cautious do you want to be?</h2>
+    <p class="hint">Let's assume our estimates are not 100% accurate. What if they were only 75%, 50% or 25% accurate? Pick a level or type your own, and the results update. The table under the results shows all of them side by side.</p>
+    <div class="field"><label for="accuracy">How accurate are our estimates (%)<small>We start at 70%. Lower means more cautious</small></label><input type="number" id="accuracy" min="0" max="100" step="1" value="70"></div>
+    <div class="btns no-print" style="margin:0 0 14px">
+      <button class="btn ghost acc-btn" type="button" data-acc="100">100%</button>
+      <button class="btn ghost acc-btn" type="button" data-acc="75">75%</button>
+      <button class="btn ghost acc-btn" type="button" data-acc="50">50%</button>
+      <button class="btn ghost acc-btn" type="button" data-acc="25">25%</button>
+    </div>
+  </section>
+
   <div class="card">
     <span class="pill" id="pill">Conservative estimate: 70% counted</span>
     <div class="big" id="netbox">
