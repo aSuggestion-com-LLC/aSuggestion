@@ -211,6 +211,17 @@
     </div>
   </section>
 
+  <section class="card" id="sec-fam">
+    <h2>7. Families you refer to aSuggestion <span class="tag rev">New revenue</span></h2>
+    <label class="toggle"><input type="checkbox" id="on-fam" checked> Include families I refer</label>
+    <div class="body">
+      <p class="hint">Individuals and families can join aSuggestion on their own for $30 per month. When a family names your agency as the one that referred them, $10 of that $30 each month goes to your agency, and your team works with them in the platform. Card processing fees come out of the $10.</p>
+      <div class="field"><label for="famn">Families you expect to refer who join<small>Families who sign up for themselves, not people your agency already enrolls</small></label><input type="number" id="famn" min="0" step="1" value="5"></div>
+      <div class="field"><label for="fammonths">Average months each family stays a member this year</label><input type="number" id="fammonths" min="0" max="12" step="1" value="6"></div>
+      <div class="field"><label for="famfee">Card processing fees taken out of the $10, per family per month ($)<small>About $1.17 on a $30 payment. Change it if your fees differ</small></label><input type="number" id="famfee" min="0" max="10" step="0.01" value="1.17"></div>
+    </div>
+  </section>
+
 </div>
 
 <aside class="results">
@@ -240,6 +251,7 @@
       <tr><td>Waitlist: people who choose you when funded</td><td class="num" id="r-waiver">$0</td></tr>
       <tr><td>People you no longer turn away</td><td class="num" id="r-ref">$0</td></tr>
       <tr><td>Services captured</td><td class="num" id="r-bill">$0</td></tr>
+      <tr><td>Referral partnership income</td><td class="num" id="r-fam">$0</td></tr>
       <tr class="sub"><td>New revenue subtotal</td><td class="num" id="r-sub">$0</td></tr>
     </table>
 
@@ -300,7 +312,7 @@
 <script>
 (function(){
   var PUPM = 15, COHORT_FEE = 3000, FT_HOURS = 2080, OT_PREMIUM = 0.5;
-  var sections = {wait:"on-wait", ref:"on-ref", pipe:"on-pipe", admin:"on-admin", bill:"on-bill"};
+  var sections = {wait:"on-wait", ref:"on-ref", pipe:"on-pipe", admin:"on-admin", bill:"on-bill", fam:"on-fam"};
 
   function num(id){ var v = parseFloat(document.getElementById(id).value); return isFinite(v) && v > 0 ? v : 0; }
   function pct(id){ return Math.min(num(id), 100) / 100; }
@@ -334,7 +346,10 @@
     // 5. Admin time
     var sAdmin = on("admin") ? people * num("adminhrs") * 12 * num("admincost") * pct("adminred") : 0;
 
-    var rSub = rNonwaiver + rWaiver + rRef + rBill;
+    // 7. Referral partnership income: $10 of each referred family's $30 monthly membership, less card fees
+    var rFam = on("fam") ? num("famn") * Math.max(10 - num("famfee"), 0) * Math.min(num("fammonths"), 12) : 0;
+
+    var rSub = rNonwaiver + rWaiver + rRef + rBill + rFam;
     var sSub = sTenure + sOT + sAdmin;
     var KEEP = pct("accuracy"), keepPct = Math.round(KEEP * 100);
     var gross = rSub + sSub, counted = gross * KEEP;
@@ -343,7 +358,7 @@
     var cPlat = active * PUPM * 12, cPot = cohorts * COHORT_FEE, cost = cPlat + cPot;
     var net = counted - cost;
 
-    set("r-nonwaiver", money(rNonwaiver)); set("r-waiver", money(rWaiver)); set("r-ref", money(rRef)); set("r-bill", money(rBill)); set("r-sub", money(rSub));
+    set("r-nonwaiver", money(rNonwaiver)); set("r-waiver", money(rWaiver)); set("r-ref", money(rRef)); set("r-bill", money(rBill)); set("r-fam", money(rFam)); set("r-sub", money(rSub));
     set("s-tenure", money(sTenure)); set("s-ot", money(sOT)); set("s-admin", money(sAdmin)); set("s-sub", money(sSub));
     set("b-gross", money(gross)); set("b-haircut", "-" + money(gross - counted)); set("b-counted", money(counted));
     set("c-plat-label", "aSuggestion platform (" + active + " active people x $15 x 12)");
