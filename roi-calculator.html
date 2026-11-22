@@ -203,8 +203,8 @@
 
   <section class="card" id="sec-bill">
     <h2>6. Services delivered but not captured <span class="tag rev">Recovered revenue</span></h2>
-    <label class="toggle"><input type="checkbox" id="on-bill"> I believe some services we deliver are not fully documented or billed</label>
-    <div class="body off">
+    <label class="toggle"><input type="checkbox" id="on-bill" checked> I believe some services we deliver are not fully documented or billed</label>
+    <div class="body">
       <div class="field"><label for="billrev">Annual billed revenue for services aSuggestion would touch ($)<small>For example, community-based and day services</small></label><input type="number" id="billrev" min="0" step="1000" value="1000000"></div>
       <div class="field"><label for="leak">Share you believe goes undocumented or unbilled (%)</label><input type="number" id="leak" min="0" max="100" step="0.5" value="2"></div>
       <div class="field"><label for="recover">Share of that gap better evidence could help recover (%)</label><input type="number" id="recover" min="0" max="100" step="1" value="50"></div>
@@ -217,7 +217,7 @@
     <div class="body">
       <p class="hint">Individuals and families can join aSuggestion on their own for $30 per month. When a family names your agency as the one that referred them, $10 of that $30 each month goes to your agency, and your team works with them in the platform. Card processing fees come out of the $10.</p>
       <div class="field"><label for="famn">Families you expect to refer who join<small>Families who sign up for themselves, not people your agency already enrolls</small></label><input type="number" id="famn" min="0" step="1" value="50"></div>
-      <div class="field"><label for="fammonths">Average months each family stays a member this year</label><input type="number" id="fammonths" min="0" max="12" step="1" value="6"></div>
+      <div class="field"><label for="fammonths">Average months each family stays a member this year</label><input type="number" id="fammonths" min="0" max="12" step="1" value="12"></div>
       <div class="field"><label for="famfee">Card processing fees taken out of the $10, per family per month ($)<small>About $1.17 on a $30 payment. Change it if your fees differ</small></label><input type="number" id="famfee" min="0" max="10" step="0.01" value="1.17"></div>
     </div>
   </section>
